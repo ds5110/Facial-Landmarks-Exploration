@@ -3,9 +3,15 @@ The project focused on the computer vision project in DS5110.
 
 ### Feasibility
 
-- Story: Distinguish whether an image is an adult or an infant.
+- Story: Preprocessing of Image Landmarks and Analysis of Relationship with Attributes
 - Data: [InfAnFace dataset](https://coe.northeastern.edu/Research/AClab/InfAnFace/), [300-W](https://ibug.doc.ic.ac.uk/resources/300-W/)
-- EDA: For a given test data set, we could get a classification scatter to show the accuracy of the model we choose.
+- EDA:
+  - A recommended scaling method for the landmark data.
+  - An identified set of outliers to remove from the data.
+  - Regression and distribution analyses of Euclidean distances between landmark points, which may provide useful insights.
+  - A rotation method including choosing the center point and rotation axis.
+  - Identification of landmark differences between different types of faces (turned, tilted, occluded, and expressive), which could aid in developing a computer algorithm for identifying these types of faces.
+
 
 ### Information from Professor
 Stakeholder: Michael Wan, PhD, Senior Computational Scientist in Northeastern’s Augmented Cognition Lab
