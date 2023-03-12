@@ -33,6 +33,11 @@ The proposed program is expected to achieve the following outcomes:
 - A rotation method including choosing the center point and rotation axis.
 - Identification of landmark differences between different types of faces (turned, tilted, occluded, and expressive), which could aid in developing a computer algorithm for identifying these types of faces.
 
+**Roles & Responsibilities:**
+- Yun Cao: Team Leader. Responsible for project advancement, progress confirmation, task splitting, etc. Next, will be responsible for building the project and scaling the raw data.
+- Liyang Song: Team Member. Participating in project discussions, making suggestions, obtaining raw data, etc. Next, will be responsible for processing and analyzing Euclidean distances.
+- Na Yin: Team Member. Participating in project discussions and making suggestions. Next, will be responsible for the determination and analysis of outliers
+
 **Background:**
 
 The proposed program is based on the paper "InfAnFace: Bridging the Infant–Adult Domain Gap" by Yang et al. (2021), which proposes a deep neural network model that can bridge the domain gap between infant and adult face recognition. The model uses facial landmarks as input features and achieves state-of-the-art performance on the infant and adult face recognition tasks. The proposed program builds on this work by developing an image processing pipeline that preprocesses landmark data and analyzes the relationship between the landmark data and attributes such as turned, tilted, occluded, and expressive.
