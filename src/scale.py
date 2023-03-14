@@ -15,11 +15,17 @@ def standardize_original():
     scaler = StandardScaler()
 
     standard_infant = infant.copy()
-    standard_infant[infant_cols] = scaler.fit_transform(standard_infant[infant_cols])
+    # standard_infant[infant_cols] = scaler.fit_transform(standard_infant[infant_cols])
+
+    standard_infant[infant_cols] = standard_infant[infant_cols].apply(
+        lambda x: scaler.fit_transform(x.values.reshape(68, 2)).reshape(136), axis=1, result_type='expand')
+
     standard_infant.to_csv('./outcome/scale/standard_infant.csv', index=False)
 
     standard_adult = adult.copy()
-    standard_adult[adult_cols] = scaler.fit_transform(adult[adult_cols])
+    # standard_adult[adult_cols] = scaler.fit_transform(adult[adult_cols])
+    standard_adult[adult_cols] = standard_adult[adult_cols].apply(
+        lambda x: scaler.fit_transform(x.values.reshape(68, 2)).reshape(136), axis=1, result_type='expand')
     standard_adult.to_csv('./outcome/scale/standard_adult.csv', index=False)
 
 
