@@ -96,6 +96,6 @@ def scale_mds():
     mds_adult.to_csv('./outcome/scale/mds_adult.csv', index=False)
 
 
-# standardize_original()
-# normalize_by_face_bounding_box()
+standardize_original()
+normalize_by_face_bounding_box()
 scale_mds()
