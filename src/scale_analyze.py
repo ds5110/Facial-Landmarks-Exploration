@@ -1,4 +1,4 @@
-from sklearn.metrics import mean_squared_error
+# from sklearn.metrics import mean_squared_error
 from scipy.spatial import procrustes
 import pandas as pd
 import numpy as np
@@ -11,16 +11,18 @@ rows = ['MDS', 'Standard', 'NormalizedByFaceBoundingBox']
 infant_cols, infant_x_cols, infant_y_cols = utils.get_infant_cols(infant)
 adult_cols, adult_x_cols, adult_y_cols = utils.get_adult_cols(adult)
 
-mse_table = pd.DataFrame(columns=columns, index=rows)
-mse_table.loc['MDS', 'Infant'] = mean_squared_error(infant[infant_cols].values, mds_infant[infant_cols].values)
-mse_table.loc['MDS', 'Adult'] = mean_squared_error(adult[adult_cols].values, mds_adult[adult_cols].values)
-mse_table.loc['Standard', 'Infant'] = mean_squared_error(infant[infant_cols].values, std_infant[infant_cols].values)
-mse_table.loc['Standard', 'Adult'] = mean_squared_error(adult[adult_cols].values, std_adult[adult_cols].values)
-mse_table.loc['NormalizedByFaceBoundingBox', 'Infant'] = mean_squared_error(infant[infant_cols].values,
-                                                                            norm_infant[infant_cols].values)
-mse_table.loc['NormalizedByFaceBoundingBox', 'Adult'] = mean_squared_error(adult[adult_cols].values,
-                                                                           norm_adult[adult_cols].values)
-print("MSE TABLE", mse_table)
+
+#
+# mse_table = pd.DataFrame(columns=columns, index=rows)
+# mse_table.loc['MDS', 'Infant'] = mean_squared_error(infant[infant_cols].values, mds_infant[infant_cols].values)
+# mse_table.loc['MDS', 'Adult'] = mean_squared_error(adult[adult_cols].values, mds_adult[adult_cols].values)
+# mse_table.loc['Standard', 'Infant'] = mean_squared_error(infant[infant_cols].values, std_infant[infant_cols].values)
+# mse_table.loc['Standard', 'Adult'] = mean_squared_error(adult[adult_cols].values, std_adult[adult_cols].values)
+# mse_table.loc['NormalizedByFaceBoundingBox', 'Infant'] = mean_squared_error(infant[infant_cols].values,
+#                                                                             norm_infant[infant_cols].values)
+# mse_table.loc['NormalizedByFaceBoundingBox', 'Adult'] = mean_squared_error(adult[adult_cols].values,
+#                                                                            norm_adult[adult_cols].values)
+# print("MSE TABLE", mse_table)
 
 
 def calculate_infant_procrustes(df1, df2):
