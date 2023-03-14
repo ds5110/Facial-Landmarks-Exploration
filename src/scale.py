@@ -46,12 +46,12 @@ def normalize_coords_by_face_bounding_box(x_coords, y_coords):
 def normalize_by_face_bounding_box():
     normalized_infant = infant.copy()
     infant_result = normalize_coords_by_face_bounding_box(infant[infant_x_cols], infant[infant_y_cols])
-    normalized_infant[infant_cols] = infant_result
+    normalized_infant[infant_x_cols + infant_y_cols] = infant_result
     normalized_infant.to_csv('./outcome/scale/normalized_infant.csv', index=False)
 
     normalized_adult = adult.copy()
     adult_result = normalize_coords_by_face_bounding_box(adult[adult_x_cols], adult[adult_y_cols])
-    normalized_adult[adult_cols] = adult_result
+    normalized_adult[adult_x_cols + adult_y_cols] = adult_result
     normalized_adult.to_csv('./outcome/scale/normalized_adult.csv', index=False)
 
 
