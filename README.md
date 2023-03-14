@@ -4,10 +4,10 @@ The project focused on the computer vision project in DS5110.
 
 ### Reproduce Instruction
 
-`make data`: The command is used for get initial landmark data.
-`make scale`: The command is used for scale initial data into a normalized format.
-`make scale_analyze`: The command is used for computing the Procrustes Distance of different scale ways.
-`make scale_plt`: The command is used for generating a vision inspection of scale results.
+- `make data`: The command is used for get initial landmark data.
+- `make scale`: The command is used for scale initial data into a normalized format.
+- `make scale_analyze`: The command is used for computing the Procrustes Distance of different scale ways.
+- `make scale_plt`: The command is used for generating a vision inspection of scale results.
 
 ### Feasibility
 
