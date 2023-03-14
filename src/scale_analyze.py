@@ -4,14 +4,7 @@ import pandas as pd
 import numpy as np
 import utils
 
-infant = pd.read_csv('./data/infant.csv')
-adult = pd.read_csv('./data/300w.csv')
-mds_infant = pd.read_csv('./outcome/scale/mds_infant.csv')
-mds_adult = pd.read_csv('./outcome/scale/mds_adult.csv')
-norm_infant = pd.read_csv('./outcome/scale/normalized_infant.csv')
-norm_adult = pd.read_csv('./outcome/scale/normalized_adult.csv')
-std_infant = pd.read_csv('./outcome/scale/standard_infant.csv')
-std_adult = pd.read_csv('./outcome/scale/standard_adult.csv')
+infant, adult, mds_infant, mds_adult, norm_infant, norm_adult, std_infant, std_adult = utils.get_all_scale_data()
 
 columns = ['Infant', 'Adult']
 rows = ['MDS', 'Standard', 'NormalizedByFaceBoundingBox']

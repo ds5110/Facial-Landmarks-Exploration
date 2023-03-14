@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 
 def get_infant_cols(infant):
@@ -23,3 +24,15 @@ def reshape_to_2d(df1, x_cols, y_cols):
     df1_reshaped[:, :, 0] = df1_x_coords
     df1_reshaped[:, :, 1] = df1_y_coords
     return df1_reshaped
+
+
+def get_all_scale_data():
+    infant = pd.read_csv('./data/infant.csv')
+    adult = pd.read_csv('./data/300w.csv')
+    mds_infant = pd.read_csv('./outcome/scale/mds_infant.csv')
+    mds_adult = pd.read_csv('./outcome/scale/mds_adult.csv')
+    norm_infant = pd.read_csv('./outcome/scale/normalized_infant.csv')
+    norm_adult = pd.read_csv('./outcome/scale/normalized_adult.csv')
+    std_infant = pd.read_csv('./outcome/scale/standard_infant.csv')
+    std_adult = pd.read_csv('./outcome/scale/standard_adult.csv')
+    return infant, adult, mds_infant, mds_adult, norm_infant, norm_adult, std_infant, std_adult

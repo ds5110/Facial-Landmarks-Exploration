@@ -16,3 +16,6 @@ scale: data
 
 scale_analyze:
 	python -B ./src/scale_analyze.py
+
+scale_plt:
+	python -B ./src/scale_plt.py
