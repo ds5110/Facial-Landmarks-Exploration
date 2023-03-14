@@ -13,3 +13,6 @@ data: data/300w.csv data/infant.csv
 
 scale: data
 	python -B ./src/scale.py
+
+scale_analyze:
+	python -B ./src/scale_analyze.py
