@@ -19,3 +19,6 @@ scale_analyze:
 
 scale_plt:
 	python -B ./src/scale_plt.py
+
+euclidean:
+	python -B ./src/euclidean.py
