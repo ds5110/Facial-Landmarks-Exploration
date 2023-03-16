@@ -22,3 +22,13 @@ scale_plt:
 
 euclidean:
 	python -B ./src/euclidean.py
+
+
+outlier_infant:
+	python -B ./src/outlier_selection_infant.py
+
+outlier_adult:
+	python -B ./src/outlier_selection_adult.py
+
+try:
+	python -B ./src/try.py
