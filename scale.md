@@ -17,19 +17,6 @@ were calculated as the denominator, while the coordinates of all points/related 
 normalize the coordinates. The Multidimensional scaling approach used `sklearn.manifold.MDS` to perform the scaling on
 the landmarks of each image.
 
-## Evaluation
-
-The evaluation of the performance of these approaches was done using the Procrustes Distance calculated
-by `scipy.spatial.procrustes`.
-
-### Results
-
-| Approach           | Procrustes Distance (Infant) | Procrustes Distance (Adult) |
-| ------------------ | ---------------------------- | --------------------------- |
-| MDS                | 0.000486                     | 0.000151                    |
-| Standardization    | 0.003161                     | 0.004523                    |
-| Normalized by Face | 0.010199                     | 0.001528                    |
-
 **Infant Comparison**
 ![infant](./outcome/scale/infant.png)
 **Adult Comparison**
