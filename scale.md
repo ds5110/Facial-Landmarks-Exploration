@@ -11,11 +11,11 @@ scenario.
 
 ## Approach
 
-For standardization, the `sklearn.preprocessing.StandardScaler` was used to normalize the landmarks of each image
-separately. In normalization by face bounding box approach, the x-axis width and y-axis width occupied by the landmarks
-were calculated as the denominator, while the coordinates of all points/related widths were used as the numerator to
-normalize the coordinates. The Multidimensional scaling approach used `sklearn.manifold.MDS` to perform the scaling on
-the landmarks of each image.
+- Standardization: Using the `sklearn.preprocessing.StandardScaler` to normalize the landmarks of each image separately.
+- Normalization by face bounding box: Normalized x coordinate by dividing with the x-axis range in landmarks, and y
+  coordinate by dividing with the y-axis range.
+- MDS: The Multidimensional scaling approach used `sklearn.manifold.MDS` to perform the scaling on
+  the landmarks of each image.
 
 **Infant Comparison**
 ![infant](./outcome/scale/infant.png)
@@ -24,7 +24,6 @@ the landmarks of each image.
 
 ## Conclusion
 
-As we can see, the Standard method has the lowest distance, and the MDS has a better performance, but it causes the
-image to flip and does not meet our requirements, so it is dropped. Between Standard and Normalized, we choose the
-Standard method, which has a smaller distance difference.
-
+As we can see, though standardization and normalization use different range as the denominator, they have similar views.
+And The MDS would rotate the view in some degrees. We would like to compare it with the scale method that previous
+project applied and check the difference between them.
