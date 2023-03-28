@@ -34,7 +34,7 @@ The outcomes are as follows.
 1 outliers index shown in the terminal  
 2 filtered data saved in the `filtered_infant_if.csv`  
 3 a scatter plot of all features to visualize the data and outliers shown in the `isolation_forest_infant.png`
-![ma_infant](./outcome/outlier_selection/isolation_forest_infant.png)
+![ma_infant](./outcome/outlier_selection/isolation_forest_infant.png)  
 note:For data with 2278 columns, we cannot directly plot a scatter plot of all features
 to visualize the data and outliers. One possible approach is to use principal component
 analysis (PCA) to project the data into a lower dimensional space and visualize
@@ -47,8 +47,8 @@ outliers:<div align=center><img width="450" height="300" src="./outcome/outlier_
 Based on the displayed results, the outliers are not significantly different from the normal one, then i decide to abandon the use of outlier detection and use all the data for analysis.
 
 
-**Adult **
-__Mahalanobis distance__ 
+**Adult **  
+__Mahalanobis distance__   
 `ma_adult.py`  
 The outcomes are as follows.  
 1 outliers index shown in the terminal  
@@ -58,7 +58,7 @@ The outcomes are as follows.
 The verification process is the same before.   
 
 
-__Isolation Forest__ 
+__Isolation Forest__  
 `isolation_forest_infant.py`  
 The outcomes are as follows.  
 1 outliers index shown in the terminal  
