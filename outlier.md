@@ -13,6 +13,7 @@ And then, we use two methods mentioned above to select outliers considering the 
 
 __Mahalanobis distance__  
 `ma_infant.py` uses Mahalanobis distance to determine the similarity or dissimilarity between data points by scaling the difference by the inverse of the covariance matrix, and then taking the square root of the result to produces a single value that represents the distance between the two points in the multi-dimensional space.  
+The outcomes are as follows.  
 1 outliers index shown in the terminal  
 2 filtered data saved in the `filtered_infant_ma.csv`  
 3 a scatter plot of all features to visualize the data and outliers shown in the `ma_infant.png`
@@ -30,6 +31,7 @@ Based on the displayed results, the outliers are not significantly different fro
 
 __Isolation Forest__  
 `isolation_forest_infant.py`uses Isolation Forest . It is an anomaly detection algorithm based on tree structures that can detect anomalous data points in a short time. Isolation Forest achieves this by building decision trees with random splits in the dataset, where each tree is a recursive process of dividing the dataset into subsets.
+The outcomes are as follows.  
 1 outliers index shown in the terminal  
 2 filtered data saved in the `filtered_infant_if.csv`  
 3 a scatter plot of all features to visualize the data and outliers shown in the `isolation_forest_infant.png`
@@ -48,7 +50,8 @@ Based on the displayed results, the outliers are not significantly different fro
 
 **Adult **
 __Mahalanobis distance__ 
-`ma_adult.py` 
+`ma_adult.py`  
+The outcomes are as follows.  
 1 outliers index shown in the terminal  
 2 filtered data saved in the `filtered_adult_ma.csv`  
 3 a scatter plot of all features to visualize the data and outliers shown in the `ma_infant.png`
@@ -58,6 +61,7 @@ The verification process is the same before.
 
 __Isolation Forest__ 
 `isolation_forest_infant.py`  
+The outcomes are as follows.  
 1 outliers index shown in the terminal  
 2 filtered data saved in the `filtered_adult_if.csv`  
 3 a scatter plot of all features to visualize the data and outliers shown in the `isolation_forest_adult.png`
