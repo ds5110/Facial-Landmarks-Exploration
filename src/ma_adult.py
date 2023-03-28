@@ -30,7 +30,7 @@ print(outliers_index)
 filtered_df = df[mahal_dist <= threshold]
 
 # save the data after filtering
-filtered_df.to_csv('outcome/outlier_selection/filtered_infant_ma.csv', index=False)
+filtered_df.to_csv('outcome/outlier_selection/filtered_adult_ma.csv', index=False)
 '''
 For data with 2278 columns, we cannot directly plot a scatter plot of all features 
 to visualize the data and outliers. One possible approach is to use principal component
