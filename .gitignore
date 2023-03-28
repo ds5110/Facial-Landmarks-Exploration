@@ -1,2 +1,5 @@
-.idea/
 data/
+.idea/
+.vscode/
+__pycache__
+.DS_Store
