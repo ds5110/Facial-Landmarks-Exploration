@@ -8,6 +8,12 @@ The project focused on the Computer Vision project in course DS5110 in Spring 20
 - `make scale`: The command is used for scaling initial data into a normalized format.
 - `make scale_plt`: The command is used for generating a visual inspection of scale results.
 - `make euclidean`: The command is used for generating euclidean distances between landmarks.
+- `make if_outlier_infant`: The command is used for selecting outliers in infant dataset using Isolation Forest .
+- `make if_outlier_adult`: The command is used for selecting outliers in adult dataset using Isolation Forest.
+- `make ma_outlier_infant`: The command is used for selecting outliers in infant dataset using Mahalanobis distance .
+- `make ma_outlier_adult`: The command is used for selecting outliers in adult dataset using Mahalanobis distance.
+- `make pic`: The command is used for showing the picture with landmarks.
+  
 
 ### Feasibility
 
