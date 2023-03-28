@@ -24,8 +24,7 @@ analysis (PCA) to project the data into a lower dimensional space and visualize
 the data points in this space.  
 
 To verify that the results of this method are correct, we display part of the selected outliers' pictures with landmarks.
-normal:![fig2](./outcome/outlier_selection/fig2.jpg)
-outliers:![fig1](./outcome/outlier_selection/fig1.jpg)
+<div align=center><img width="150" height="150" src="./outcome/outlier_selection/fig2.jpg"/></div>
 
 Based on the displayed results, the outliers are not significantly different from the normal one, then i decide to abandon the use of outlier detection and use all the data for analysis.
 
