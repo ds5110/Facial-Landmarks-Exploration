@@ -23,9 +23,9 @@ to visualize the data and outliers. One possible approach is to use principal co
 analysis (PCA) to project the data into a lower dimensional space and visualize
 the data points in this space.  
 
-To verify that the results of this method are correct, we display part of the selected outliers' pictures with landmarks.
-<div align=center><img width="450" height="300" src="./outcome/outlier_selection/fig2.jpg"/></div>
-
+To verify that the results of this method are correct, we display part of the selected outliers' pictures with landmarks.  
+normal:<div align=center><img width="450" height="300" src="./outcome/outlier_selection/fig2.jpg"/></div>  
+outliers:<div align=center><img width="450" height="300" src="./outcome/outlier_selection/fig1.jpg"/></div>  
 Based on the displayed results, the outliers are not significantly different from the normal one, then i decide to abandon the use of outlier detection and use all the data for analysis.
 
 __Isolation Forest__  
@@ -41,8 +41,8 @@ analysis (PCA) to project the data into a lower dimensional space and visualize
 the data points in this space.
 
 To verify that the results of this method are correct, we display part of the selected outliers' pictures with landmarks.
-normal:![fig2](./outcome/outlier_selection/fig3.jpg)
-outliers:![fig1](./outcome/outlier_selection/fig4.jpg)
+normal:<div align=center><img width="450" height="300" src="./outcome/outlier_selection/fig3.jpg"/></div>
+outliers:<div align=center><img width="450" height="300" src="./outcome/outlier_selection/fig4.jpg"/></div>
 
 Based on the displayed results, the outliers are not significantly different from the normal one, then i decide to abandon the use of outlier detection and use all the data for analysis.
 
