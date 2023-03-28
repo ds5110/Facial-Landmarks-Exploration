@@ -58,8 +58,8 @@ Based on the displayed results, the outliers are not significantly different fro
 3 a scatter plot of all features to visualize the data and outliers shown in the `ma_infant.png`
 ![ma_infant](./outcome/outlier_selection/ma_adult.png)
 
-The verification process is the same before. No more repetition.  
-Based on the displayed results, the outliers are not significantly different from the normal one, then i decide to abandon the use of outlier detection and use all the data for analysis.
+The verification process is the same before.   
+
 
 -Isolation Forest  
 `isolation_forest_infant.py`  
@@ -67,12 +67,7 @@ Based on the displayed results, the outliers are not significantly different fro
 2 filtered data saved in the `filtered_adult_if.csv`  
 3 a scatter plot of all features to visualize the data and outliers shown in the `isolation_forest_adult.png`
 ![ma_infant](./outcome/outlier_selection/isolation_forest_adult.png)
-The verification process is the same before. No more repetition.  
-To verify that the results of this method are correct, we display part of the selected outliers' pictures with landmarks.
-normal:
-![fig2](./outcome/outlier_selection/fig3.jpg)
-outliers:
-![fig1](./outcome/outlier_selection/fig4.jpg)
+The verification process is the same before. 
 
 ## Conclusion
 
