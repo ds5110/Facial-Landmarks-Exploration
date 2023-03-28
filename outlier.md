@@ -9,9 +9,9 @@ Outliers are exceptional records that are significantly different from the rest 
 The distance between each pair of two landmarks is important for our subsequent study, so we calculated the distance between two landmarks for 68 landmarks. The result is `euclidean_part_infant.csv` and `euclidean_part_adult.csv`.
 And then, we use two methods mentioned above to select outliers considering the data is multi-dimensional.
 
-###**Infant**
+### **Infant**
 
-####__Mahalanobis distance__  
+#### __Mahalanobis distance__  
 `ma_infant.py` uses Mahalanobis distance to determine the similarity or dissimilarity between data points by scaling the difference by the inverse of the covariance matrix, and then taking the square root of the result to produces a single value that represents the distance between the two points in the multi-dimensional space.  
 The outcomes are as follows.  
 1 outliers index shown in the terminal  
@@ -28,7 +28,7 @@ normal:<div align=center><img width="450" height="300" src="./outcome/outlier_se
 outliers:<div align=center><img width="450" height="300" src="./outcome/outlier_selection/fig1.jpg"/></div>  
 Based on the displayed results, the outliers are not significantly different from the normal one, then i decide to abandon the use of outlier detection and use all the data for analysis.
 
-####__Isolation Forest__  
+#### __Isolation Forest__  
 `isolation_forest_infant.py`uses Isolation Forest . It is an anomaly detection algorithm based on tree structures that can detect anomalous data points in a short time. Isolation Forest achieves this by building decision trees with random splits in the dataset, where each tree is a recursive process of dividing the dataset into subsets.
 The outcomes are as follows.  
 1 outliers index shown in the terminal  
@@ -47,8 +47,8 @@ outliers:<div align=center><img width="450" height="300" src="./outcome/outlier_
 Based on the displayed results, the outliers are not significantly different from the normal one, then i decide to abandon the use of outlier detection and use all the data for analysis.
 
 
-##**Adult**  
-__Mahalanobis distance__   
+### **Adult**  
+#### __Mahalanobis distance__   
 `ma_adult.py`  
 The outcomes are as follows.  
 1 outliers index shown in the terminal  
@@ -58,7 +58,7 @@ The outcomes are as follows.
 The verification process is the same before.   
 
 
-__Isolation Forest__  
+#### __Isolation Forest__  
 `isolation_forest_infant.py`  
 The outcomes are as follows.  
 1 outliers index shown in the terminal  
