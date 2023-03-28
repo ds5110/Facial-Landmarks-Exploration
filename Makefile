@@ -24,11 +24,21 @@ euclidean:
 	python -B ./src/euclidean.py
 
 
-outlier_infant:
-	python -B ./src/outlier_selection_infant.py
+ma_outlier_infant:
+	python -B ./src/ma_infant.py
 
-outlier_adult:
-	python -B ./src/outlier_selection_adult.py
+ma_outlier_adult:
+	python -B ./src/ma_adult.py
 
-try:
-	python -B ./src/try.py
+
+if_outlier_adult:
+	python -B ./src/isolation_forest_adult.py
+
+if_outlier_infant:
+	python -B ./src/isolation_forest_infant.py
+
+pic:
+	python -B ./src/pic.py
+
+prelim_plots:
+	python src/jh_prelim_plots.py
