@@ -1,4 +1,4 @@
-# Investigating the Best Way to Scale Landmarks
+# Investigating the Best Way to Select Outliers
 
 ## Introduction
 
@@ -69,4 +69,4 @@ The verification process is the same before.
 
 ## Conclusion
 
-In the process of selecting outliers, we used two methods, which are Mahalanobis distance and Isolation Forest, to detect outliers in our dataset.After applying both methods, we get some outliers. We consider that the outliers may represent valid and meaningful data points that should not be discarded without careful consideration.After displaying, we found that the outliers detected by either method did not show any clear distinction from the normal values. As a result, we decided to use all the data and abandon the outliers.  
+In the process of selecting outliers, we used two methods, which are Mahalanobis distance and Isolation Forest, to detect outliers in our dataset. After applying both methods, we get some outliers. We consider that the outliers may represent valid and meaningful data points that should not be discarded without careful consideration.After displaying, we found that the outliers detected by either method did not show any clear distinction from the normal values. As a result, we decided to use all the data and abandon the outliers.  
