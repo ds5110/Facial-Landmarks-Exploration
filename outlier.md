@@ -9,9 +9,9 @@ Outliers are exceptional records that are significantly different from the rest 
 The distance between each pair of two landmarks is important for our subsequent study, so we calculated the distance between two landmarks for 68 landmarks. The result is `euclidean_part_infant.csv` and `euclidean_part_adult.csv`.
 And then, we use two methods mentioned above to select outliers considering the data is multi-dimensional.
 
-**Infant Comparison**
+**Infant**
 
--Mahalanobis distance  
+__Mahalanobis distance__  
 `ma_infant.py` uses Mahalanobis distance to determine the similarity or dissimilarity between data points by scaling the difference by the inverse of the covariance matrix, and then taking the square root of the result to produces a single value that represents the distance between the two points in the multi-dimensional space.  
 1 outliers index shown in the terminal  
 2 filtered data saved in the `filtered_infant_ma.csv`  
@@ -28,7 +28,7 @@ outliers:![fig1](./outcome/outlier_selection/fig1.jpg)
 
 Based on the displayed results, the outliers are not significantly different from the normal one, then i decide to abandon the use of outlier detection and use all the data for analysis.
 
--Isolation Forest  
+__Isolation Forest__  
 `isolation_forest_infant.py`uses Isolation Forest . It is an anomaly detection algorithm based on tree structures that can detect anomalous data points in a short time. Isolation Forest achieves this by building decision trees with random splits in the dataset, where each tree is a recursive process of dividing the dataset into subsets.
 1 outliers index shown in the terminal  
 2 filtered data saved in the `filtered_infant_if.csv`  
@@ -46,8 +46,8 @@ outliers:![fig1](./outcome/outlier_selection/fig4.jpg)
 Based on the displayed results, the outliers are not significantly different from the normal one, then i decide to abandon the use of outlier detection and use all the data for analysis.
 
 
-**Adult Comparison**
--Mahalanobis distance  
+**Adult **
+__Mahalanobis distance__ 
 `ma_adult.py` 
 1 outliers index shown in the terminal  
 2 filtered data saved in the `filtered_adult_ma.csv`  
@@ -56,7 +56,7 @@ Based on the displayed results, the outliers are not significantly different fro
 The verification process is the same before.   
 
 
--Isolation Forest  
+__Isolation Forest__ 
 `isolation_forest_infant.py`  
 1 outliers index shown in the terminal  
 2 filtered data saved in the `filtered_adult_if.csv`  
