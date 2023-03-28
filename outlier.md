@@ -16,7 +16,7 @@ And then, we use two methods mentioned above to select outliers considering the 
 1 outliers index shown in the terminal  
 2 filtered data saved in the `filtered_infant_ma.csv`  
 3 a scatter plot of all features to visualize the data and outliers shown in the `ma_infant.png`
-![ma_infant](./outcome/outlier_selection/ma_infant.png)
+![ma_infant](./outcome/outlier_selection/ma_infant.png)  
 note:For data with 2278 columns, we cannot directly plot a scatter plot of all features
 to visualize the data and outliers. One possible approach is to use principal component
 analysis (PCA) to project the data into a lower dimensional space and visualize
@@ -24,9 +24,9 @@ the data points in this space.
 
 To verify that the results of this method are correct, we display part of the selected outliers' pictures with landmarks.
 normal:
-![fig2](./outcome/outlier_selection/fig2.png)
+![fig2](./outcome/outlier_selection/fig2.jpg)
 outliers:
-![fig1](./outcome/outlier_selection/fig1.png)
+![fig1](./outcome/outlier_selection/fig1.jpg)
 
 Based on the displayed results, the outliers are not significantly different from the normal one, then i decide to abandon the use of outlier detection and use all the data for analysis.
 
@@ -43,9 +43,9 @@ the data points in this space.
 
 To verify that the results of this method are correct, we display part of the selected outliers' pictures with landmarks.
 normal:
-![fig2](./outcome/outlier_selection/fig3.png)
+![fig2](./outcome/outlier_selection/fig3.jpg)
 outliers:
-![fig1](./outcome/outlier_selection/fig4.png)
+![fig1](./outcome/outlier_selection/fig4.jpg)
 
 Based on the displayed results, the outliers are not significantly different from the normal one, then i decide to abandon the use of outlier detection and use all the data for analysis.
 
@@ -70,9 +70,9 @@ Based on the displayed results, the outliers are not significantly different fro
 The verification process is the same before. No more repetition.  
 To verify that the results of this method are correct, we display part of the selected outliers' pictures with landmarks.
 normal:
-![fig2](./outcome/outlier_selection/fig3.png)
+![fig2](./outcome/outlier_selection/fig3.jpg)
 outliers:
-![fig1](./outcome/outlier_selection/fig4.png)
+![fig1](./outcome/outlier_selection/fig4.jpg)
 
 ## Conclusion
 
