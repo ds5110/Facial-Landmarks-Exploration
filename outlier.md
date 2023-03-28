@@ -52,8 +52,7 @@ Based on the displayed results, the outliers are not significantly different fro
 1 outliers index shown in the terminal  
 2 filtered data saved in the `filtered_adult_ma.csv`  
 3 a scatter plot of all features to visualize the data and outliers shown in the `ma_infant.png`
-![ma_infant](./outcome/outlier_selection/ma_adult.png)
-
+![ma_infant](./outcome/outlier_selection/ma_adult.png)  
 The verification process is the same before.   
 
 
@@ -62,11 +61,9 @@ The verification process is the same before.
 1 outliers index shown in the terminal  
 2 filtered data saved in the `filtered_adult_if.csv`  
 3 a scatter plot of all features to visualize the data and outliers shown in the `isolation_forest_adult.png`
-![ma_infant](./outcome/outlier_selection/isolation_forest_adult.png)
+![ma_infant](./outcome/outlier_selection/isolation_forest_adult.png)  
 The verification process is the same before. 
 
 ## Conclusion
 
-In the process of selecting outliers, we used two methods, which are Mahalanobis distance and Isolation Forest, to detect outliers in our dataset.  
-After applying both methods, we get some outliers. We consider that the outliers may represent valid and meaningful data points that should not be discarded without careful consideration.   
-After displaying, we found that the outliers detected by either method did not show any clear distinction from the normal values. As a result, we decided to use all the data and abandon the outliers.  
+In the process of selecting outliers, we used two methods, which are Mahalanobis distance and Isolation Forest, to detect outliers in our dataset.After applying both methods, we get some outliers. We consider that the outliers may represent valid and meaningful data points that should not be discarded without careful consideration.After displaying, we found that the outliers detected by either method did not show any clear distinction from the normal values. As a result, we decided to use all the data and abandon the outliers.  
