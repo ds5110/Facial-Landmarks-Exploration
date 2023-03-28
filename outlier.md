@@ -18,7 +18,7 @@ The outcomes are as follows.
 2 filtered data saved in the `filtered_infant_ma.csv`  
 3 a scatter plot of all features to visualize the data and outliers shown in the `ma_infant.png`
 ![ma_infant](./outcome/outlier_selection/ma_infant.png)  
-note:For data with 2278 columns, we cannot directly plot a scatter plot of all features
+Note:For data with 2278 columns, we cannot directly plot a scatter plot of all features
 to visualize the data and outliers. One possible approach is to use principal component
 analysis (PCA) to project the data into a lower dimensional space and visualize
 the data points in this space.  
@@ -35,7 +35,7 @@ The outcomes are as follows.
 2 filtered data saved in the `filtered_infant_if.csv`  
 3 a scatter plot of all features to visualize the data and outliers shown in the `isolation_forest_infant.png`
 ![ma_infant](./outcome/outlier_selection/isolation_forest_infant.png)    
-note:For data with 2278 columns, we cannot directly plot a scatter plot of all features
+Note:For data with 2278 columns, we cannot directly plot a scatter plot of all features
 to visualize the data and outliers. One possible approach is to use principal component
 analysis (PCA) to project the data into a lower dimensional space and visualize
 the data points in this space.
