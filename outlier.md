@@ -1,4 +1,4 @@
-# Investigating the Best Way to Scale Landmarks
+# Investigating the Best Way to Select Outliers
 
 ## Introduction
 
