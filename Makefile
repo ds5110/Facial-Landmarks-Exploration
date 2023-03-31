@@ -42,3 +42,6 @@ pic:
 
 prelim_plots:
 	python src/jh_prelim_plots.py
+
+scatter:
+	python src/scatter.py
