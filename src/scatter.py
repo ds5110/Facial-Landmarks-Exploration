@@ -63,4 +63,44 @@ plt.title('Scatter Plot of Landmarks')
 plt.savefig('outcome/outlier_selection/scatter.png')
 plt.show()
 
+# 提取需要绘制boxplot的列
+columns1 = ['x{}'.format(i) for i in range(68)]
+
+plt.xticks(fontproperties='Times New Roman', size=6)
+
+plt.boxplot = df.boxplot(
+    column=columns1)
+
+plt.savefig('outcome/outlier_selection/boxplot_x.png')
+plt.show()
+
+# 提取需要绘制boxplot的列
+columns1 = ['y{}'.format(i) for i in range(68)]
+
+plt.xticks(fontproperties='Times New Roman', size=6)
+
+plt.boxplot = df.boxplot(
+    column=columns1)
+
+plt.savefig('outcome/outlier_selection/boxplot_y.png')
+plt.show()
+'''
+columns = ['x{}'.format(i) for i in range(68)]
+data = df[columns]
+# 绘制boxplot
+fig, ax = plt.subplots(figsize=(12, 6))
+ax.boxplot(data.values, labels=columns)
+ax.set_title('Boxplot of Facial Landmarks')
+ax.set_xlabel('Facial Landmark Index')
+ax.set_ylabel('Coordinate Value')
+plt.savefig('outcome/outlier_selection/boxplot.png')
+plt.show()
+'''
+
+
+
+
+
+
+
 
