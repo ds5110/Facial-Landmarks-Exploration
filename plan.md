@@ -17,9 +17,28 @@ The proposed program is expected to achieve the following outcomes:
 - [InfAnFace dataset](https://coe.northeastern.edu/Research/AClab/InfAnFace/)
 - [300-W](https://github.com/ostadabbas/Infant-Facial-Landmark-Detection-and-Tracking/raw/master/data/300w/300w_valid.csv)
 
-# Stakeholder feedback
+# Stakeholder feedback (03/28/2023)
 
-There has been no stakeholder feedback at this time.
+- feedback regarding scaling methods
+
+The end goal of choosing a better scaling method should be more clear.
+
+- feedback regarding outlier detection
+
+We should know what an outlier looks like, e.g. landmark dots cannot make up a face. And how they can be detected.
+
+Current generic algorithms for detecting outliers may not correctly mean there is no outlier. The applied metrics may not detect the bias, or the metrics may not correspond to the outlier that we tended to look for.
+
+The current landmark results should be reasonable as they have checked them. However, We can put in an outlier on purpose to test whether the detector can detect the outlier.
+
+Instead of using euclidean distances as outlier detection features, try only using normalized coordinates (68-dimensional vector).
+
+Apply PCA to coordinates, and see what the left face shape and the left data look like. Then think about whether the data after PCA is outliers.
+
+- other feedback
+
+Don't focus too much on implementing classification algorithms but on understanding the nature of data.
+
 
 # EDA
 
