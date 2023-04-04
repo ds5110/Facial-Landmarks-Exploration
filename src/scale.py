@@ -3,30 +3,51 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.manifold import MDS
 import numpy as np
 import utils
+from rotate_calculator import rotate
 
 infant = pd.read_csv('./data/infant.csv')
 adult = pd.read_csv('./data/300w.csv')
+nose = 33
 
-infant_cols, infant_x_cols, infant_y_cols = utils.get_infant_cols(infant)
-adult_cols, adult_x_cols, adult_y_cols = utils.get_adult_cols(adult)
+infant_tmp = infant.copy()
+infant_tmp['image_name'] = infant_tmp[['image-set', 'filename']].agg('/'.join, axis=1)
+merged_df = pd.merge(adult, infant_tmp, how='outer', on='image_name')
+all_raw_df = pd.DataFrame(columns=['image_name', 'baby'] + [f'x{i}' for i in range(68)] + [f'y{i}' for i in range(68)])
+for _, row in merged_df.iterrows():
+    image_name = row['image_name']
+    if pd.notna(row['image-set']):
+        # This is an infant record
+        baby = 1
+        x_cols = [f'gt-x{i}' for i in range(68)]
+        y_cols = [f'gt-y{i}' for i in range(68)]
+    else:
+        # This is an adult record
+        baby = 0
+        x_cols = [f'original_{i}_x' for i in range(68)]
+        y_cols = [f'original_{i}_y' for i in range(68)]
+
+    # Extract the x and y coordinates and add them to the output dataframe
+    x_values = row[x_cols].tolist()
+    y_values = row[y_cols].tolist()
+    output_row = [image_name, baby] + x_values + y_values
+    all_raw_df.loc[len(all_raw_df)] = output_row
+
+x_cols = [f'x{i}' for i in range(68)]
+y_cols = [f'y{i}' for i in range(68)]
+center_by_nose_df = all_raw_df.copy()
+center_by_nose_df[x_cols] = center_by_nose_df[x_cols].subtract(center_by_nose_df['x' + str(nose)], axis=0)
+center_by_nose_df[y_cols] = center_by_nose_df[y_cols].subtract(center_by_nose_df['y' + str(nose)], axis=0)
+
+rotated_df = center_by_nose_df.copy()
+rotated_df.apply(lambda row: rotate(row, x_cols, y_cols), axis=1)
 
 
-def standardize_original():
+def standardize_original(df, cols):
     scaler = StandardScaler()
-
-    standard_infant = infant.copy()
-    # standard_infant[infant_cols] = scaler.fit_transform(standard_infant[infant_cols])
-
-    standard_infant[infant_cols] = standard_infant[infant_cols].apply(
+    df = df.copy()
+    df[cols] = df[cols].apply(
         lambda x: scaler.fit_transform(x.values.reshape(68, 2)).reshape(136), axis=1, result_type='expand')
-
-    standard_infant.to_csv('./outcome/scale/standard_infant.csv', index=False)
-
-    standard_adult = adult.copy()
-    # standard_adult[adult_cols] = scaler.fit_transform(adult[adult_cols])
-    standard_adult[adult_cols] = standard_adult[adult_cols].apply(
-        lambda x: scaler.fit_transform(x.values.reshape(68, 2)).reshape(136), axis=1, result_type='expand')
-    standard_adult.to_csv('./outcome/scale/standard_adult.csv', index=False)
+    return df
 
 
 def normalize_coords_by_face_bounding_box(x_coords, y_coords):
@@ -43,16 +64,11 @@ def normalize_coords_by_face_bounding_box(x_coords, y_coords):
     return normalized_df
 
 
-def normalize_by_face_bounding_box():
-    normalized_infant = infant.copy()
-    infant_result = normalize_coords_by_face_bounding_box(infant[infant_x_cols], infant[infant_y_cols])
-    normalized_infant[infant_x_cols + infant_y_cols] = infant_result
-    normalized_infant.to_csv('./outcome/scale/normalized_infant.csv', index=False)
-
-    normalized_adult = adult.copy()
-    adult_result = normalize_coords_by_face_bounding_box(adult[adult_x_cols], adult[adult_y_cols])
-    normalized_adult[adult_x_cols + adult_y_cols] = adult_result
-    normalized_adult.to_csv('./outcome/scale/normalized_adult.csv', index=False)
+def normalize_by_face_bounding_box(df, x_cols, y_cols):
+    df = df.copy()
+    res = normalize_coords_by_face_bounding_box(df[x_cols], df[y_cols])
+    df[x_cols + y_cols] = res
+    return df
 
 
 def mds_by_coordinates(df, x_cols, y_cols):
@@ -66,22 +82,31 @@ def mds_by_coordinates(df, x_cols, y_cols):
     return mds_results
 
 
-def scale_mds():
-    mds_results = mds_by_coordinates(infant, infant_x_cols, infant_y_cols)
-    mds_infant = infant.copy()
-    for i in range(68):
-        mds_infant['gt-x' + str(i)] = mds_results[:, i, 0]
-        mds_infant['gt-y' + str(i)] = mds_results[:, i, 1]
-    mds_infant.to_csv('./outcome/scale/mds_infant.csv', index=False)
-
-    mds_results = mds_by_coordinates(adult, adult_x_cols, adult_y_cols)
-    mds_adult = adult.copy()
-    for i in range(68):
-        mds_adult['original_' + str(i) + "_x"] = mds_results[:, i, 0]
-        mds_adult['original_' + str(i) + '_y'] = mds_results[:, i, 1]
-    mds_adult.to_csv('./outcome/scale/mds_adult.csv', index=False)
+def scale_mds(df, x_cols, y_cols):
+    mds_results = mds_by_coordinates(df, x_cols, y_cols)
+    df = df.copy()
+    df[x_cols] = mds_results[:, :, 0]
+    df[y_cols] = mds_results[:, :, 1]
+    return df
 
 
-standardize_original()
-normalize_by_face_bounding_box()
-scale_mds()
+def scale_all(df, x_cols, y_cols):
+    standardize_df = standardize_original(df, x_cols + y_cols)
+    standardize_df['scale_type'] = 'standard'
+    normalized_df = normalize_by_face_bounding_box(df, x_cols, y_cols)
+    normalized_df['scale_type'] = 'normalized'
+    mds_df = scale_mds(df, x_cols, y_cols)
+    mds_df['scale_type'] = 'mds'
+    merged = pd.concat([standardize_df, normalized_df, mds_df])
+    return merged
+
+
+all_raw_scale = scale_all(all_raw_df, x_cols, y_cols)
+center_scale = scale_all(center_by_nose_df, x_cols, y_cols)
+rotated_scale = scale_all(rotated_df, x_cols, y_cols)
+all_raw_df.to_csv('./outcome/scale/all_raw.csv', index=False)
+center_by_nose_df.to_csv('./outcome/scale/center_by_nose_raw.csv', index=False)
+rotated_df.to_csv('./outcome/scale/rotated_raw.csv', index=False)
+all_raw_scale.to_csv('./outcome/scale/all_raw_scale.csv', index=False)
+center_scale.to_csv('./outcome/scale/center_scale.csv', index=False)
+rotated_scale.to_csv('./outcome/scale/rotated_scale.csv', index=False)
