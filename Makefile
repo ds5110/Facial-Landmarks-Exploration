@@ -14,11 +14,11 @@ data: data/300w.csv data/infant.csv
 scale: data
 	python -B ./src/scale.py
 
-scale_analyze:
-	python -B ./src/scale_analyze.py
-
 scale_plt:
 	python -B ./src/scale_plt.py
+
+scale_join:
+	python -B ./src/scale_join.py
 
 euclidean:
 	python -B ./src/euclidean.py
