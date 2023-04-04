@@ -17,6 +17,9 @@ scale: data
 scale_plt:
 	python -B ./src/scale_plt.py
 
+scale_plt_2:
+	python -B ./src/scale_plt_2.py
+
 scale_join:
 	python -B ./src/scale_join.py
 
