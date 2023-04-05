@@ -39,7 +39,7 @@ center_by_nose_df[x_cols] = center_by_nose_df[x_cols].subtract(center_by_nose_df
 center_by_nose_df[y_cols] = center_by_nose_df[y_cols].subtract(center_by_nose_df['y' + str(nose)], axis=0)
 
 rotated_df = center_by_nose_df.copy()
-rotated_df.apply(lambda row: rotate(row, x_cols, y_cols), axis=1)
+rotated_df = rotated_df.apply(lambda row: rotate(row, x_cols, y_cols), axis=1)
 
 
 def standardize_original(df, cols):
