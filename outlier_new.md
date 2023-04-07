@@ -6,7 +6,7 @@ Calculate the mean, median, standard deviation, and range of the variables, and 
 
 
 ## Result
-The noise index is 411-430  690-723  
+The noise index is 410-429  689-722  
 
 Ma
 ```agsl
