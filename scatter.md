@@ -146,11 +146,14 @@ Column x67: Mean=-0.05, Median=-0.05, Std=0.03, Range=0.29
 Column y67: Mean=0.17, Median=0.16, Std=0.04, Range=0.38
 ```
 ### Boxplots are as follows.
-![infant](./outcome/outlier_selection/boxplot_x.png)
-![infant](./outcome/outlier_selection/boxplot_y.png)
+![infant](./outcome/outlier_selection/boxplot_adult_x.png)
+![infant](./outcome/outlier_selection/boxplot_adult_y.png)
+![infant](./outcome/outlier_selection/boxplot_infant_x.png)
+![infant](./outcome/outlier_selection/boxplot_infant_y.png)
 
 ### The scatter of the average of position of(x[],y[])
-![infant](./outcome/outlier_selection/scatter.png)
+![infant](./outcome/outlier_selection/scatter_adult.png)
+![infant](./outcome/outlier_selection/scatter_infant.png)
 
 ## Conclusion
 

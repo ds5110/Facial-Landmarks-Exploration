@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import math
 
 from sklearn.covariance import MinCovDet
+from sklearn.ensemble import IsolationForest
 
 # read the csv files
 landmarks = pd.read_csv('outcome/prev/merged_landmarks.csv')
@@ -64,6 +65,18 @@ def outlier_selection(df):
     print(outliers_index)
 
 
+def isolation(df):
+
+    clf = IsolationForest(random_state=0, contamination=0.05).fit(df)
+    #clf = IsolationForest(n_estimators=100, contamination=0.05)
+
+    y_pred = clf.predict(df)
+
+    # outliers and filtered data
+    outliers = df.reset_index().index[y_pred == -1]
+    print("Outliers:", outliers)
+
+'''
 print("Test the method with noise:")
 print("infant_outlier:")
 outlier_selection(dfi_after)
@@ -76,4 +89,17 @@ print("infant_outlier:")
 outlier_selection(dfi)
 print("adult_outlier:")
 outlier_selection(dfa)
+'''
 
+print("Test the method with noise:")
+print("infant_outlier:")
+isolation(dfi_after)
+print("adult_outlier:")
+isolation(dfa_after)
+
+
+print("Data:")
+print("infant_outlier:")
+isolation(dfi)
+print("adult_outlier:")
+isolation(dfa)
