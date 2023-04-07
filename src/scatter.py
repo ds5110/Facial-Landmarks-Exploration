@@ -43,7 +43,7 @@ def scatter(df, category):
     plt.ylabel('Y')
     plt.title('Landmarks of ' + category)
     # show the fig
-    plt.savefig('outcome/outlier_selection/scatter.png')
+    plt.savefig('outcome/outlier_selection/scatter_{}.png'.format(category))
     plt.show()
 
     # choose the columns we need
@@ -61,7 +61,7 @@ def scatter(df, category):
 
     plt.xticks(fontproperties='Times New Roman', size=6)
 
-    plt.savefig('outcome/outlier_selection/boxplot_x.png')
+    plt.savefig('outcome/outlier_selection/boxplot_{}_x.png'.format(category))
     plt.show()
 
     # choose the columns we need
@@ -79,7 +79,7 @@ def scatter(df, category):
 
     plt.xticks(fontproperties='Times New Roman', size=6)
 
-    plt.savefig('outcome/outlier_selection/boxplot_y.png')
+    plt.savefig('outcome/outlier_selection/boxplot_{}_y.png'.format(category))
     plt.show()
 
 

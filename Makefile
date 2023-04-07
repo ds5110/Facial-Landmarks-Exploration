@@ -48,3 +48,6 @@ prelim_plots:
 
 scatter:
 	python src/scatter.py
+
+outlier_new:
+	python src/outlier_new.py
