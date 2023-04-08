@@ -44,9 +44,9 @@ def landmark_plots(df, x_cols, y_cols, feature_selection_result):
                     ax.scatter(landmark_x, landmark_y, c="green")
                     ax.annotate(landmark_label, (landmark_x, landmark_y), textcoords="offset points", xytext=(-20, -10))
                     if landmark_x > 0:
-                        ax.axhline(y=landmark_y, xmin=0.5, xmax=0.5 + landmark_x / ax.get_xlim()[1] / 2, color='green')
+                        ax.axhline(y=landmark_y, xmin=0.5, xmax=0.5 + landmark_x / ax.get_xlim()[1] / 2, color="green", linewidth=0.5)
                     else:
-                        ax.axhline(y=landmark_y, xmax=0.5, xmin=0.5 + landmark_x / ax.get_xlim()[1] / 2, color='green')
+                        ax.axhline(y=landmark_y, xmax=0.5, xmin=0.5 + landmark_x / ax.get_xlim()[1] / 2, color="green", linewidth=0.5)
 
                 if feature_name in y_cols:
                     landmark_x = x_mean[y_cols.index(feature_name)]
@@ -54,9 +54,9 @@ def landmark_plots(df, x_cols, y_cols, feature_selection_result):
                     ax.scatter(landmark_x, landmark_y, c="green")
                     ax.annotate(landmark_label, (landmark_x, landmark_y), textcoords="offset points", xytext=(5, 5))
                     if landmark_y > 0:
-                        ax.axvline(x=landmark_x, ymin=0.5, ymax=(0.5 + landmark_y / ax.get_ylim()[1] / 2), color='green')
+                        ax.axvline(x=landmark_x, ymin=0.5, ymax=(0.5 + landmark_y / ax.get_ylim()[1] / 2), color="green", linewidth=0.5)
                     else:
-                        ax.axvline(x=landmark_x, ymax=0.5, ymin=(0.5 + landmark_y / ax.get_ylim()[1] / 2), color='green')
+                        ax.axvline(x=landmark_x, ymax=0.5, ymin=(0.5 + landmark_y / ax.get_ylim()[1] / 2), color="green", linewidth=0.5)
             ax.set_title("{}\n CV Test Score = {:.3f} +/- {:.3f}".format(method_df.iloc[i, 0], method_df.iloc[i, 3], method_df.iloc[i, 4]), pad=20)
         fig.subplots_adjust(hspace=0.4)
         fig.savefig("outcome/feature_selection/features_{}.png".format(method), dpi=300)
