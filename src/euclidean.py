@@ -49,6 +49,16 @@ def create_euclidean_df_adult(normalized_adult):
 #     return euclidean_df
 
 
+def create_euclidean_df_merged(df):
+    x_cols = [col for col in df.columns if "norm_cenrot-x" in col]
+    y_cols = [col for col in df.columns if "norm_cenrot-y" in col]
+    
+    distances = euclidean_distance_by_coordinates(df, x_cols, y_cols)
+    new_cols = euclidean_distance_to_df(distances)
+    euclidean_df = pd.concat([df] + new_cols, axis=1)
+    return euclidean_df
+
+
 def main():
     normalized_infant = pd.read_csv("outcome/scale/normalized_infant.csv")
     normalized_adult = pd.read_csv("outcome/scale/normalized_adult.csv")
@@ -71,6 +81,14 @@ def main():
     # euclidean_df.to_csv(address, index=False)
     # print("Euclidean distances of concatenated infant and adult has been saved as {}.".format(address))
 
+    # Create euclidean distances for merged landmarks
+    df = pd.read_csv("outcome/prev/merged_landmarks.csv")
+    euclidean_df = create_euclidean_df_merged(df)
+
+    address = "outcome/euclidean/euclidean_merged.csv"
+    euclidean_df.to_csv(address, index=False)
+    print("Euclidean distances of merged infant and adult has been saved as {}.".format(address))
+    
 
 if __name__ == "__main__":
     main()
