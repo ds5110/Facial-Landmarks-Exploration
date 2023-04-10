@@ -36,3 +36,12 @@ def get_all_scale_data():
     std_infant = pd.read_csv('./outcome/scale/standard_infant.csv')
     std_adult = pd.read_csv('./outcome/scale/standard_adult.csv')
     return infant, adult, mds_infant, mds_adult, norm_infant, norm_adult, std_infant, std_adult
+
+
+def get_data(data):    
+    df = pd.read_csv(data,dtype={
+        'image-set': str,
+        'filename': str,
+        'partition': str,
+        'subpartition': str,})
+    return df
