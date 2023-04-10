@@ -1,66 +1,102 @@
 import matplotlib.pyplot as plt
-import utils
 import seaborn as sns
-import numpy as np
 import pandas as pd
 
-infant, adult, mds_infant, mds_adult, norm_infant, norm_adult, std_infant, std_adult = utils.get_all_scale_data()
-
 idx = [0, 4, 8, 16]
-# Infant
-infant['type'] = 'original'
-infant.reset_index(inplace=True)
-mds_infant['type'] = 'mds'
-mds_infant.reset_index(inplace=True)
-norm_infant['type'] = 'normal'
-norm_infant.reset_index(inplace=True)
-std_infant['type'] = 'standard'
-std_infant.reset_index(inplace=True)
-infant_id_cols = ['type', 'index', 'image-set', 'filename', 'partition', 'subpartition', 'turned', 'occluded',
-                  'expressive', 'tilted']
-combined_df = pd.concat([infant.loc[idx], mds_infant.loc[idx], norm_infant.loc[idx], std_infant.loc[idx]])
-melted = pd.melt(combined_df, id_vars=infant_id_cols, var_name='col_name', value_name='coord_value')
-melted['coord_type'] = melted['col_name'].str[3]
-melted['coord_num'] = melted['col_name'].str[4:]
-melted['coord_num'] = melted['coord_num'].astype(int)
-pivoted = melted.pivot(index=infant_id_cols + ['coord_num'], columns='coord_type', values='coord_value')
-merged_data = pivoted.reset_index()
+id_cols = ['image_name', 'baby', 'scale_type']
 
-g = sns.FacetGrid(merged_data, row='index', col='type', margin_titles=True, sharex=False, sharey=False,
-                  col_order=['original', 'mds', 'normal', 'standard'])
-g = g.map(sns.scatterplot, 'x', 'y')
+all_raw = pd.read_csv('./outcome/scale/all_raw.csv')
+all_raw_scale = pd.read_csv('./outcome/scale/all_raw_scale.csv')
+all_raw['scale_type'] = 'original'
+all_raw_infant = all_raw[all_raw['baby'] == 1].iloc[idx]
+all_raw_adult = all_raw[all_raw['baby'] == 0].iloc[idx]
+infant_names = all_raw_infant['image_name']
+adult_names = all_raw_adult['image_name']
 
-g.fig.suptitle("Infant Scale Comparison Plots", y=1.08)
-g.set_axis_labels("X-axis", "Y-axis")
+all_raw_scale_infant = all_raw_scale[all_raw_scale['image_name'].isin(infant_names)]
+all_raw_scale_adult = all_raw_scale[all_raw_scale['image_name'].isin(adult_names)]
 
-plt.savefig("./outcome/scale/infant.png")
-plt.show()
 
-# Adult
-adult['type'] = 'original'
-adult.reset_index(inplace=True)
-mds_adult['type'] = 'mds'
-mds_adult.reset_index(inplace=True)
-norm_adult['type'] = 'normal'
-norm_adult.reset_index(inplace=True)
-std_adult['type'] = 'standard'
-std_adult.reset_index(inplace=True)
-combined_df = pd.concat([adult.loc[idx], mds_adult.loc[idx], norm_adult.loc[idx], std_adult.loc[idx]])
-adult_id_cols = ['image_name', 'type', 'index', 'scale', 'center_w', 'center_h']
-melted = pd.melt(combined_df, id_vars=adult_id_cols, var_name='col_name', value_name='coord_value')
-# format: original_0_x
-melted['coord_type'] = melted['col_name'].str.split('_', expand=True)[2]
-melted['coord_num'] = melted['col_name'].str.split('_', expand=True)[1]
-melted['coord_num'] = melted['coord_num'].astype(int)
-pivoted = melted.pivot(index=adult_id_cols + ['coord_num'], columns='coord_type', values='coord_value')
-merged_data = pivoted.reset_index()
+def plot(df_list, col_order, title, path):
+    combined_df = pd.concat(df_list)
+    combined_df['image_name'] = combined_df['image_name'].str[-10:]
+    melted = pd.melt(combined_df, id_vars=id_cols, var_name='col_name', value_name='coord_value')
+    melted['coord_type'] = melted['col_name'].str[0]
+    melted['coord_num'] = melted['col_name'].str[1:]
+    melted['coord_num'] = melted['coord_num'].astype(int)
+    pivoted = melted.pivot(index=id_cols + ['coord_num'], columns='coord_type', values='coord_value')
+    merged_data = pivoted.reset_index()
 
-g = sns.FacetGrid(merged_data, row='index', col='type', margin_titles=True, sharex=False, sharey=False,
-                  col_order=['original', 'mds', 'normal', 'standard'])
-g = g.map(sns.scatterplot, 'x', 'y')
+    g = sns.FacetGrid(merged_data, row='image_name', col='scale_type', margin_titles=True, sharex=False, sharey=False,
+                      col_order=col_order)
+    g = g.map(sns.scatterplot, 'x', 'y')
 
-g.fig.suptitle("Adult Scale Comparison Plots", y=1.08)
-g.set_axis_labels("X-axis", "Y-axis")
+    g.fig.suptitle(title, y=1.08)
+    g.set_axis_labels("X-axis", "Y-axis")
+    g.set_titles(template=title, row_template="")
+    plt.savefig(path)
+    plt.show()
 
-plt.savefig("./outcome/scale/adult.png")
-plt.show()
+
+plot([all_raw_scale_infant, all_raw_infant], ['original', 'mds', 'normalized', 'standard'],
+     "Infant Scale Comparison Plots", "./outcome/scale/raw_infant.png")
+plot([all_raw_scale_adult, all_raw_adult], ['original', 'mds', 'normalized', 'standard'],
+     "Adult Scale Comparison Plots", "./outcome/scale/raw_adult.png")
+
+center_raw = pd.read_csv('./outcome/scale/center_by_nose_raw.csv')
+center_scale = pd.read_csv('./outcome/scale/center_scale.csv')
+prev_df = pd.read_csv('./outcome/prev/merged_landmarks.csv')
+
+
+def plot_center(names, title, path):
+    center_raw_plt = center_raw[center_raw['image_name'].isin(names)]
+    center_raw_plt['scale_type'] = 'original'
+    center_scale_plt = center_scale[center_scale['image_name'].isin(names)]
+    prev_df_plt = prev_df[prev_df['image_name'].isin(names)]
+
+    def rename_cols(col_name):
+        if col_name.startswith('norm-'):
+            return col_name[5:]
+        else:
+            return col_name
+
+    desired_names = ['baby', 'image_name'] + [f'norm-x{i}' for i in range(68)] + [f'norm-y{i}' for i in range(68)]
+    prev_df_plt = prev_df_plt.loc[:, desired_names]
+    prev_df_plt = prev_df_plt.rename(columns=rename_cols)
+    prev_df_plt['scale_type'] = 'Previous Project'
+    plot([center_raw_plt, center_scale_plt, prev_df_plt],
+         ['original', 'Previous Project', 'mds', 'normalized', 'standard'],
+         title, path)
+
+
+plot_center(infant_names, 'Infant Center Scale Comparison Plots', './outcome/scale/center_infant.png')
+plot_center(adult_names, 'Adult Center Scale Comparison Plots', './outcome/scale/center_adult.png')
+
+rotated_raw = pd.read_csv('./outcome/scale/rotated_raw.csv')
+rotated_scale = pd.read_csv('./outcome/scale/rotated_scale.csv')
+
+
+def plot_rotated(names, title, path):
+    rotated_raw_plt = rotated_raw[rotated_raw['image_name'].isin(names)]
+    rotated_raw_plt['scale_type'] = 'original'
+    rotated_scale_plt = rotated_scale[rotated_scale['image_name'].isin(names)]
+    prev_df_plt = prev_df[prev_df['image_name'].isin(names)]
+
+    def rename_cols(col_name):
+        if col_name.startswith('norm_cenrot-'):
+            return col_name[12:]
+        else:
+            return col_name
+
+    desired_names = ['baby', 'image_name'] + [f'norm_cenrot-x{i}' for i in range(68)] + \
+                    [f'norm_cenrot-y{i}' for i in range(68)]
+    prev_df_plt = prev_df_plt.loc[:, desired_names]
+    prev_df_plt = prev_df_plt.rename(columns=rename_cols)
+    prev_df_plt['scale_type'] = 'Previous Project'
+    plot([rotated_raw_plt, rotated_scale_plt, prev_df_plt],
+         ['original', 'Previous Project', 'mds', 'normalized', 'standard'],
+         title, path)
+
+
+plot_rotated(infant_names, 'Infant Rotated Scale Comparison Plots', './outcome/scale/rotated_infant.png')
+plot_rotated(adult_names, 'Adult Rotated Scale Comparison Plots', './outcome/scale/rotated_adult.png')

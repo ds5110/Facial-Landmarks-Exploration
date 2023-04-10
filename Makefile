@@ -11,17 +11,13 @@ data/infant.csv:
 
 data: data/300w.csv data/infant.csv
 
-scale: data
+scale_data: data
 	python -B ./src/scale.py
 
 scale_plt:
 	python -B ./src/scale_plt.py
 
-scale_plt_2:
-	python -B ./src/scale_plt_2.py
-
-scale_join:
-	python -B ./src/scale_join.py
+scale: scale_data scale_plt
 
 euclidean:
 	python -B ./src/euclidean.py
