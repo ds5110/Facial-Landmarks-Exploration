@@ -35,9 +35,12 @@ aligning and representing facial landmarks, ultimately enabling more accurate an
 
 Similarly, with the previous project, we performed center alignment using the No.33 landmark (nose) as the center. The
 center alignment formula is:
+
 $$
+\begin{align}
 sx_i=x_i - x_{33}\\
 sy_i=y_i - y_{33}\\
+\end{align}
 $$
 
 After aligning the landmarks, we applied three different scaling methods to the centered landmarks:
@@ -50,18 +53,22 @@ After aligning the landmarks, we applied three different scaling methods to the 
    each axis independently.
 
 $$
+\begin{align}
 sx_i = \frac{x_i - \mu_x}{\sigma_x}\\
 sy_i = \frac{y_i - \mu_y}{\sigma_y}\\
+\end{align}
 $$
 
 3. **Normalization by Bounding Box**: We scaled the centered landmarks based on the bounding box of the face, using
    separate x and y ranges. The formula for this method is:
 
 $$
+\begin{align}
 sx_i=(x_i - x_{33})/range_x\\
 sy_i=(y_i - y_{33})/range_y\\
 range_x = max(X) - min(X)\\
 range_y = max(Y) - min(Y)\\
+\end{align}
 $$
 
 Each of these scaling methods was applied to the dataset to explore their impact on the alignment and representation of
