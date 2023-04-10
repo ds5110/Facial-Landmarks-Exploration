@@ -15,9 +15,9 @@ is as follows:
 
 $$
 \begin{align}
-sx_i=(x_i - x_{33})/range\\
-sy_i=(y_i - y_{33})/range\\
-range = (max(X \cup Y) - min(X \cup Y))\\
+& sx_i=(x_i - x_{33})/range\\
+& sy_i=(y_i - y_{33})/range\\
+& range = (max(X \cup Y) - min(X \cup Y))\\
 \end{align}
 $$
 
