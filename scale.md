@@ -14,9 +14,11 @@ landmark (nose) as the center and scaled the landmarks based on the range of the
 is as follows:
 
 $$
+\begin{align}
 sx_i=(x_i - x_{33})/range\\
 sy_i=(y_i - y_{33})/range\\
 range = (max(X \cup Y) - min(X \cup Y))\\
+\end{align}
 $$
 
 To explore alternative scaling methods, we implemented three new approaches:
