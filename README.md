@@ -1,47 +1,79 @@
-# Introduction
+## Introduction
 
-The project focused on the Computer Vision project in course DS5110 in Spring 2023 semester.
+The project focused on the Computer Vision project in course DS5110 in Spring 2023 semester, mainly on enhancing facial
+landmark alignment, representation, and feature selection techniques in the context of computer vision and facial
+recognition. Based on the [InfAnFace paper, Wan et al, (2022)](https://arxiv.org/abs/2110.08935) and
+the [faces project](https://github.com/ds5110/faces), our work is divided into three main components: exploring various
+scaling and rotation methods, outlier detection, and feature selection.
 
-### Reproduce Instruction
+1. **Scaling and Rotation**: We compare the original method with three alternatives: Multidimensional Scaling (MDS),
+   Standardization, and Normalization by Bounding Box. Our goal is to evaluate the impact of these methods on facial
+   landmark alignment and representation.
+2. **Outlier Detection**: We implement outlier detection using the Mahalanobis distance and Isolation Forest algorithms.
+   This step aims to identify and remove any anomalous data points that might negatively impact the accuracy of the
+   facial analysis.
+3. **Feature Selection**: We explore feature selection techniques, using Recursive Feature Elimination (RFE) and the
+   forward selection algorithm, to identify the most relevant features for our facial recognition tasks.
 
-- `make data`: The command is used for getting initial landmark data.
-- `make scale`: The command is used for scaling initial data into a normalized format.
-- `make scale_plt`: The command is used for generating a visual inspection of scale results.
+By assessing the effectiveness of different techniques in these three areas, we aim to contribute to the development of
+more accurate and robust facial analysis algorithms. Our work has potential applications in emotion detection, age
+estimation, and facial recognition systems.
+
+## Environment
+
+```shell
+conda env create -f environment.yml
+```
+
+## Reproduce Instruction
+
+Execute below command before executing other commands:
+
+```shell
+conda activate DS5110-faces-extend
+```
+
+- `make scale`: The command is used for downloading data and calculating the scale part.
 - `make euclidean`: The command is used for generating euclidean distances between landmarks.
 - `make if_outlier_infant`: The command is used for selecting outliers in infant dataset using Isolation Forest .
 - `make if_outlier_adult`: The command is used for selecting outliers in adult dataset using Isolation Forest.
 - `make ma_outlier_infant`: The command is used for selecting outliers in infant dataset using Mahalanobis distance .
 - `make ma_outlier_adult`: The command is used for selecting outliers in adult dataset using Mahalanobis distance.
 - `make pic`: The command is used for showing the picture with landmarks.
-  
 
-### Feasibility
+## Results
 
-- Story: Preprocessing of Image Landmarks and Analysis of Relationship with Attributes.
+#### Scale
 
-- Data: [InfAnFace dataset](https://coe.northeastern.edu/Research/AClab/InfAnFace/)
-  , [300-W](https://ibug.doc.ic.ac.uk/resources/300-W/)
+Our in-depth analysis of various scaling and rotation methods can be found in the [scale.md](./scale.md)  file. In
+summary, we
+discovered that the Multidimensional Scaling (MDS) method altered face orientation, making it unsuitable for our
+objectives, while the Standardization method used the mean as the zero point instead of the 33 nose point, which we
+decided to ignore. The original
+method and Normalization by Bounding Box demonstrated similar results, making it challenging to determine the most
+effective approach.
 
-- EDA:
-    - A recommended [scaling method](./scale.md) for the landmark data.
-    - An identified set of outliers to remove from the data.
-    - Regression and distribution analyses of Euclidean distances between landmark points, which may provide useful
-      insights.
-    - A rotation method including choosing the center point and rotation axis.
-    - Identification of landmark differences between different types of faces (turned, tilted, occluded, and expressive)
-      , which could aid in developing a computer algorithm for identifying these types of faces.
+Our work contributes to understanding the impact of different scaling and rotation techniques on facial landmarks, as
+presented in the [scale.md](./scale.md)  file. These insights can be valuable for various facial analysis tasks and
+future research.
 
-### Information from Professor
+## Contributors
 
-Stakeholder: Michael Wan, Ph.D, Senior Computational Scientist in Northeastern’s Augmented Cognition Lab.
+Team members: Liyang Song, Na Yin, Yun Cao
 
-Story/Goal: This computer-vision project will build on and complement
-a [DS 5110 project from fall 2022](https://github.com/ds5110/faces) that used simple ML models to distinguish adult &
-infant faces in images. The project will involve traditional machine learning techniques (i.e., no deep learning).
+## Acknowledgments
 
-Data: Dr. Wan has been working with facial landmark coordinates from 300-W (adults) and InfAnFace (infants) datasets as
-described in [InfAnFace paper, Wan et al, (2022)](https://arxiv.org/abs/2110.08935) (2022) – arxiv.org.
+Acknowledgements:
 
-# Team members(Alphabetical Order)
+We would like to express our gratitude to our Stakeholder, Michael Wan, Ph.D., Senior Computational Scientist in
+Northeastern's Augmented Cognition Lab, for his valuable guidance and support throughout this project.
 
-Liyang Song, Na Yin, Yun Cao
+Our appreciation also goes to the study of the [InfAnFace paper, Wan et al, (2022)](https://arxiv.org/abs/2110.08935),
+which Michael Wan co-authored with
+Shaotong Zhu, Lingfei Luan, Gulati Prateek, Xiaofei Huang, Rebecca Schwartz-Mette, Marie Hayes, Emily Zimmerman, and
+Sarah Ostadabbas. The paper sheds light on the analysis of infant landmarks, providing us with the opportunity to delve
+deeper into this area of research.
+
+Lastly, we want to thank the [DS 5110 project from fall 2022](https://github.com/ds5110/faces), developed by a group of
+students during the 2022 Fall
+semester. Their work has allowed us to focus on the details of the task and build upon their initial efforts.
