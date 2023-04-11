@@ -138,16 +138,17 @@ Four figures were plotted, showcasing the alignment and representation of the la
 ![rotated_adult](./outcome/scale/rotated_adult.png)
 
 From the visualizations, we observed that the MDS scaling method altered the face orientation, making it unsuitable for
-our objective. The other three methods (excluding Original) showed similar results, making it challenging to determine
-which one is superior. These visualizations aid in understanding the effectiveness of each scaling and rotation method
-on the alignment and representation of facial landmarks, providing valuable insights for future work and applications.
+our objective. Similarly, the Standardization method was found to be unsuitable due to its use of the mean as the zero
+point. The other two methods (excluding Original) showed similar results, making it challenging to determine which one
+is superior. These visualizations aid in understanding the effectiveness of each scaling and rotation method on the
+alignment and representation of facial landmarks, providing valuable insights for future work and applications.
 
 ### Conclusion and Future Work
 
 In this project, we analyzed various scaling and rotation methods for facial landmarks, comparing the original method
 with three alternatives: MDS, Standardization, and Normalization by Bounding Box. The MDS method was found to be
-unsuitable, while the other methods yielded similar results, making it challenging to determine the most effective
-approach.
+unsuitable, as was Standardization due to its use of the mean as the zero point. The other methods yielded similar
+results, making it challenging to determine the most effective approach.
 
 Our work contributes to the understanding of the impact of different scaling techniques on facial landmarks, laying the
 foundation for future research. Future work could include applying these methods to additional studies, exploring new
