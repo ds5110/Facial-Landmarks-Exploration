@@ -45,7 +45,7 @@ conda activate DS5110-faces-extend
 
 #### Scale
 
-Our in-depth analysis of various scaling and rotation methods can be found in the [scale.md](./scale.md)  file. In
+Our in-depth analysis of various scaling and rotation methods can be found in the [scale.md](./docs/scale.md)  file. In
 summary, we
 discovered that the Multidimensional Scaling (MDS) method altered face orientation, making it unsuitable for our
 objectives, while the Standardization method used the mean as the zero point instead of the 33 nose point, which we
@@ -54,7 +54,7 @@ method and Normalization by Bounding Box demonstrated similar results, making it
 effective approach.
 
 Our work contributes to understanding the impact of different scaling and rotation techniques on facial landmarks, as
-presented in the [scale.md](./scale.md)  file. These insights can be valuable for various facial analysis tasks and
+presented in the [scale.md](./docs/scale.md)  file. These insights can be valuable for various facial analysis tasks and
 future research.
 
 ## Contributors
