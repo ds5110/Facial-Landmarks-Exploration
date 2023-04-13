@@ -81,6 +81,10 @@ Tree-based methods like `Random Forest` and `Gradient Boosting` can be used to r
 
 ![](../outcome/feature_selection/landmarks_random_forest_classifier.png)
 
+### Conclusion
+
+![](../outcome/feature_selection/method_scores_landmarks.png)
+
 ## Feature Selection Results (Euclidean Distances)
 
 ### Variance Threshold
@@ -127,8 +131,9 @@ Tree-based methods like `Random Forest` and `Gradient Boosting` can be used to r
 
 ![](../outcome/feature_selection/euclidean_random_forest_classifier.png)
 
-## Conclusion
+### Conclusion
 
+![](../outcome/feature_selection/method_scores_euclidean.png)
 
 
 
