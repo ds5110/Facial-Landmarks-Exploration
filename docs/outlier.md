@@ -17,22 +17,22 @@ To gain insights into the distribution of our data, we performed a data analysis
 ### Visualization
 Additionally, we created boxplot for each variable to visualize their distribution and identify any outliers.
 #### Facial landmarks distribution of infants (values taken as the mean of each landmark)
-![scatter_infant](./outcome/outlier_selection/scatter_infant.png)
+![scatter_infant](../outcome/outlier_selection/scatter_infant.png)
 
 #### Boxplot of infant_x
-![boxplot_infant_x](./outcome/outlier_selection/boxplot_infant_x.png)
+![boxplot_infant_x](../outcome/outlier_selection/boxplot_infant_x.png)
 
 #### Boxplot of infant_y
-![boxplot_infant_y](./outcome/outlier_selection/boxplot_infant_y.png)
+![boxplot_infant_y](../outcome/outlier_selection/boxplot_infant_y.png)
 
 #### Facial landmarks distribution of adults (values taken as the mean of each landmark)
-![scatter_adult](./outcome/outlier_selection/scatter_adult.png)
+![scatter_adult](../outcome/outlier_selection/scatter_adult.png)
 
 #### Boxplot of adult_x
-![boxplot_adult_x](./outcome/outlier_selection/boxplot_adult_x.png)
+![boxplot_adult_x](../outcome/outlier_selection/boxplot_adult_x.png)
 
 #### Boxplot of adult_y
-![boxplot_adult_y](./outcome/outlier_selection/boxplot_adult_y.png)
+![boxplot_adult_y](../outcome/outlier_selection/boxplot_adult_y.png)
 
 ### Using two models to detect outliers
 The approach we take for detecting outliers involves the use of landmarks data, Mahalanobis distance, and Isolation Forest.Mahalanobis distance to determine the similarity or dissimilarity between data points by scaling the difference by the inverse of the covariance matrix, and then taking the square root of the result to produces a single value that represents the distance between the two points in the multi-dimensional space. During the process,  we compute the Mahalanobis distance for each data point, which measures the distance between a point and a distribution, taking into account the covariance structure of the dataset.Isolation Forest is an anomaly detection algorithm based on tree structures that can detect anomalous data points in a short time. It achieves this by building decision trees with random splits in the dataset, where each tree is a recursive process of dividing the dataset into subsets. During the process, it partitions the dataset into smaller and smaller subspaces until the anomalous points are isolated.  
