@@ -12,18 +12,6 @@ def reshape_to_2d(df, x_cols, y_cols):
     return df_reshaped
 
 
-def get_all_scale_data():
-    infant = pd.read_csv('./data/infant.csv')
-    adult = pd.read_csv('./data/300w.csv')
-    mds_infant = pd.read_csv('./outcome/scale/mds_infant.csv')
-    mds_adult = pd.read_csv('./outcome/scale/mds_adult.csv')
-    norm_infant = pd.read_csv('./outcome/scale/normalized_infant.csv')
-    norm_adult = pd.read_csv('./outcome/scale/normalized_adult.csv')
-    std_infant = pd.read_csv('./outcome/scale/standard_infant.csv')
-    std_adult = pd.read_csv('./outcome/scale/standard_adult.csv')
-    return infant, adult, mds_infant, mds_adult, norm_infant, norm_adult, std_infant, std_adult
-
-
 def get_data(data):
     df = pd.read_csv(data, dtype={
         'image-set': str,
@@ -33,7 +21,7 @@ def get_data(data):
     return df
 
 
-def get_data_scale(data):    
+def get_data_scale(data):
     df = pd.read_csv(data, dtype={
         'image-name': str,
         'scale_type': str})
