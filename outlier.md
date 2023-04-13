@@ -51,6 +51,14 @@ Outliers: Int64Index([ 21,  28,  40,  55,  66,  76, 149, 167, 170, 180, 226, 244
            dtype='int64')
 ```
 
+|    | infant| adult |
+| ---- | ---- | ---- |
+| Accuracy|  0 | 0 |
+| Precision |0 | 0|
+| Recall| 0 | 0|
+| F1 | 0 | 0 |
+
+
 #### __Isolation Forest__
 
 ```agsl
@@ -62,6 +70,13 @@ adult_outlier:
 [ 15  21  28  40 109 163 167 180 226 248 269 284 296 331 335 339 344 355
  356 371 382 395 422 489 574 624 636 651 657 665 667 681]
 ```
+
+|    | infant| adult |
+| ---- | ---- | ---- |
+| Accuracy|  0 | 0 |
+| Precision |0 | 0|
+| Recall| 0 | 0|
+| F1 | 0 | 0 |
 
 ### Assessing the Feasibility of Applying the Model for Outlier
 
@@ -91,6 +106,13 @@ adult_outlier:
  707 708 709 710 711 712 713 714 715 716 717 718 719 720 721 722]
 ```
 
+|    | infant| adult |
+| ---- | ---- | ---- |
+| Accuracy|  1 | 1 |
+| Precision |1 | 1|
+| Recall| 1 | 1 |
+| F1 | 1 | 1|
+
 #### __Isolation Forest__
 
 ```agsl
@@ -106,6 +128,12 @@ Outliers: Int64Index([689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700
             715, 716, 717, 718, 719, 720, 721, 722],
            dtype='int64')
 ```
+|    | infant| adult |
+| ---- | ---- | ---- |
+| Accuracy|  1 | 1 |
+| Precision |1 | 1|
+| Recall| 1 | 1 |
+| F1 | 1 | 1|
 
 ### Others related
 
@@ -138,6 +166,13 @@ adult_outlier:
  707 708 709 710 711 712 713 714 715 716 717 718 719 720 721 722]
 ```
 
+|    | infant| adult |
+| ---- | ---- | ---- |
+| Accuracy|  1 | 1 |
+| Precision |1 | 1|
+| Recall| 1 | 1 |
+| F1 | 1 | 1|
+
 #### Normalized
 
 ```agsl
@@ -163,6 +198,13 @@ adult_outlier:
  707 708 709 710 711 712 713 714 715 716 717 718 719 720 721 722]
 ```
 
+|    | infant| adult |
+| ---- | ---- | ---- |
+| Accuracy|  1 | 1 |
+| Precision |1 | 1|
+| Recall| 1 | 1 |
+| F1 | 1 | 1|
+
 #### Mds
 
 ```agsl
@@ -187,6 +229,14 @@ adult_outlier:
 [ 18  29  40  43  90 105 107 135 162 184 188 189 200 210 212 224 243 245
  266 301 373 419 434 435 437 447 449 465 556 574 617 623 624 628]
 ```
+
+|    | infant| adult |
+| ---- | ---- | ---- |
+| Accuracy|  0 | 0 |
+| Precision |0 | 0|
+| Recall| 0 | 0|
+| F1 | 0 | 0 |
+
 
 ## Conclusion
 
