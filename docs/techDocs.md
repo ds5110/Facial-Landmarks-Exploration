@@ -45,8 +45,10 @@ We then subtract all coordinates by the specified `x33` and `y33`, which are the
 the centers in the image to `(0,0)` in the new dataframe. The formula is:
 
 $$
+\begin{align}
 sx_i=x_i - x_{33}\\
 sy_i=y_i - y_{33}\\
+\end{align}
 $$
 
 After that, we rotate the image to ensure that all the images are in the same posture. This is done using the same
@@ -63,9 +65,11 @@ nose the center. They then rotated the data using the same method as in `rotate_
 the data using this formula:
 
 $$
+\begin{align}
 sx_i=(x_i - x_{33})/range\\
 sy_i=(y_i - y_{33})/range\\
 range = (max(X \cup Y) - min(X \cup Y))\\
+\end{align}
 $$
 
 This was the final set of landmarks used in all calculations.
@@ -75,17 +79,21 @@ We tried three scaling functions after center alignment and rotation:
 - `standardize_original`: This function applies `StandardScaler` to the dataset. The formula is:
 
 $$
+\begin{align}
 sx_i = \frac{x_i - \mu_x}{\sigma_x}\\
 sy_i = \frac{y_i - \mu_y}{\sigma_y}\\
+\end{align}
 $$
 
 - `normalize_by_face_bounding_box`: This function normalizes the data in a similar way to the previous project:
 
 $$
+\begin{align}
 sx_i=(x_i - x_{33})/range_x\\
 sy_i=(y_i - y_{33})/range_y\\
 range_x = max(X) - min(X)\\
 range_y = max(Y) - min(Y)\\
+\end{align}
 $$
 
 - `normalize_coords_by_face_bounding_box`: This function is the actual calculation function, and the above function
