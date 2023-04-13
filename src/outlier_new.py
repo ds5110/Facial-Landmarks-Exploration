@@ -103,3 +103,4 @@ print("infant_outlier:")
 isolation(dfi)
 print("adult_outlier:")
 isolation(dfa)
+
