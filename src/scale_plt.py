@@ -5,6 +5,7 @@ import pandas as pd
 idx = [0, 4, 8, 16]
 id_cols = ['image_name', 'baby', 'scale_type']
 
+# Combine data and split them to infant and adult.
 all_raw = pd.read_csv('./outcome/scale/all_raw.csv')
 all_raw_scale = pd.read_csv('./outcome/scale/all_raw_scale.csv')
 all_raw['scale_type'] = 'original'
@@ -17,6 +18,7 @@ all_raw_scale_infant = all_raw_scale[all_raw_scale['image_name'].isin(infant_nam
 all_raw_scale_adult = all_raw_scale[all_raw_scale['image_name'].isin(adult_names)]
 
 
+# plot the dataframe by its scale_type.
 def plot(df_list, col_order, title, path):
     combined_df = pd.concat(df_list)
     combined_df['image_name'] = combined_df['image_name'].str[-10:]
@@ -48,6 +50,7 @@ center_scale = pd.read_csv('./outcome/scale/center_scale.csv')
 prev_df = pd.read_csv('./outcome/prev/merged_landmarks.csv')
 
 
+# plot the center data. Merged the data from previous project and the original data for comparison.
 def plot_center(names, title, path):
     center_raw_plt = center_raw[center_raw['image_name'].isin(names)]
     center_raw_plt['scale_type'] = 'original'
@@ -76,6 +79,7 @@ rotated_raw = pd.read_csv('./outcome/scale/rotated_raw.csv')
 rotated_scale = pd.read_csv('./outcome/scale/rotated_scale.csv')
 
 
+# plot the rotation data. Merged the data from previous project and the original data for comparison.
 def plot_rotated(names, title, path):
     rotated_raw_plt = rotated_raw[rotated_raw['image_name'].isin(names)]
     rotated_raw_plt['scale_type'] = 'original'
