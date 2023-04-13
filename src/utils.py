@@ -45,3 +45,9 @@ def get_data(data):
         'partition': str,
         'subpartition': str,})
     return df
+
+
+def get_cols(df):
+    x_cols = [col for col in df.columns if 'norm_cenrot-x' in col]
+    y_cols = [col for col in df.columns if 'norm_cenrot-y' in col]
+    return x_cols, y_cols
