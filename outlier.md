@@ -53,10 +53,11 @@ Outliers: Int64Index([ 21,  28,  40,  55,  66,  76, 149, 167, 170, 180, 226, 244
 
 |    | infant| adult |
 | ---- | ---- | ---- |
-| Accuracy|  0 | 0 |
-| Precision |0 | 0|
-| Recall| 0 | 0|
-| F1 | 0 | 0 |
+| Accuracy|  1 | 1 |
+| Precision |1 | 1|
+| Recall| 1 | 1 |
+| F1 | 1 | 1|
+
 
 
 #### __Isolation Forest__
@@ -73,10 +74,11 @@ adult_outlier:
 
 |    | infant| adult |
 | ---- | ---- | ---- |
-| Accuracy|  0 | 0 |
-| Precision |0 | 0|
-| Recall| 0 | 0|
-| F1 | 0 | 0 |
+| Accuracy|  1 | 1 |
+| Precision |1 | 1|
+| Recall| 1 | 1 |
+| F1 | 1 | 1|
+
 
 ### Assessing the Feasibility of Applying the Model for Outlier
 
