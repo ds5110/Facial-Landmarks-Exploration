@@ -11,6 +11,34 @@ Outliers are exceptional records that are significantly different from the rest 
 To gain insights into the distribution of our data, we performed a data analysis by calculating the mean, median, standard deviation, and range for each variable. 
 
 ```agsl
+Firstly, To gain insights into the distribution of our data, we performed a data analysis by calculating the mean, median, standard deviation, and range for each variable. Additionally, we created boxplots for each variable to visualize their distribution and identify any outliers. By performing these analyses, we aimed to deepen our understanding of the data and identify any potential issues that may need to be addressed during the modeling process.
+
+The approach we take for detecting outliers involves the use of landmarks data, Mahalanobis distance, and Isolation Forest.Mahalanobis distance to determine the similarity or dissimilarity between data points by scaling the difference by the inverse of the covariance matrix, and then taking the square root of the result to produces a single value that represents the distance between the two points in the multi-dimensional space. During the process,  we compute the Mahalanobis distance for each data point, which measures the distance between a point and a distribution, taking into account the covariance structure of the dataset.Isolation Forest is an anomaly detection algorithm based on tree structures that can detect anomalous data points in a short time. It achieves this by building decision trees with random splits in the dataset, where each tree is a recursive process of dividing the dataset into subsets. During the process, it partitions the dataset into smaller and smaller subspaces until the anomalous points are isolated.
+
+To evaluate the accuracy and robustness of our model, we introduce a certain amount of noise data to the dataset. This allows us to test the model's ability to distinguish between genuine outliers. We find that the Mahalanobis distance and Isolation Forest techniques are effective in identifying outliers in the presence of noise in the data.
+
+
+|    | noise index | other index(correct index) |
+| ---- | ---- | ---- |
+| infant | 410-429 | 0-409 |
+| adult | 689-722 | 0-688|
+
+
+
+|    | infant| adult |
+| ---- | ---- | ---- |
+| Accuracy|  1 | 1 |
+| Precision |1 | 1|
+| Recall| 1 | 1 |
+| F1 | 1 | 1|
+
+
+|    | infant| adult |
+| ---- | ---- | ---- |
+| Accuracy|  0 | 0 |
+| Precision |0 | 0|
+| Recall| 0 | 0|
+| F1 | 0 | 0 |
 
 ```
 
