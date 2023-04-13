@@ -2,52 +2,72 @@
 
 ## Introduction
 
-Calculate the mean, median, standard deviation, and range of the variables, and plot boxplot for each variable in the data to gain insights into the distribution.
+Outliers are exceptional records that are significantly different from the rest of the data. Commonly, they can lead to incorrect conclusions or predictions and will have an impact on further research. Therefore, outliers selection is an important part of data analysis and a step we must go through before using model to train or test. Considering the data is multidimensional, we use Mahalanobis distance and Isolation Forest.
+
+## Approach
+
+The distance between each pair of two landmarks is important for our subsequent study, so we calculated the distance between two landmarks for 68 landmarks. The result is `euclidean_part_infant.csv` and `euclidean_part_adult.csv`.
+And then, we use two methods mentioned above to select outliers considering the data is multi-dimensional.
+
+### **Infant**
+
+#### __Mahalanobis distance__
+`ma_infant.py` uses Mahalanobis distance to determine the similarity or dissimilarity between data points by scaling the difference by the inverse of the covariance matrix, and then taking the square root of the result to produces a single value that represents the distance between the two points in the multi-dimensional space.  
+The outcomes are as follows.  
+1 outliers index shown in the terminal  
+2 filtered data saved in the `filtered_infant_ma.csv`  
+3 a scatter plot of all features to visualize the data and outliers shown in the `ma_infant.png`
+![ma_infant](./outcome/outlier_selection/ma_infant.png)  
+Note:For data with 2278 columns, we cannot directly plot a scatter plot of all features
+to visualize the data and outliers. One possible approach is to use principal component
+analysis (PCA) to project the data into a lower dimensional space and visualize
+the data points in this space.
+
+To verify that the results of this method are correct, we display part of the selected outliers' pictures with landmarks.  
+normal:<div align=center><img width="450" height="300" src="./outcome/outlier_selection/fig2.jpg"/></div>  
+outliers:<div align=center><img width="450" height="300" src="./outcome/outlier_selection/fig1.jpg"/></div>  
+Based on the displayed results, the outliers are not significantly different from the normal one, then i decide to abandon the use of outlier detection and use all the data for analysis.
+
+#### __Isolation Forest__
+`isolation_forest_infant.py`uses Isolation Forest . It is an anomaly detection algorithm based on tree structures that can detect anomalous data points in a short time. Isolation Forest achieves this by building decision trees with random splits in the dataset, where each tree is a recursive process of dividing the dataset into subsets.
+The outcomes are as follows.  
+1 outliers index shown in the terminal  
+2 filtered data saved in the `filtered_infant_if.csv`  
+3 a scatter plot of all features to visualize the data and outliers shown in the `isolation_forest_infant.png`
+![ma_infant](./outcome/outlier_selection/isolation_forest_infant.png)    
+Note:For data with 2278 columns, we cannot directly plot a scatter plot of all features
+to visualize the data and outliers. One possible approach is to use principal component
+analysis (PCA) to project the data into a lower dimensional space and visualize
+the data points in this space.
+
+To verify that the results of this method are correct, we display part of the selected outliers' pictures with landmarks.
+normal:<div align=center><img width="450" height="300" src="./outcome/outlier_selection/fig3.jpg"/></div>
+outliers:<div align=center><img width="450" height="300" src="./outcome/outlier_selection/fig4.jpg"/></div>
+
+Based on the displayed results, the outliers are not significantly different from the normal one, then i decide to abandon the use of outlier detection and use all the data for analysis.
 
 
-## Result
-The noise index is 410-429  689-722  
+### **Adult**
+#### __Mahalanobis distance__
+`ma_adult.py`  
+The outcomes are as follows.  
+1 outliers index shown in the terminal  
+2 filtered data saved in the `filtered_adult_ma.csv`  
+3 a scatter plot of all features to visualize the data and outliers shown in the `ma_infant.png`
+![ma_infant](./outcome/outlier_selection/ma_adult.png)  
+The verification process is the same before.
 
-Ma
-```agsl
-infant:  
-[10  80 410 411 412 413 414 415 416 417 418 419 420 421 422 423 424 425 426 427 428 429]
-adult:
-[21 284 624 689 690 691 692 693 694 695 696 697 698 699 700 701 702 703 704 705 706 707 708 709 710 711 712 713 714 715 716 717 718 719 720 721 722]
-```
 
-```agsl
-infant_outlier:
-[ 3 10  12  13  35  38  64  68  80  81  89  90  99 183 205 239 258 285 288 335 364]
-adult_outlier:
-[ 15  21  28  40 109 142 167 168 180 226 248 261 269 277 284 296 331 335 339 356 368 369 371 382 395 464 566 574 588 594 624 625 657 665 681]
-```
-
-Isolation:  
-```agsl
-Test the method with noise:
-infant_outlier:
-Outliers: Int64Index([ 10,  13, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420,
-421, 422, 423, 424, 425, 426, 427, 428, 429], dtype='int64')
-adult_outlier:
-
-Outliers: Int64Index([296, 371, 665, 689, 690, 691, 692, 693, 694, 695, 696, 697, 698,
-699, 700, 701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711,
-712, 713, 714, 715, 716, 717, 718, 719, 720, 721, 722],dtype='int64')
-```
-
-```agsl
-Data:
-infant_outlier:
-Outliers: Int64Index([  3,  10,  11,  13,  31,  32,  38,  68,  69,  80,  81,  88,  90,
-98,  99, 203, 205, 239, 253, 335, 364],dtype='int64')
-adult_outlier:
-Outliers: Int64Index([ 15,  21,  28,  40,  73,  86, 109, 142, 145, 150, 172, 200, 214,
-226, 269, 296, 317, 335, 336, 339, 344, 365, 371, 422, 461, 464,
-484, 510, 582, 626, 647, 657, 665, 667, 681], dtype='int64')
-```
-
+#### __Isolation Forest__
+`isolation_forest_infant.py`  
+The outcomes are as follows.  
+1 outliers index shown in the terminal  
+2 filtered data saved in the `filtered_adult_if.csv`  
+3 a scatter plot of all features to visualize the data and outliers shown in the `isolation_forest_adult.png`
+![ma_infant](./outcome/outlier_selection/isolation_forest_adult.png)  
+The verification process is the same before.
 
 ## Conclusion
 
+In the process of selecting outliers, we used two methods, which are Mahalanobis distance and Isolation Forest, to detect outliers in our dataset. After applying both methods, we get some outliers. We consider that the outliers may represent valid and meaningful data points that should not be discarded without careful consideration.After displaying, we found that the outliers detected by either method did not show any clear distinction from the normal values. As a result, we decided to use all the data and abandon the outliers.  
 
