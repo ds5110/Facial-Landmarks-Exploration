@@ -45,7 +45,7 @@ conda activate DS5110-faces-extend
 
 #### Scale
 
-Our in-depth analysis of various scaling and rotation methods can be found in the [scale.md](./scale.md)  file. In
+Our in-depth analysis of various scaling and rotation methods can be found in the [scale.md](./docs/scale.md)  file. In
 summary, we
 discovered that the Multidimensional Scaling (MDS) method altered face orientation, making it unsuitable for our
 objectives, while the Standardization method used the mean as the zero point instead of the 33 nose point, which we
@@ -54,7 +54,7 @@ method and Normalization by Bounding Box demonstrated similar results, making it
 effective approach.
 
 Our work contributes to understanding the impact of different scaling and rotation techniques on facial landmarks, as
-presented in the [scale.md](./scale.md)  file. These insights can be valuable for various facial analysis tasks and
+presented in the [scale.md](./docs/scale.md)  file. These insights can be valuable for various facial analysis tasks and
 future research.
 
 ## Contributors
@@ -63,17 +63,19 @@ Team members: Liyang Song, Na Yin, Yun Cao
 
 ## Acknowledgments
 
-Acknowledgements:
+We would like to express our gratitude to our
+professor, [Philip Bodgen](https://www.khoury.northeastern.edu/people/philip-bogden/), for his guidance, support, and
+encouragement
+throughout the course of this project, and to our
+Stakeholder, [Michael Wan](https://roux.northeastern.edu/people/michael-wan/), Ph.D., Senior Computational Scientist in
+Northeastern's Augmented Cognition Lab, for his valuable guidance and support. We also want to extend our appreciation
+to [ChatGPT](https://chat.openai.com/), an AI language model, for its assistance in various stages of the project,
+including research, analysis, and
+documentation.
 
-We would like to express our gratitude to our Stakeholder, Michael Wan, Ph.D., Senior Computational Scientist in
-Northeastern's Augmented Cognition Lab, for his valuable guidance and support throughout this project.
-
-Our appreciation also goes to the study of the [InfAnFace paper, Wan et al, (2022)](https://arxiv.org/abs/2110.08935),
-which Michael Wan co-authored with
-Shaotong Zhu, Lingfei Luan, Gulati Prateek, Xiaofei Huang, Rebecca Schwartz-Mette, Marie Hayes, Emily Zimmerman, and
-Sarah Ostadabbas. The paper sheds light on the analysis of infant landmarks, providing us with the opportunity to delve
-deeper into this area of research.
-
-Lastly, we want to thank the [DS 5110 project from fall 2022](https://github.com/ds5110/faces), developed by a group of
-students during the 2022 Fall
-semester. Their work has allowed us to focus on the details of the task and build upon their initial efforts.
+Our appreciation goes to the study of the [InfAnFace paper, Wan et al, (2022)](https://arxiv.org/abs/2110.08935),
+co-authored by Michael Wan and his
+colleagues, which provided us with the opportunity to delve deeper into the analysis of infant landmarks. Lastly, we
+want to thank the [DS 5110 project from fall 2022](https://github.com/ds5110/faces), developed by a group of students
+during the 2022 Fall semester, for
+allowing us to focus on the details of the task and build upon their initial efforts.
