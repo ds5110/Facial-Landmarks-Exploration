@@ -47,3 +47,6 @@ scatter:
 
 outlier_new:
 	python src/outlier_new.py
+
+outlier_new_scale:
+	python src/outlier_new_scale.py
