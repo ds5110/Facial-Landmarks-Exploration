@@ -329,7 +329,7 @@ Outliers: Int64Index([ 21,  28,  40,  55,  66,  76, 149, 167, 170, 180, 226, 244
             657, 665, 667, 677, 681, 682],
            dtype='int64')
 ```
-<div style="text-align: center;">
+<div align="center">
 
 |    | infant| adult |
 | ---- | ---- | ---- |
@@ -371,7 +371,7 @@ Based on the previous analysis of the landmarks data, we observed that all the x
 
 In summary, the data distributions are as follows.
 
-<div style="text-align: center;">
+<div align="center">
 
 |    | noise index | other index(correct index) |
 | ---- | ---- | ---- |
@@ -395,7 +395,7 @@ adult_outlier:
  707 708 709 710 711 712 713 714 715 716 717 718 719 720 721 722]
 ```
 
-<div style="text-align: center;">
+<div align="center">
 
 |    | infant| adult |
 | ---- | ---- | ---- |
@@ -422,7 +422,7 @@ Outliers: Int64Index([689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700
            dtype='int64')
 ```
 
-<div style="text-align: center;">
+<div align="center">
 
 |    | infant| adult |
 | ---- | ---- | ---- |
@@ -464,12 +464,14 @@ adult_outlier:
  707 708 709 710 711 712 713 714 715 716 717 718 719 720 721 722]
 ```
 
+<div align="center">
 |    | infant| adult |
 | ---- | ---- | ---- |
 | Accuracy|  1 | 1 |
 | Precision |1 | 1|
 | Recall| 1 | 1 |
 | F1 | 1 | 1|
+</div>
 
 #### Normalized
 
@@ -496,7 +498,7 @@ adult_outlier:
  707 708 709 710 711 712 713 714 715 716 717 718 719 720 721 722]
 ```
 
-<div style="text-align: center;">
+<div align="center">
 
 |    | infant| adult |
 | ---- | ---- | ---- |
@@ -532,12 +534,14 @@ adult_outlier:
  266 301 373 419 434 435 437 447 449 465 556 574 617 623 624 628]
 ```
 
+<div align="center">
 |    | infant| adult |
 | ---- | ---- | ---- |
 | Accuracy|  0 | 0 |
 | Precision |0 | 0|
 | Recall| 0 | 0|
 | F1 | 0 | 0 |
+</div>
 
 We can conclude that standard scaling and normalization scaling are very effective, but MDS scaling is too bad. 
 
