@@ -294,31 +294,38 @@ Additionally, we created boxplot and scatterplot for each variable to visualize 
 
 #### Facial landmarks distribution of infants (values taken as the mean of each landmark)
 <div align="center">
+
 ![scatter_infant](../outcome/outlier_selection/scatter_infant.png)
+
 </div>
 
 #### Boxplot of infant_x
 <div align="center">
+
 ![boxplot_infant_x](../outcome/outlier_selection/boxplot_infant_x.png)
 </div>
 
 #### Boxplot of infant_y
 <div align="center">
+
 ![boxplot_infant_y](../outcome/outlier_selection/boxplot_infant_y.png)
 </div>
 
 #### Facial landmarks distribution of adults (values taken as the mean of each landmark)
 <div align="center">
+
 ![scatter_adult](../outcome/outlier_selection/scatter_adult.png)
 </div>
 
 #### Boxplot of adult_x
 <div align="center">
+
 ![boxplot_adult_x](../outcome/outlier_selection/boxplot_adult_x.png)
 </div>
 
 #### Boxplot of adult_y
 <div align="center">
+
 ![boxplot_adult_y](../outcome/outlier_selection/boxplot_adult_y.png)
 </div>
 
