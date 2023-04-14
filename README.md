@@ -40,6 +40,10 @@ conda activate DS5110-faces-extend
 - `make ma_outlier_infant`: The command is used for selecting outliers in infant dataset using Mahalanobis distance .
 - `make ma_outlier_adult`: The command is used for selecting outliers in adult dataset using Mahalanobis distance.
 - `make pic`: The command is used for showing the picture with landmarks.
+- `make feature`: The command is used for feature selection method implementation. This step can be very time-consuming up to tens of minutes. Results are saved as CSV files.
+- `make feature_plots`: The command is used for generating feature selection related figures.
+- `make feature_scale`: Feature selection implementation with data source changed to `rotated_scale.csv` for comparison.
+- `make feature_plots_scale`: Feature selection figures with data source changed to `rotated_scale.csv` for comparison.
 
 ## Results
 

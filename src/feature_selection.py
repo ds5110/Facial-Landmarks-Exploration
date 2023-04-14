@@ -5,6 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_validate, cross_val_predict
 from sklearn.metrics import classification_report, confusion_matrix
 import time
+import sys
 from utils import get_data, get_data_scale
 
 
@@ -161,22 +162,6 @@ def feature_seletion_performance(feature_names, df, feature_cols):
     print("done. [{:.2f} seconds]".format(ts_after - ts_before))
 
     return feature_selection_result
-
-
-# def concat_normalized_df(normalized_infant, normalized_adult):
-#     infant_cols, infant_x_cols, infant_y_cols = utils.get_infant_cols(normalized_infant)
-#     adult_cols, adult_x_cols, adult_y_cols = utils.get_adult_cols(normalized_adult)
-    
-#     num_rows_infant = normalized_infant.shape[0]
-#     num_rows_adult = normalized_adult.shape[0]
-
-#     infant_image_name = pd.DataFrame({"image_name": normalized_infant["image-set"].str.cat(normalized_infant["filename"], sep="/")})
-#     infant_new = pd.concat([infant_image_name, normalized_infant.loc[:, infant_cols], pd.DataFrame({"baby": [1] * num_rows_infant}, index=range(num_rows_infant))], axis=1)
-#     adult_new = pd.concat([normalized_adult.iloc[:, 0], normalized_adult.loc[:, adult_cols], pd.DataFrame({"baby": [0] * num_rows_adult}, index=range(num_rows_adult))], axis=1)
-#     adult_new.columns = infant_new.columns
-#     normalized_all = pd.concat([infant_new, adult_new], axis=0, ignore_index=True)
-    
-#     return normalized_all
     
 
 def main():
@@ -219,7 +204,7 @@ def main_scale():
     feature_names = feature_selection(df, feature_cols)
     feature_selection_result = feature_seletion_performance(feature_names, df, feature_cols)
     
-    address = "outcome/feature_selection_scale/feature_selection_landmarks.csv"
+    address = "outcome/feature_selection_scale/feature_selection_landmarks_scale.csv"
     feature_selection_result.to_csv(address, index=False)
     print("Feature selection result of landmarks using scale method has been saved as '{}'.".format(address))
     
@@ -232,11 +217,14 @@ def main_scale():
     feature_names = feature_selection(df, feature_cols)
     feature_selection_result = feature_seletion_performance(feature_names, df, feature_cols)
     
-    address = "outcome/feature_selection_scale/feature_selection_euclidean.csv"
+    address = "outcome/feature_selection_scale/feature_selection_euclidean_scale.csv"
     feature_selection_result.to_csv(address, index=False)
     print("Feature selection result of euclidean distances using scale method has been saved as '{}'.".format(address))
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) > 1 and sys.argv[1] == "scale":
+        main_scale()
+    else:
+        main()
 

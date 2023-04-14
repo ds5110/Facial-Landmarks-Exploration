@@ -22,7 +22,6 @@ scale: scale_data scale_plt
 euclidean:
 	python -B ./src/euclidean.py
 
-
 ma_outlier_infant:
 	python -B ./src/ma_infant.py
 
@@ -47,3 +46,17 @@ scatter:
 
 outlier_new:
 	python src/outlier_new.py
+
+# The following two commands reproduce feature selection results
+# Can be very time-consuming up to tens of minitues
+feature:
+	python -u -B src/feature_selection.py
+
+feature_scale:
+	python -u -B src/feature_selection.py scale
+
+feature_plots:
+	python -u -B src/feature_selection_plots.py
+
+feature_plots_scale:
+	python -u -B src/feature_selection_plots.py scale

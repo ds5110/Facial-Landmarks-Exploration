@@ -46,7 +46,7 @@ Feature Selection for 20 features...done. [14.79 seconds]
 Feature Selection for 25 features...done. [18.58 seconds]
 Feature Selection for 30 features...done. [20.03 seconds]
 Test feature selection performance...done. [2.61 seconds]
-Feature selection result of landmarks using scale method has been saved as 'outcome/feature_selection_scale/feature_selection_landmarks.csv'.
+Feature selection result of landmarks using scale method has been saved as 'outcome/feature_selection_scale/feature_selection_landmarks_scale.csv'.
 ```
 
 ```
@@ -63,5 +63,5 @@ Feature Selection for 20 features...done. [255.34 seconds]
 Feature Selection for 25 features...done. [330.53 seconds]
 Feature Selection for 30 features...done. [402.64 seconds]
 Test feature selection performance...done. [5.97 seconds]
-Feature selection result of euclidean distances using scale method has been saved as 'outcome/feature_selection_scale/feature_selection_euclidean.csv'.
+Feature selection result of euclidean distances using scale method has been saved as 'outcome/feature_selection_scale/feature_selection_euclidean_scale.csv'.
 ```
