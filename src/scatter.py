@@ -1,3 +1,5 @@
+# plot boxplot of each variable and scatter plot of mean of each variable to show the distribution of landmarks
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -12,7 +14,6 @@ def scatter(df, category):
     # calculate the means, medians,stds,range of x,y
     x_means = []
     y_means = []
-
     for i in range(68):
         x_col = 'norm_cenrot-x{}'.format(i)
         y_col = 'norm_cenrot-y{}'.format(i)
@@ -31,13 +32,11 @@ def scatter(df, category):
         print('Column y{}: Mean={:.2f}, Median={:.2f}, Std={:.2f}, Range={:.2f}'.format(i, y_mean, y_median,
                                                                                         y_std, y_range))
 
-
+    # scatter plot of mean of each variable to show the distribution of landmarks
     plt.scatter(x_means, y_means)
-
     # mark the order of the dot
     for i in range(len(x_means)):
         plt.annotate(str(i), (x_means[i], y_means[i]))
-
     # set the label and title
     plt.xlabel('X')
     plt.ylabel('Y')
@@ -46,43 +45,34 @@ def scatter(df, category):
     plt.savefig('outcome/outlier_selection/scatter_{}.png'.format(category))
     plt.show()
 
+    # plot the boxplot of the x of landmarks
     # choose the columns we need
     columns1 = ['norm_cenrot-x{}'.format(i) for i in range(68)]
-
     plt.boxplot = df.boxplot(
         column=columns1)
-
     # change the name of the columns
     x = [None] * 68
     for i in range(68):
         x[i] = columns1[i].split('-')[1]
-
     plt.gca().set_xticklabels(x)
-
     plt.xticks(fontproperties='Times New Roman', size=6)
-
     plt.savefig('outcome/outlier_selection/boxplot_{}_x.png'.format(category))
     plt.show()
 
+    # plot the boxplot of the y of landmarks
     # choose the columns we need
     columns1 = ['norm_cenrot-y{}'.format(i) for i in range(68)]
-
     plt.boxplot = df.boxplot(
         column=columns1)
-
     # change the name of xticks
     y = [None] * 68
     for i in range(68):
         y[i] = columns1[i].split('-')[1]
-
     plt.gca().set_xticklabels(y)
-
     plt.xticks(fontproperties='Times New Roman', size=6)
-
     plt.savefig('outcome/outlier_selection/boxplot_{}_y.png'.format(category))
     plt.show()
 
 
 scatter(infant, "infant")
-
 scatter(adult, "adult")
