@@ -563,6 +563,7 @@ adult_outlier:
 | Recall| 0 | 0|
 | F1 | 0 | 0 |
 
+
 </div>
 
 We can conclude that standard scaling and normalization scaling are very effective, but MDS scaling is too bad. 
