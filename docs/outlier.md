@@ -163,8 +163,6 @@ Outliers: Int64Index([689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700
 
 In addition to using landmarks data, we also evaluate efficiency of three scaling techniques by using our two outlier detection model on datasets obtained from these methods.
 
-Results are as follows.
-
 The data distribution is the same as before.
 <div align="center">
 
@@ -175,6 +173,7 @@ The data distribution is the same as before.
 
 </div>
 
+Results are as follows.
 
 #### Standard
 
