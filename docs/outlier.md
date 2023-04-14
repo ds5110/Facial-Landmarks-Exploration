@@ -353,7 +353,7 @@ adult_outlier:
  356 371 382 395 422 489 574 624 636 651 657 665 667 681]
 ```
 
-<div style="text-align: center;">
+<div align="center">
 
 |    | infant| adult |
 | ---- | ---- | ---- |
