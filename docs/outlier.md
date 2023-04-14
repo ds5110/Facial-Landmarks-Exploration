@@ -19,7 +19,13 @@ Column x1: Mean=-0.46, Median=-0.48, Std=0.20, Range=1.06
 Column y1: Mean=-0.11, Median=-0.12, Std=0.18, Range=1.20
 ……
 ```
-We can get the completed result by using the command 'make scatter'
+We can get the completed result by using the command 'make scatter'.
+Here is the analysis of the 68 facial landmark points.
+1. Mean: The average x-coordinate of all the 68 points is 375.97, and the average y-coordinate is  0.513.
+2. Median: The median x-coordinate is 0.410, and the median y-coordinate is 0.515.
+3. Standard deviation: The standard deviation of the x-coordinates is 0.229, and the standard deviation of the y-coordinates is 0.189.
+4. Range: The range of the x-coordinates is  0.777 (from 0.064 to 0.841), and the range of the y-coordinates is from 0.570 (from 0.142 to 0.712).   
+Based on these values, we can see that the mean and median values for both x and y coordinates are relatively close, indicating a roughly symmetrical distribution. The standard deviation values are relatively small, suggesting that the data points are tightly clustered around the mean. The range values show that the x and y coordinates have different levels of variability, with the x values having a wider range than the y values.
 
 ### Visualization
 Additionally, we created boxplot and scatterplot for each variable to visualize their distribution. Boxplots help visualize the distribution of each variable, while scatterplots show the relationship between individual data points.
