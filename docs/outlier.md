@@ -555,6 +555,7 @@ adult_outlier:
 ```
 
 <div align="center">
+
 |    | infant| adult |
 | ---- | ---- | ---- |
 | Accuracy|  0 | 0 |
