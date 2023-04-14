@@ -8,6 +8,8 @@ Although many feature selection methods can be taken, the previous project only 
 
 # Feedback from the stakeholder
 
+TODO
+
 # Feature Selection Results
 
 - [Data source and preprocessing](#data-source-and-preprocessing)
@@ -23,6 +25,9 @@ Although many feature selection methods can be taken, the previous project only 
     - [Lasso Regulation](#lasso-regularization)
 - [Tree-based method of feature selection](#tree-based-methods)
     - [Random Forests](#random-forests)
+- [Conclusion](#conclusion)
+    - [Method Comparison](#method-comparison)
+    - [Integrated Result](#integrated-result)
 
 ### Data Source and Preprocessing
 
@@ -52,7 +57,7 @@ Original shape of feature matrix: (1099, 2278)
 Shape of feature matrix after variance threshold: (1099, 2219)
 ```
 
-Although setting a higher threshold can reduce the feature amount greatly, it also results in losing too much information. In this project, our focus point would be the comparison between feature selection methods. So removing features before feature selection may be helpful for reducing time costs (especially for the over 2000 euclidean distances), it could also lead to too much information lost. We chose to keep as many as possible features within an acceptable content of feature selection time costs.
+Although setting a higher threshold can reduce the feature amount greatly, it also results in losing too much information. In this project, our focus point would be the comparison between feature selection methods. So removing features before feature selection may be helpful for reducing time costs (especially for the over 2000 euclidean distances), it could also lead to too much information lost. We chose to keep as many as possible features within an acceptable extent of feature selection time costs.
 
 ### Correlation Threshold
 
@@ -198,10 +203,35 @@ The result of distance selection is better than coordinates. With 5 distances, w
 
 ### Conclusion
 
+#### Method Comparison
+
 ![](../outcome/feature_selection/method_scores_landmarks.png)
+
+The plots show the train and test scores of all methods. For landmark coordinate features, `Forward Feature Selection` performs best and can get a better test score than classification without feature selection (the dashed line at the top), which means the reduction of overfitting extent. In addition, FFS also has a higher train score than the one without feature selection. This may attribute to the reduction of redundant and irrelevant features in the original dataset.
+
+From the perspective of test scores, FFS performs best then `Lasso regularization` and `RFE`, and then `Random Forests`. Assuming 0.9 is a good test score, `Fisher's Score` and `Information Gain` method all fail to produce a good feature selection result. Even with 50 features, they can hardly get a test score over 0.9. The reason is that these filter methods use statistical measures to rank features without considering their correlations. This can result in the selection of redundant or irrelevant features.
+
+Most methods show a slight reduction or hover of test scores after 20 features, while train scores keep growth with feature number increase. This reveals an overfitting tends to happen after 20 coordinates.
+
 ![](../outcome/feature_selection/method_scores_euclidean.png)
 
+For Euclidean Distance selection, the performance of all methods is better than landmark selection. All features can get a test score of 0.9 with less features (less than 10 features). And the overfitting tends to happen earlier (around 15 features), which means less distances are required to perform a good classification compared with landmark coordinates.
 
+Also, `FFS` performs best if we use test score as the measurement, and it reaches higher test scores than ones without feature selection, which means a reduction of overfitting. `Lasso` also get higher test scores than ones without feature selection with feature number 10 to 20, but then the score descends because of overfitting.
+
+In general, `FFS`, `Lasso`, and `RFE` perform better than others. Filter Methods still perform worse than wrapper and regularization methods.
+
+TODO: running time of methods
+
+#### Integrated Result
+
+TODO: common features among all methods with a good score
+
+# Issues may be resolved in future
+
+- If we set a higher correlation threshold, and features with high correlations would be dropped to a larger extent, will filter methods get a better performance?
+
+- The dataset is relatively small compared with the feature number, will our result keep the same for larger datasets?
 
 
 
