@@ -94,12 +94,6 @@ adult_outlier:
  356 371 382 395 422 489 574 624 636 651 657 665 667 681]
 ```
 
-<div align="center">
-
-| dataset=infant/adult | Mahalanobis distance | Isolation Forest |
-|----------------------|----------------------|------------------|
-| ACC /P/R/F1          | 1                    | 1                |
-</div>
     
 ### Assessing the Feasibility of Applying the Model for Outlier
 
@@ -150,6 +144,13 @@ Outliers: Int64Index([689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700
            dtype='int64')
 
 ```
+
+<div align="center">
+
+| dataset=infant/adult | Mahalanobis distance | Isolation Forest |
+|----------------------|----------------------|------------------|
+| ACC /P/R/F1          | 1                    | 1                |
+</div>
 
 
 ### Others related
