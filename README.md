@@ -17,7 +17,8 @@ scaling and rotation methods, outlier detection, and feature selection.
 
 By assessing the effectiveness of different techniques in these three areas, we aim to contribute to the development of
 more accurate and robust facial analysis algorithms. Our work has potential applications in emotion detection, age
-estimation, and facial recognition systems.
+estimation, and facial recognition systems. Our main result is put on the [overview.md](./docs/overview.md), and the
+technical details are written in the [techDocs.md](./techDocs.md)
 
 ## Environment
 
@@ -61,9 +62,27 @@ Our work contributes to understanding the impact of different scaling and rotati
 presented in the [scale.md](./docs/scale.md)  file. These insights can be valuable for various facial analysis tasks and
 future research.
 
-## Contributors
+## Attribution
 
-Team members: Liyang Song, Na Yin, Yun Cao
+Primary project and data sources:
+
+- [InfAnFace: Bridging the Infant--Adult Domain Gap in Facial Landmark Estimation in the Wild](https://github.com/ostadabbas/Infant-Facial-Landmark-Detection-and-Tracking):
+  This foundational project offers the original facial landmarks for both infants and adults, which serve as the core of
+  our analysis.
+
+- [DS5110 faces](https://github.com/ds5110/faces): This valuable project supplies a substantial methodology for
+  preprocessing facial landmarks and evaluating the distinctions between infant and adult landmarks.
+
+Team members and their contributions:
+
+- Yun Cao: Yun was responsible for completing the scaling component of the program, organizing team meetings, overseeing
+  the project's timeline and progress, and offering guidance and advices to issues encountered.
+- Na Yin: Na completed the outlier segment of the program, participated in team meetings, adhered to deadlines, and
+  contributed to discussions, providing advice to address project-related concerns.
+- Liyang Song: Liyang exhibited exceptional proficiency in completing the feature selection portion of the program. He
+  consistently attended team meetings and diligently completed assigned tasks on time. Liyang's innovative and
+  perceptive approach to data analysis significantly contributed to the project's success. His keen insights and
+  creative problem-solving skills were invaluable assets to the team.
 
 ## Acknowledgments
 

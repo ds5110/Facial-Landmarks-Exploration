@@ -173,3 +173,4 @@ After plotting the center data, we read the rotated data and use the `plot_rotat
 
 Finally, we obtain six images of different data and scaling methods that we used, providing us with a direct
 visualization. You can find them in the `outcome/scale/` folder.
+
