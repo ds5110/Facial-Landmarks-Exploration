@@ -234,9 +234,10 @@ adult_outlier:
  266 301 373 419 434 435 437 447 449 465 556 574 617 623 624 628]
 ```
 
-The result of ACC/P/R/F1 is as follows.
+
 <div align="center">
- 
+                    
+                            ACC/P/R/F1 
 | dataset=infant/adult | Mahalanobis distance | Isolation Forest |
 |----------------------|----------------------|------------------|
 | Standard             | 1                    | 1                |
