@@ -67,12 +67,7 @@ alignment and representation of facial landmarks, providing valuable insights fo
 
 ### Conclusion and Future Work
 
-In this project, we analyzed various scaling and rotation methods for facial landmarks, comparing the original method
+In this section, we analyzed various scaling and rotation methods for facial landmarks, comparing the original method
 with three alternatives: MDS, Standardization, and Normalization by Bounding Box. The MDS method was found to be
 unsuitable, as was Standardization due to its use of the mean as the zero point. The other methods yielded similar
 results, making it challenging to determine the most effective approach.
-
-Our work contributes to the understanding of the impact of different scaling techniques on facial landmarks, laying the
-foundation for future research. Future work could include applying these methods to additional studies, exploring new
-scaling techniques, and developing quantitative evaluation metrics to assess alignment and representation. These
-findings can ultimately benefit facial recognition, emotion detection, and computer vision applications.
