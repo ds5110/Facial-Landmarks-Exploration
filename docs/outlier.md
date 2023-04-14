@@ -243,7 +243,8 @@ adult_outlier:
 
 <div align="center">
                     
-                            ACC/P/R/F1 
+ACC/P/R/F1 
+
 | dataset=infant/adult | Mahalanobis distance | Isolation Forest |
 |----------------------|----------------------|------------------|
 | Standard             | 1                    | 1                |
