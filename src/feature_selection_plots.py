@@ -2,29 +2,30 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+import sys
 from utils import get_data, get_data_scale, get_cols, get_cols_scale
 
 
 def variance_dotplot(df, address, title):
-    fig = plt.figure(figsize=(5, 3))
+    fig = plt.figure(figsize=(10, 5))
     var = df.var()
     ax = sns.stripplot(data=var, orient="h", size=3)
     ax.set(xlabel="Variances", ylabel="Features", title=title)
     fig.savefig(address, dpi=300)
 
     print("Saved: {}".format(address))
-    plt.close()
+    plt.close(fig)
 
 
 def correlation_matrix(df, address, title):
-    fig = plt.figure(figsize=(5, 5))
+    fig = plt.figure(figsize=(10, 10))
     cor = df.corr(numeric_only=True).abs()
     ax = sns.heatmap(cor, cmap="flare")
     ax.set(xlabel="", ylabel="", title=title)
     fig.savefig(address, dpi=300)
 
     print("Saved: {}".format(address))
-    plt.close()
+    plt.close(fig)
 
 
 def get_mean_landmark(df, x_cols, y_cols):
@@ -78,7 +79,7 @@ def landmark_plots(df, x_cols, y_cols, feature_selection_result, methods, addres
         fig.savefig("{}/landmarks_{}.png".format(address, method), dpi=300)
 
         print("Saved: {}/landmarks_{}.png".format(address, method))
-        plt.close()
+        plt.close(fig)
 
 
 def euclidean_plots(df, feature_cols, x_cols, y_cols, feature_selection_result, methods, address):
@@ -109,7 +110,7 @@ def euclidean_plots(df, feature_cols, x_cols, y_cols, feature_selection_result, 
         fig.savefig("{}/euclidean_{}.png".format(address, method), dpi=300)
 
         print("Saved: {}/euclidean_{}.png".format(address, method))
-        plt.close()
+        plt.close(fig)
 
 
 def confusion_matrix(feature_selection_result, methods, euclidean, address):
@@ -119,14 +120,14 @@ def confusion_matrix(feature_selection_result, methods, euclidean, address):
         for i, ax in enumerate(axs.flat):
             cm = pd.DataFrame(data=method_df.iloc[i, 5:9].values.reshape(2, 2), index=["adult", "infant"], columns=["adult", "infant"])
             cm = cm.apply(pd.to_numeric)
-            sns.heatmap(cm, cmap="flare", annot=True, cbar=False, fmt="d", ax=ax)
+            ax = sns.heatmap(cm, cmap="flare", annot=True, cbar=False, fmt="d", ax=ax)
             ax.set(xlabel="Predicted Target", ylabel="True Target")
             ax.set_title("{}\n CV Test Score = {:.3f} +/- {:.3f}".format(method_df.iloc[i, 0], method_df.iloc[i, 3], method_df.iloc[i, 4]))
         fig.subplots_adjust(hspace=0.4)
-        fig.savefig("{}/confusion_matrix_{}_{}.png".format(address, "landmarks" if euclidean==True else "euclidean", method), dpi=300)
+        fig.savefig("{}/confusion_matrix_{}_{}.png".format(address, "landmarks" if euclidean==False else "euclidean", method), dpi=300)
 
-        print("Saved: {}/confusion_matrix_{}_{}.png".format(address, "landmarks" if euclidean==True else "euclidean", method))
-        plt.close()
+        print("Saved: {}/confusion_matrix_{}_{}.png".format(address, "landmarks" if euclidean==False else "euclidean", method))
+        plt.close(fig)
 
 
 def method_score_plot(feature_selection_result, methods, n_features, address, title):
@@ -137,6 +138,12 @@ def method_score_plot(feature_selection_result, methods, n_features, address, ti
         method_df = feature_selection_result.loc[feature_selection_result["selector_name"].str.contains(method)]
         ax1.plot(n_features, method_df["CV_train_score_mean"], label="{} Train Score".format(method))
         ax2.plot(n_features, method_df["CV_test_score_mean"], label="{} Test Score".format(method))
+    
+    all_feature_train_score = feature_selection_result.loc[feature_selection_result["selector_name"]=="all_features", ["CV_train_score_mean"]].values[0]
+    all_feature_test_score = feature_selection_result.loc[feature_selection_result["selector_name"]=="all_features", ["CV_test_score_mean"]].values[0]
+    ax1.axhline(y=all_feature_train_score, linestyle="dashed")
+    ax2.axhline(y=all_feature_test_score, linestyle="dashed")
+
     ax1.axhline(y=0.9, linestyle="dashed")
     ax2.axhline(y=0.9, linestyle="dashed")
     ax1.legend()
@@ -145,7 +152,7 @@ def method_score_plot(feature_selection_result, methods, n_features, address, ti
     fig.savefig(address, dpi=300)
 
     print("Saved: {}".format(address))
-    plt.close()
+    plt.close(fig)
 
 
 def main():
@@ -200,7 +207,7 @@ def main_scale():
     # Landmark plots
     print("========Landmark Feature Plots (Scale Method)========")
 
-    feature_selection_result = pd.read_csv("outcome/feature_selection_scale/feature_selection_landmarks.csv")
+    feature_selection_result = pd.read_csv("outcome/feature_selection_scale/feature_selection_landmarks_scale.csv")
     df = get_data_scale("outcome/scale/rotated_scale.csv")
     x_cols, y_cols = get_cols_scale(df)
     feature_cols = [col for col in df.columns if col.startswith("x") or col.startswith("y")]
@@ -215,7 +222,7 @@ def main_scale():
     # Euclidean distance plots
     print("========Euclidean Feature Plots (Scale Method)========")
 
-    feature_selection_result = pd.read_csv("outcome/feature_selection_scale/feature_selection_euclidean.csv")
+    feature_selection_result = pd.read_csv("outcome/feature_selection_scale/feature_selection_euclidean_scale.csv")
     df = get_data_scale("outcome/euclidean/euclidean_merged_scale.csv")
     x_cols, y_cols = get_cols_scale(df)
     feature_cols = [col for col in df.columns if 'dist_' in col]
@@ -229,5 +236,7 @@ def main_scale():
 
 
 if __name__ == "__main__":
-    main()
-    # main_scale()
+    if len(sys.argv) > 1 and sys.argv[1] == "scale":
+        main_scale()
+    else:
+        main()

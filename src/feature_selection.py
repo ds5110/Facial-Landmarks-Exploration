@@ -5,6 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_validate, cross_val_predict
 from sklearn.metrics import classification_report, confusion_matrix
 import time
+import sys
 from utils import get_data, get_data_scale
 
 
@@ -203,7 +204,7 @@ def main_scale():
     feature_names = feature_selection(df, feature_cols)
     feature_selection_result = feature_seletion_performance(feature_names, df, feature_cols)
     
-    address = "outcome/feature_selection_scale/feature_selection_landmarks.csv"
+    address = "outcome/feature_selection_scale/feature_selection_landmarks_scale.csv"
     feature_selection_result.to_csv(address, index=False)
     print("Feature selection result of landmarks using scale method has been saved as '{}'.".format(address))
     
@@ -216,12 +217,14 @@ def main_scale():
     feature_names = feature_selection(df, feature_cols)
     feature_selection_result = feature_seletion_performance(feature_names, df, feature_cols)
     
-    address = "outcome/feature_selection_scale/feature_selection_euclidean.csv"
+    address = "outcome/feature_selection_scale/feature_selection_euclidean_scale.csv"
     feature_selection_result.to_csv(address, index=False)
     print("Feature selection result of euclidean distances using scale method has been saved as '{}'.".format(address))
 
 
 if __name__ == "__main__":
-    main()
-    # main_scale()
+    if len(sys.argv) > 1 and sys.argv[1] == "scale":
+        main_scale()
+    else:
+        main()
 
