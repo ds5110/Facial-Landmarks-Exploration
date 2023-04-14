@@ -6,24 +6,24 @@ from utils import get_data, get_data_scale, get_cols, get_cols_scale
 
 
 def variance_dotplot(df, address, title):
-    fig = plt.figure(figsize=(10, 5))
+    fig = plt.figure(figsize=(5, 3))
     var = df.var()
     ax = sns.stripplot(data=var, orient="h", size=3)
     ax.set(xlabel="Variances", ylabel="Features", title=title)
     fig.savefig(address, dpi=300)
 
-    print("Variance dotplot has been saved as '{}'.".format(address))
+    print("Saved: {}".format(address))
     plt.close()
 
 
 def correlation_matrix(df, address, title):
-    fig = plt.figure(figsize=(10, 10))
+    fig = plt.figure(figsize=(5, 5))
     cor = df.corr(numeric_only=True).abs()
     ax = sns.heatmap(cor, cmap="flare")
     ax.set(xlabel="", ylabel="", title=title)
     fig.savefig(address, dpi=300)
 
-    print("Correlation matrix has been saved as '{}'.".format(address))
+    print("Saved: {}".format(address))
     plt.close()
 
 
@@ -77,7 +77,7 @@ def landmark_plots(df, x_cols, y_cols, feature_selection_result, methods, addres
         fig.subplots_adjust(hspace=0.4)
         fig.savefig("{}/landmarks_{}.png".format(address, method), dpi=300)
 
-        print("Landmark plot of {} has been saved as '{}/landmarks_{}.png'.".format(method, address, method))
+        print("Saved: {}/landmarks_{}.png".format(address, method))
         plt.close()
 
 
@@ -108,7 +108,7 @@ def euclidean_plots(df, feature_cols, x_cols, y_cols, feature_selection_result, 
         fig.subplots_adjust(hspace=0.4)
         fig.savefig("{}/euclidean_{}.png".format(address, method), dpi=300)
 
-        print("Euclidean distance plot of {} has been saved as '{}/euclidean_{}.png'.".format(method, address, method))
+        print("Saved: {}/euclidean_{}.png".format(address, method))
         plt.close()
 
 
@@ -125,12 +125,12 @@ def confusion_matrix(feature_selection_result, methods, euclidean, address):
         fig.subplots_adjust(hspace=0.4)
         fig.savefig("{}/confusion_matrix_{}_{}.png".format(address, "landmarks" if euclidean==True else "euclidean", method), dpi=300)
 
-        print("Confusion matrix of {} has been saved as '{}/confusion_matrix_{}_{}.png'.".format(method, address, "landmarks" if euclidean==True else "euclidean", method))
+        print("Saved: {}/confusion_matrix_{}_{}.png".format(address, "landmarks" if euclidean==True else "euclidean", method))
         plt.close()
 
 
 def method_score_plot(feature_selection_result, methods, n_features, address, title):
-    fig= plt.figure(figsize=(10, 10))
+    fig= plt.figure(figsize=(10, 5))
     ax1 = plt.subplot(1, 2, 1)
     ax2 = plt.subplot(1, 2, 2)
     for method in methods:
@@ -144,7 +144,7 @@ def method_score_plot(feature_selection_result, methods, n_features, address, ti
     fig.suptitle(title)
     fig.savefig(address, dpi=300)
 
-    print("Method score plot has been saved as '{}'.".format(address))
+    print("Saved: {}".format(address))
     plt.close()
 
 
@@ -230,4 +230,4 @@ def main_scale():
 
 if __name__ == "__main__":
     main()
-    main_scale()
+    # main_scale()
