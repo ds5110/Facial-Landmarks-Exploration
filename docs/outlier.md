@@ -6,8 +6,10 @@ Outliers are exceptional records that are significantly different from the rest 
 
 ## Data Analysis  
 
-### Mean, median, standard deviation, and range for each variable.
+### Mean, median, standard deviation, and range for each variable
 To gain insights into the distribution of our data, we performed a data analysis by calculating the mean, median, standard deviation, and range for each variable. 
+
+The data source is `merged_landmarks`. The shapes of the infant dataset and adult dataset are (410, 136) (689, 136) respectively.
 
 ```agsl
 python src/scatter.py
@@ -288,7 +290,8 @@ Process finished with exit code 0
 ```
 
 ### Visualization
-Additionally, we created boxplot for each variable to visualize their distribution and identify any outliers.
+Additionally, we created boxplot and scatterplot for each variable to visualize their distribution. Boxplots help visualize the distribution of each variable, while scatterplots show the relationship between individual data points.
+
 #### Facial landmarks distribution of infants (values taken as the mean of each landmark)
 ![scatter_infant](../outcome/outlier_selection/scatter_infant.png)
 
@@ -308,7 +311,10 @@ Additionally, we created boxplot for each variable to visualize their distributi
 ![boxplot_adult_y](../outcome/outlier_selection/boxplot_adult_y.png)
 
 ### Using two models to detect outliers
-The approach we take for detecting outliers involves the use of landmarks data, Mahalanobis distance, and Isolation Forest.Mahalanobis distance to determine the similarity or dissimilarity between data points by scaling the difference by the inverse of the covariance matrix, and then taking the square root of the result to produces a single value that represents the distance between the two points in the multi-dimensional space. During the process,  we compute the Mahalanobis distance for each data point, which measures the distance between a point and a distribution, taking into account the covariance structure of the dataset.Isolation Forest is an anomaly detection algorithm based on tree structures that can detect anomalous data points in a short time. It achieves this by building decision trees with random splits in the dataset, where each tree is a recursive process of dividing the dataset into subsets. During the process, it partitions the dataset into smaller and smaller subspaces until the anomalous points are isolated.  
+The approach we take for detecting outliers involves the use of Mahalanobis distance, and Isolation Forest.Mahalanobis distance to determine the similarity or dissimilarity between data points by scaling the difference by the inverse of the covariance matrix, and then taking the square root of the result to produces a single value that represents the distance between the two points in the multi-dimensional space. During the process,  we compute the Mahalanobis distance for each data point, which measures the distance between a point and a distribution, taking into account the covariance structure of the dataset.Isolation Forest is an anomaly detection algorithm based on tree structures that can detect anomalous data points in a short time. It achieves this by building decision trees with random splits in the dataset, where each tree is a recursive process of dividing the dataset into subsets. During the process, it partitions the dataset into smaller and smaller subspaces until the anomalous points are isolated.  
+
+The results are as follows.
+
 #### __Mahalanobis distance__
 
 ```agsl
@@ -323,6 +329,7 @@ Outliers: Int64Index([ 21,  28,  40,  55,  66,  76, 149, 167, 170, 180, 226, 244
             657, 665, 667, 677, 681, 682],
            dtype='int64')
 ```
+<div style="text-align: center;">
 
 |    | infant| adult |
 | ---- | ---- | ---- |
@@ -331,6 +338,7 @@ Outliers: Int64Index([ 21,  28,  40,  55,  66,  76, 149, 167, 170, 180, 226, 244
 | Recall| 1 | 1 |
 | F1 | 1 | 1|
 
+</div>
 
 
 #### __Isolation Forest__
@@ -345,14 +353,16 @@ adult_outlier:
  356 371 382 395 422 489 574 624 636 651 657 665 667 681]
 ```
 
+<div style="text-align: center;">
+
 |    | infant| adult |
 | ---- | ---- | ---- |
 | Accuracy|  1 | 1 |
 | Precision |1 | 1|
 | Recall| 1 | 1 |
 | F1 | 1 | 1|
-
-
+</div>
+    
 ### Assessing the Feasibility of Applying the Model for Outlier
 
 To determine if the results identified by our model are true outliers, we need an appropriate criterion for validation. However, in the absence of such a criterion, we added some noise points to the dataset to test the feasibility of our model. We examined whether the Mahalanobis distance and Isolation Forest techniques could detect these noise points as outliers. If the model is able to identify the noise points as outliers, it would suggest that our analysis is feasible. Conversely, if the model fails to identify the noise points as outliers, it would indicate that our approach may not be effective for outlier detection. By conducting this validation process, we can ensure that our model is robust and reliable in detecting outliers, even in the presence of noise and other irregularities in the data.
@@ -361,10 +371,14 @@ Based on the previous analysis of the landmarks data, we observed that all the x
 
 In summary, the data distributions are as follows.
 
+<div style="text-align: center;">
+
 |    | noise index | other index(correct index) |
 | ---- | ---- | ---- |
 | infant | 410-429 | 0-409 |
 | adult | 689-722 | 0-688|
+
+</div>
 
 After using two methods, the results are as follows (copy from terminal).
 
@@ -381,12 +395,16 @@ adult_outlier:
  707 708 709 710 711 712 713 714 715 716 717 718 719 720 721 722]
 ```
 
+<div style="text-align: center;">
+
 |    | infant| adult |
 | ---- | ---- | ---- |
 | Accuracy|  1 | 1 |
 | Precision |1 | 1|
 | Recall| 1 | 1 |
 | F1 | 1 | 1|
+
+</div>
 
 #### __Isolation Forest__
 
@@ -403,12 +421,17 @@ Outliers: Int64Index([689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700
             715, 716, 717, 718, 719, 720, 721, 722],
            dtype='int64')
 ```
+
+<div style="text-align: center;">
+
 |    | infant| adult |
 | ---- | ---- | ---- |
 | Accuracy|  1 | 1 |
 | Precision |1 | 1|
 | Recall| 1 | 1 |
 | F1 | 1 | 1|
+
+</div>
 
 ### Others related
 
@@ -473,12 +496,16 @@ adult_outlier:
  707 708 709 710 711 712 713 714 715 716 717 718 719 720 721 722]
 ```
 
+<div style="text-align: center;">
+
 |    | infant| adult |
 | ---- | ---- | ---- |
 | Accuracy|  1 | 1 |
 | Precision |1 | 1|
 | Recall| 1 | 1 |
 | F1 | 1 | 1|
+
+</div>
 
 #### Mds
 
@@ -512,6 +539,7 @@ adult_outlier:
 | Recall| 0 | 0|
 | F1 | 0 | 0 |
 
+We can conclude that standard scaling and normalization scaling are very effective, but MDS scaling is too bad. 
 
 ## Conclusion
 
