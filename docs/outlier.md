@@ -12,7 +12,6 @@ To gain insights into the distribution of our data, we performed a data analysis
 The data source is `merged_landmarks`. The shapes of the infant dataset and adult dataset are (410, 136) (689, 136) respectively.
 
 ```agsl
-python src/scatter.py
 Column x0: Mean=-0.47, Median=-0.48, Std=0.21, Range=1.06
 Column y0: Mean=-0.25, Median=-0.27, Std=0.19, Range=1.29
 Column x1: Mean=-0.46, Median=-0.48, Std=0.20, Range=1.06
