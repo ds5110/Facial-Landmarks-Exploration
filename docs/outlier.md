@@ -107,7 +107,7 @@ To determine if the results identified by our model are true outliers, we need a
 
 Based on the previous analysis of the landmarks data, we observed that all the x and y coordinates were within the range of [-1,1]. Therefore, we added noise points to the dataset with values also restricted to the same range. The proportion of noise points added was set to 5% of the original dataset, resulting in the addition of 20 noise points to the infant dataset and 34 noise points to the adult dataset. The dimensions of the original and modified datasets are as follows: the infant dataset had a dimension of (410, 136) and after adding the noise points, it became (689, 136). Similarly, the adult dataset had a dimension of (430, 136) and became (723, 136) after the addition of noise points. The noise rows index are 411-430 , 690-723 respectively. By incorporating these noise points into the dataset, we can evaluate the effectiveness of our outlier detection model in the presence of noise and ensure that it is robust and reliable in identifying outliers even in more complex datasets.
 
-In summary, the data distributions are as follows.
+In summary, the data distribution is as follows.
 
 <div align="center">
 
@@ -164,6 +164,17 @@ Outliers: Int64Index([689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700
 In addition to using landmarks data, we also evaluate efficiency of three scaling techniques by using our two outlier detection model on datasets obtained from these methods.
 
 Results are as follows.
+
+The data distribution is the same as before.
+<div align="center">
+
+|    | noise index | other index(correct index) |
+| ---- | ---- | ---- |
+| infant | 410-429 | 0-409 |
+| adult | 689-722 | 0-688|
+
+</div>
+
 
 #### Standard
 
