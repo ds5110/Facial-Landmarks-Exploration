@@ -7,7 +7,7 @@ from utils import get_data, get_data_scale, get_cols, get_cols_scale
 
 
 def variance_dotplot(df, address, title):
-    fig = plt.figure(figsize=(10, 5))
+    fig = plt.figure(figsize=(10, 4))
     var = df.var()
     ax = sns.stripplot(data=var, orient="h", size=3)
     ax.set(xlabel="Variances", ylabel="Features", title=title)
@@ -18,7 +18,7 @@ def variance_dotplot(df, address, title):
 
 
 def correlation_matrix(df, address, title):
-    fig = plt.figure(figsize=(10, 10))
+    fig = plt.figure(figsize=(15, 8))
     cor = df.corr(numeric_only=True).abs()
     ax = sns.heatmap(cor, cmap="flare")
     ax.set(xlabel="", ylabel="", title=title)
