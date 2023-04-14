@@ -79,7 +79,12 @@ and being aligned center and rotated. By them, there is an image that plot by th
 After that, we take 2 approaches we take for detecting outliers involves the use of Mahalanobis distance, and Isolation
 Forest. After adding some noises to the dataset, we could get such a result:
 
-***There should be a table that showing all of results.***
+| dataset=infant/adult（ACC /P/R/F1 ） | Mahalanobis distance | Isolation Forest |
+|------------------------------------|----------------------|------------------|
+| Standard                           | 1                    | 1                |
+| Normalized                         | 1                    | 1                |
+| MDS                                | 0                    | 0                |
+| Previous Project                   | 1                    | 1                |
 
 You could find more details of these scale methods in [outlier.md](./outlier.md).
 

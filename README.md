@@ -18,7 +18,7 @@ scaling and rotation methods, outlier detection, and feature selection.
 By assessing the effectiveness of different techniques in these three areas, we aim to contribute to the development of
 more accurate and robust facial analysis algorithms. Our work has potential applications in emotion detection, age
 estimation, and facial recognition systems. Our main result is put on the [overview.md](./docs/overview.md), and the
-technical details are written in the [techDocs.md](./techDocs.md)
+technical details are written in the [TechnicalDocumentation.md](./TechnicalDocumentation.md)
 
 ## Environment
 
@@ -36,10 +36,14 @@ conda activate DS5110-faces-extend
 
 - `make scale`: The command is used for downloading data and calculating the scale part.
 - `make euclidean`: The command is used for generating euclidean distances between landmarks.
-- `make scatter`: The command is used for plotting boxplot of each variable and scatter plot of mean of each variable to show the distribution of landmarks.
-- `make outlier_new`: The command is used for performing outlier detection on face landmarks data using two methods: Mahalanobis distance and isolation forest. .
-- `make outlier_new_scale`: The command is used for evaluating efficiency of three scaling techniques by using our two outlier detection model on datasets obtained from these methods.
-- `make feature`: The command is used for feature selection method implementation. This step can be very time-consuming up to tens of minutes. Results are saved as CSV files.
+- `make scatter`: The command is used for plotting boxplot of each variable and scatter plot of mean of each variable to
+  show the distribution of landmarks.
+- `make outlier_new`: The command is used for performing outlier detection on face landmarks data using two methods:
+  Mahalanobis distance and isolation forest. .
+- `make outlier_new_scale`: The command is used for evaluating efficiency of three scaling techniques by using our two
+  outlier detection model on datasets obtained from these methods.
+- `make feature`: The command is used for feature selection method implementation. This step can be very time-consuming
+  up to tens of minutes. Results are saved as CSV files.
 - `make feature_plots`: The command is used for generating feature selection related figures.
 - `make feature_scale`: Feature selection implementation with data source changed to `rotated_scale.csv` for comparison.
 - `make feature_plots_scale`: Feature selection figures with data source changed to `rotated_scale.csv` for comparison.
@@ -59,6 +63,22 @@ effective approach.
 Our work contributes to understanding the impact of different scaling and rotation techniques on facial landmarks, as
 presented in the [scale.md](./docs/scale.md)  file. These insights can be valuable for various facial analysis tasks and
 future research.
+
+#### Outlier
+
+Outliers are exceptional records that are significantly different from the rest of the data. Commonly, they can lead to
+incorrect conclusions or predictions and will have an impact on further research. Therefore, outliers selection is an
+important part of data analysis and a step we must go through before using model to train or test. Considering the
+multidimensional data, Mahalanobis distance and Isolation Forest are two commonly used techniques for identifying
+outliers in landmarks data. In this approach, we utilize these two techniques to detect outliers and validate the
+model's accuracy using noise data.
+
+Based on the results, we found that both the Mahalanobis distance and Isolation Forest techniques were effective in
+identifying the added noise points accurately, without falsely flagging any of the true data points as outliers. These
+findings suggest that our outlier detection method using landmarks data is viable and can accurately identify outliers
+in complex datasets, even in the presence of noise.
+
+The details of the outlier could be found in the [outlier.md](./docs/outlier.md).
 
 ## Attribution
 
