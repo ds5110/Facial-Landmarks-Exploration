@@ -6,14 +6,9 @@ recognition. Based on the [InfAnFace paper, Wan et al, (2022)](https://arxiv.org
 the [faces project](https://github.com/ds5110/faces), our work is divided into three main components: exploring various
 scaling and rotation methods, outlier detection, and feature selection.
 
-1. **Scaling and Rotation**: We compare the original method with three alternatives: Multidimensional Scaling (MDS),
-   Standardization, and Normalization by Bounding Box. Our goal is to evaluate the impact of these methods on facial
-   landmark alignment and representation.
-2. **Outlier Detection**: We implement outlier detection using the Mahalanobis distance and Isolation Forest algorithms.
-   This step aims to identify and remove any anomalous data points that might negatively impact the accuracy of the
-   facial analysis.
-3. **Feature Selection**: We explore feature selection techniques, using Recursive Feature Elimination (RFE) and the
-   forward selection algorithm, to identify the most relevant features for our facial recognition tasks.
+1. **Scaling and Rotation**: We compare the original method with three alternatives: Multidimensional Scaling (MDS), Standardization, and Normalization by Bounding Box. Our goal is to evaluate the impact of these methods on facial landmark alignment and representation.
+2. **Outlier Detection**: We implement outlier detection using the Mahalanobis distance and Isolation Forest algorithms. This step aims to identify and remove any anomalous data points that might negatively impact the accuracy of the facial analysis.
+3. **Feature Selection**: We explore feature selection techniques, using 6 different methods, to compare their performance and identify the most important features for our infant-adult recognition tasks.
 
 By assessing the effectiveness of different techniques in these three areas, we aim to contribute to the development of
 more accurate and robust facial analysis algorithms. Our work has potential applications in emotion detection, age
@@ -39,7 +34,7 @@ conda activate DS5110-faces-extend
 - `make scatter`: The command is used for plotting boxplot of each variable and scatter plot of mean of each variable to
   show the distribution of landmarks.
 - `make outlier_new`: The command is used for performing outlier detection on face landmarks data using two methods:
-  Mahalanobis distance and isolation forest. .
+  Mahalanobis distance and isolation forest.
 - `make outlier_new_scale`: The command is used for evaluating efficiency of three scaling techniques by using our two
   outlier detection model on datasets obtained from these methods.
 - `make feature`: The command is used for feature selection method implementation. This step can be very time-consuming
@@ -79,6 +74,14 @@ findings suggest that our outlier detection method using landmarks data is viabl
 in complex datasets, even in the presence of noise.
 
 The details of the outlier could be found in the [outlier.md](./docs/outlier.md).
+
+#### Feature Selection
+
+We compared the performance of different feature selection methods applied to landmark coordinates and Euclidean Distances between them. Our purpose is to compare differences between the various feature selection methods, and their effects on the final model performance. We applied 6 feature selection methods and 2 filtering thresholds, including Fisher's Score, Information Gain, Forward Feature Selection, Recursive Feature Elimination, Lasso Regularization, Random Forests, Variance Threshold, and Correlation Threshold.
+
+The results show that for landmark coordinate features, Forward Feature Selection (FFS) performs best and can achieve a better test score than classification without feature selection, indicating a reduction in overfitting. For Euclidean Distance selection, all methods perform better than landmark selection, and fewer features (less than 10) are needed to obtain a test score of 0.9. FFS still have the best test scores but is quite slow. In contrast, both RFE and Lasso are better choices, being relatively fast and performing well.
+
+Finally, we found that the most important features for landmark coordinates were y-coordinates of mouth, jaw, and eyes, and x-coordinates of eyebrows. For Euclidean Distances, the most important features were eye-nose, eye-jaw, mouth-jaw, and eyebrows distances. In general, distances achieved a good performance with fewer features than coordinates.
 
 ## Attribution
 
