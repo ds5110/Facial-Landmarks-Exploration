@@ -28,7 +28,10 @@ It contains four parts:
 - `scale`: Used for applying different scaling functions to the original data and comparing it with
   the `merged_landmarks` from the previous project.
 - `outlier`: Used for detecting different functions that can be used for detecting outliers in the landmarks.
-- `TODO`: Feature selections.
+- `make feature`: The command is used for feature selection method implementation. This step can be very time-consuming up to tens of minutes. Results are saved as CSV files.
+- `make feature_plots`: The command is used for generating feature selection related figures.
+- `make feature_scale`: Feature selection implementation with data source changed to `rotated_scale.csv` for comparison.
+- `make feature_plots_scale`: Feature selection figures with data source changed to `rotated_scale.csv` for comparison.
 
 ### File
 
