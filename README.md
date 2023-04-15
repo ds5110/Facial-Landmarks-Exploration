@@ -83,6 +83,8 @@ The results show that for landmark coordinate features, Forward Feature Selectio
 
 Finally, we found that the most important features for landmark coordinates were y-coordinates of mouth, jaw, and eyes, and x-coordinates of eyebrows. For Euclidean Distances, the most important features were eye-nose, eye-jaw, mouth-jaw, and eyebrows distances. In general, distances achieved a good performance with fewer features than coordinates.
 
+The details of the feature selection part could be found in the [feature_selection.md](./docs/feature_selection.md).
+
 ## Attribution
 
 Primary project and data sources:
