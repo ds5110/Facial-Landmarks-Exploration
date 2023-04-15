@@ -1,14 +1,10 @@
 # Feature Selection
 
-During the previous project, three different models were applied to make the adult-infant classification. The adopted features vary between each model: in `SVC`, they applied `PCA` to all landmark coordinates, and also manually selected `boxratio` and `interoc_norm` to build the model. In `Logistic Regression`, they applied `Forward Feature Selection` to all Euclidean Distances, and also manually selected `boxratio`. In `Bayes`, they use `LDA`, `QDA`, `Gaussian Naive Bayes` to all landmark coordinates to select features.
+During the previous project, three different models were applied to make the adult-infant classification. The adopted features vary between each model: in `SVC`, they applied `PCA` to all landmark coordinates, and also manually selected `boxratio` and `interoc_norm` to build the model. In `Logistic Regression`, they applied `Forward Feature Selection` to all Euclidean Distances, and also manually selected `boxratio`. In `Bayes`, they use `LDA`, `QDA`, `Gaussian Naive Bayes` for all landmark coordinates to select features.
 
-Apparently, they all take a **feature selection** or **dimension reduction** method before fitting data into the model. The reason is the large amount of available features: 68 landmarks, with 136 coordinates, with 2278 euclidean distances. This amount of features can easily overfit the classification model, especially considering the dataset is not that large (410 infants and 689 adults). And the amount also makes it very time-consuming to build a model and complete the training and testing process. In addition, the landmark coordinates of a face and the distances between them are usually highly correlated, which also increases the possibility of overfitting and demands a need to take the feature selection.
+Apparently, they all take a **feature selection** or **dimension reduction** method before fitting data into the model. The reason is the large number of available features: 68 landmarks, with 136 coordinates, with 2278 Euclidean Distances. This amount of features could potentially overfit the classification model, especially considering the dataset is not that large (410 infants and 689 adults). And the amount also makes it very time-consuming to build a model and complete the training and testing process. In addition, the landmark coordinates of a face and the distances between them are usually highly correlated, which also increases the possibility of overfitting and demands a need to take the feature selection.
 
-Although many feature selection methods can be taken, the previous project only applied one method to each model. In this project, we decided to apply several different feature selection methods to both **landmark coordinates** and **Euclidean Distances** between them. Our purpose is to try to compare differences between the various feature selection methods, and compare their impact on the final model performance. `Logistic Regression` was selected as our classification model, which has been approved to have a good performance in the last project using a few distances.
-
-# Feedback from the stakeholder
-
-TODO
+Although there are many feature selection methods to choose from, the previous project only applied one method to each model. In this project, we decided to apply several different feature selection methods to both **landmark coordinates** and **Euclidean Distances** between them. Our purpose is to compare differences between the various feature selection methods, and their effects on the final model performance. `Logistic Regression` was selected as our classification model, which has been approved to have a good performance in the last project using a few distances.
 
 # Feature Selection Results
 
@@ -21,8 +17,8 @@ TODO
 - [Wrapper methods of Feature selection](#wrapper-methods)
     - [Forward Feature Selection](#forward-feature-selection)
     - [Recursive Feature Elimination](#recursive-feature-elimination)
-- [Regulation methods of feature selection](#regularization-methods)
-    - [Lasso Regulation](#lasso-regularization)
+- [regularization methods of feature selection](#regularization-methods)
+    - [Lasso Regularization](#lasso-regularization)
 - [Tree-based method of feature selection](#tree-based-methods)
     - [Random Forests](#random-forests)
 - [Conclusion](#conclusion)
@@ -31,9 +27,9 @@ TODO
 
 ### Data Source and Preprocessing
 
-The landmark coordinates data was chosen from previous project that has been scaled and rotated (i.e. normalized). There are 410 infants and 689 adults in the dataset with original and normalized coordinates of their 68 landmarks. The data was stored in `outcome/prev/merged_landmarks.csv`.
+The landmark coordinate data was obtained from the previous project that had been scaled and rotated (i.e. normalized). There are 410 infants and 689 adults in the dataset with original and normalized coordinates of their 68 landmarks. The data was stored in `outcome/prev/merged_landmarks.csv`.
 
-The Euclidean Distances were calculated based on the coordinates. As a result, each face would have 2278 distances. Using the `make euclidean` command can reproduce the calculation results, and the euclidean data wwas stored in `outcome/euclidean/merged.csv`.
+The Euclidean Distances were calculated based on the coordinates. As a result, each face would have 2278 distances. Using the `make euclidean` command can reproduce the calculation results, and the euclidean data was stored in `outcome/euclidean/merged.csv`.
 
 In addition, we also changed the data source to the result of the `scale` part of our project to test the performance of another scaling method. The result of this part will be discussed in [scale.md](scale.md).
 
@@ -46,7 +42,7 @@ Firstly we checked the variances distribution of all landmarks and distances. As
 ![](../outcome/feature_selection/variance_dotplot_landmarks.png)
 ![](../outcome/feature_selection/variance_dotplot_euclidean.png)
 
-This step we only removed some quite low variances with a threshold equaling 0.0005, and it removed 7 landmarks and 59 distances.
+For this step, we only removed features with very low variances (i.e. below 0.0005), and 7 landmarks and 59 distances were removed.
 
 ```
 Original shape of feature matrix: (1099, 136)
@@ -57,7 +53,7 @@ Original shape of feature matrix: (1099, 2278)
 Shape of feature matrix after variance threshold: (1099, 2219)
 ```
 
-Although setting a higher threshold can reduce the feature amount greatly, it also results in losing too much information. In this project, our focus point would be the comparison between feature selection methods. So removing features before feature selection may be helpful for reducing time costs (especially for the over 2000 euclidean distances), it could also lead to too much information lost. We chose to keep as many as possible features within an acceptable extent of feature selection time costs.
+Although setting a higher threshold can reduce the feature amount greatly, it also results in losing too much information. In this project, our focus point would be the comparison between feature selection methods. Removing features before feature selection may help reduce time costs (especially for the over 2000 Euclidean Distances), but we chose to keep as many as possible features within an acceptable extent of feature selection time costs.
 
 ### Correlation Threshold
 
@@ -68,7 +64,7 @@ The matrices below show the correlations between each pair of features. Both lan
 ![](../outcome/feature_selection/correlation_matrix_landmarks.png)
 ![](../outcome/feature_selection/correlation_matrix_euclidean.png)
 
-For each pair of highly correlated features, we would compare their correlation with the target variable (column `baby` in the csv file), and removed the one with less correlation with the target. 
+For each pair of highly correlated features, we would compare their correlation with the target variable (column `baby` in the CSV file), and remove the one with less correlation with the target. 
 
 Similarly, we can set a threshold to decrease feature numbers, but we wanted to keep as much information as possible. We set that features with correlations over 0.95 would be removed, and even such a high threshold removed 70 landmarks and 1553 features. The left features would be passed to our feature selection methods.
 
@@ -117,7 +113,7 @@ The performance of selecting landmark coordinates by Information Gain is not tha
 ![](../outcome/feature_selection/confusion_matrix_euclidean_mutual_info_classif.png)
 ![](../outcome/feature_selection/euclidean_mutual_info_classif.png)
 
-The performance using distances is quite good: using 5 distances we can get a score of 0.920. And the chosen features are similar with results of Fisher's Score, which concentrate on distance between eye and jaw (`dist_7_36`, `dist_7_37`), between eye center and nose(`dist_28_33`), and width of eyebrows (`dist_22_25`, `dist_19_21`).
+The performance using distances is quite good: using 5 distances we can get a score of 0.920. And the chosen features are similar to results of Fisher's Score, which concentrate on distance between eye and jaw (`dist_7_36`, `dist_7_37`), between eye center and nose(`dist_28_33`), and width of eyebrows (`dist_22_25`, `dist_19_21`).
 
 ### Wrapper methods
 
@@ -143,7 +139,7 @@ Applying FFS to distances can achieve a better performance: with only 3 features
 
 #### Recursive Feature Elimination
 
-Recursive Feature Elimination (RFE) follows an opposite approach to FFS. Starting from all features selected, it recursively eliminates the least important feature until reaching the required feature number.
+Recursive Feature Elimination (RFE) follows an approach opposite to FFS. Starting from all features selected, it recursively eliminates the least important feature until reaching the required feature number.
 
 - Results of landmark coordinates
 
@@ -163,21 +159,21 @@ The result of distance selection is also similar to FFS, but with all scores a b
 
 Regularization methods add a penalty to different parameters of the model that encourages sparse solutions, i.e., solutions with fewer non-zero coefficients. It will reduce the chance of overfitting. Examples of regularization methods include `L1 regularization (Lasso)` and `L2 regularization (Ridge Regression)`.
 
-The main difference between L1 and L2 is that L1 regularization would penalize weight of features to 0, which would produce a sparse solution, while L2 would penalize weight to lower values but not 0. As a result, L1 can perform as a feature selection method. The disadvantage of L1 compared to L2 is that it has no closed solution format and is computationally more expensive. We will test `L1 Regularization (Lasso)` here.
+The main difference between L1 and L2 is that L1 regularization would penalize weights of features to 0, which would produce a sparse solution, while L2 would penalize weight to lower values but not 0. As a result, L1 can perform as a feature selection method. The disadvantage of L1 compared to L2 is that it has no closed solution format and is computationally more expensive. We will test `L1 Regularization (Lasso)` here.
 
 #### Lasso Regularization
 
 - Results of landmark coordinates
 
-![](../outcome/feature_selection/confusion_matrix_landmarks_lasso_regulation.png)
-![](../outcome/feature_selection/landmarks_lasso_regulation.png)
+![](../outcome/feature_selection/confusion_matrix_landmarks_lasso_regularization.png)
+![](../outcome/feature_selection/landmarks_lasso_regularization.png)
 
 The result shows that 10 coordinates can achieve a score of 0.9. The selected features focus on x-coordinate of eyebrow (`x18`, `x21`, `x22`, `x26`) at the beginning, and then combine with y-coordinate of mouth and jaw (`y7`, `y60`, `y64`, `y65`). 
 
 - Results of Euclidean Distances
 
-![](../outcome/feature_selection/confusion_matrix_euclidean_lasso_regulation.png)
-![](../outcome/feature_selection/euclidean_lasso_regulation.png)
+![](../outcome/feature_selection/confusion_matrix_euclidean_lasso_regularization.png)
+![](../outcome/feature_selection/euclidean_lasso_regularization.png)
 
 The result of distance selection is better. Similar to wrapper methods, 3 features can combine to achieve a score of 0.9. And the 3 features are distance between jaw and mouth (`dist_7_48`), between eyebrows (`dist_21_22`), and between mouth and nose (`dist_33_65`).
 
@@ -209,32 +205,42 @@ The result of distance selection is better than coordinates. With 5 distances, w
 
 The plots show the train and test scores of all methods. For landmark coordinate features, `Forward Feature Selection` performs best and can get a better test score than classification without feature selection (the dashed line at the top), which means the reduction of overfitting extent. In addition, FFS also has a higher train score than the one without feature selection. This may attribute to the reduction of redundant and irrelevant features in the original dataset.
 
-From the perspective of test scores, FFS performs best then `Lasso regularization` and `RFE`, and then `Random Forests`. Assuming 0.9 is a good test score, `Fisher's Score` and `Information Gain` method all fail to produce a good feature selection result. Even with 50 features, they can hardly get a test score over 0.9. The reason is that these filter methods use statistical measures to rank features without considering their correlations. This can result in the selection of redundant or irrelevant features.
+From the perspective of test scores, FFS performs best then `Lasso regularization` and `RFE`, and then `Random Forests`. Assuming 0.9 is a good test score, `Fisher's Score` and `Information Gain` method all fail to produce a good feature selection result. Even with 30 features, they can hardly get a test score over 0.9. The reason is that these filter methods use statistical measures to rank features without considering their correlations. This can result in the selection of redundant or irrelevant features.
 
 Most methods show a slight reduction or hover of test scores after 20 features, while train scores keep growth with feature number increase. This reveals an overfitting tends to happen after 20 coordinates.
 
 ![](../outcome/feature_selection/method_scores_euclidean.png)
 
-For Euclidean Distance selection, the performance of all methods is better than landmark selection. All features can get a test score of 0.9 with less features (less than 10 features). And the overfitting tends to happen earlier (around 15 features), which means less distances are required to perform a good classification compared with landmark coordinates.
+For Euclidean Distance selection, the performance of all methods is better than landmark selection. All features can get a test score of 0.9 with fewer features (less than 10 features). And the overfitting tends to happen earlier (around 15 features), which means fewer distances are required to perform a good classification compared with landmark coordinates.
 
-Also, `FFS` performs best if we use test score as the measurement, and it reaches higher test scores than ones without feature selection, which means a reduction of overfitting. `Lasso` also get higher test scores than ones without feature selection with feature number 10 to 20, but then the score descends because of overfitting.
+Also, `FFS` performs best if we use test scores as the measurement, and it reaches higher test scores than ones without feature selection, which means a reduction of overfitting. `Lasso` also gets higher test scores than ones without feature selection during feature number 10 to 20, but then the score descends because of overfitting.
 
 In general, `FFS`, `Lasso`, and `RFE` perform better than others. Filter Methods still perform worse than wrapper and regularization methods.
 
-TODO: running time of methods
+![](../outcome/feature_selection/selection_time_landmarks.png)
+![](../outcome/feature_selection/selection_time_euclidean.png)
+
+In addition, we also made plots to compare the time cost of different methods. Clearly, wrapper methods are much slower than others, especially when the number of features in the dataset is big. `FFS` for Euclidean Distances can take up to hundreds of seconds.
+
+`FFS` is also slower than `RFE`. This is the opposite of what we guessed, as generally `RFE` should be slower because it starts from full set of features and removes features recursively. The reason why `FFS` is so slow may be that the number of features is big and many features are correlated closely. As a result, `FFS` gets harder to train the model recursively and find the next feature that makes performance better. It may take many possible subsets to find the best performance in each iteration. While `RFE` would rank selected features based on the estimator, and remove the least important feature recursively. This approach would be faster than `FFS`.
+
+Combined with the performance above, we would say that although `FFS` has the best test score of classification, it is really computationally expensive. Both `RFE` and `Lasso` would be better choices that are relatively fast and performs well.
 
 #### Integrated Result
 
-TODO: common features among all methods with a good score
+At last, we put all "good" feature selection results together that have relatively good performance (test score higher than or around 0.9) and have the least number of features using that method, to see if some features are treated as important ones commonly among all methods.
+
+![](../outcome/feature_selection/best_landmarks.png)
+![](../outcome/feature_selection/best_euclidean.png)
+
+For landmark coordinates features, most "good" results put importance on y-coordinates of mouth, jaw, and eyes, and x-coordinates of eyebrows. While for Euclidean Distances, most "good" results put importance on eye-nose, eye-jaw, mouth-jaw, and eyebrows distances.
+
+Among all 68 landmarks of one face, we can see the most important features are mouth, eye, nose, jaw, and distances between them. And distances can get a good performance with fewer feature numbers than coordinates. Nearly no landmarks of cheeks are chosen among all methods.
 
 # Issues may be resolved in future
 
 - If we set a higher correlation threshold, and features with high correlations would be dropped to a larger extent, will filter methods get a better performance?
 
+- Following the last step, will `FFS` become faster than `RFE`?
+
 - The dataset is relatively small compared with the feature number, will our result keep the same for larger datasets?
-
-
-
-
-
-
