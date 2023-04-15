@@ -1,8 +1,8 @@
 # Feature Selection
 
-During the previous project, three different models were applied to make the adult-infant classification. The adopted features vary between each model: in `SVC`, they applied `PCA` to all landmark coordinates, and also manually selected `boxratio` and `interoc_norm` to build the model. In `Logistic Regression`, they applied `Forward Feature Selection` to all Euclidean Distances, and also manually selected `boxratio`. In `Bayes`, they use `LDA`, `QDA`, `Gaussian Naive Bayes` to all landmark coordinates to select features.
+During the previous project, three different models were applied to make the adult-infant classification. The adopted features vary between each model: in `SVC`, they applied `PCA` to all landmark coordinates, and also manually selected `boxratio` and `interoc_norm` to build the model. In `Logistic Regression`, they applied `Forward Feature Selection` to all Euclidean Distances, and also manually selected `boxratio`. In `Bayes`, they use `LDA`, `QDA`, `Gaussian Naive Bayes` for all landmark coordinates to select features.
 
-Apparently, they all take a **feature selection** or **dimension reduction** method before fitting data into the model. The reason is the large amount of available features: 68 landmarks, with 136 coordinates, with 2278 Euclidean Distances. This amount of features could potentially overfit the classification model, especially considering the dataset is not that large (410 infants and 689 adults). And the amount also makes it very time-consuming to build a model and complete the training and testing process. In addition, the landmark coordinates of a face and the distances between them are usually highly correlated, which also increases the possibility of overfitting and demands a need to take the feature selection.
+Apparently, they all take a **feature selection** or **dimension reduction** method before fitting data into the model. The reason is the large number of available features: 68 landmarks, with 136 coordinates, with 2278 Euclidean Distances. This amount of features could potentially overfit the classification model, especially considering the dataset is not that large (410 infants and 689 adults). And the amount also makes it very time-consuming to build a model and complete the training and testing process. In addition, the landmark coordinates of a face and the distances between them are usually highly correlated, which also increases the possibility of overfitting and demands a need to take the feature selection.
 
 Although there are many feature selection methods to choose from, the previous project only applied one method to each model. In this project, we decided to apply several different feature selection methods to both **landmark coordinates** and **Euclidean Distances** between them. Our purpose is to compare differences between the various feature selection methods, and their effects on the final model performance. `Logistic Regression` was selected as our classification model, which has been approved to have a good performance in the last project using a few distances.
 
@@ -18,7 +18,7 @@ Although there are many feature selection methods to choose from, the previous p
     - [Forward Feature Selection](#forward-feature-selection)
     - [Recursive Feature Elimination](#recursive-feature-elimination)
 - [regularization methods of feature selection](#regularization-methods)
-    - [Lasso regularization](#lasso-regularization)
+    - [Lasso Regularization](#lasso-regularization)
 - [Tree-based method of feature selection](#tree-based-methods)
     - [Random Forests](#random-forests)
 - [Conclusion](#conclusion)
