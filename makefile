@@ -22,6 +22,9 @@ scale: scale_data scale_plt
 euclidean:
 	python -B ./src/euclidean.py
 
+euclidean_scale:
+	python -B ./src/euclidean.py scale
+
 scatter:
 	python src/scatter.py
 

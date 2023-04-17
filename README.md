@@ -31,6 +31,7 @@ conda activate DS5110-faces-extend
 
 - `make scale`: The command is used for downloading data and calculating the scale part.
 - `make euclidean`: The command is used for generating euclidean distances between landmarks.
+- `make euclidean_scale`: Euclidean Distances generation with data source changed to `rotated_scale.csv` for comparison.
 - `make scatter`: The command is used for plotting boxplot of each variable and scatter plot of mean of each variable to
   show the distribution of landmarks.
 - `make outlier_new`: The command is used for performing outlier detection on face landmarks data using two methods:
