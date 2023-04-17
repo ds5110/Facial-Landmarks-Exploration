@@ -74,9 +74,16 @@ and being aligned center and rotated. By them, there is an image that plot by th
 
 ![scatter_adult](../outcome/outlier_selection/scatter_adult.png)
 
-The scatter plots show the mean location of each landmark point in the image. Based on the scatter plots, it appears that the landmark points for infants and adults are distributed differently. For example, some of the landmark points for infants appear to be closer together, while others are more spread out. In contrast, the landmark points for adults appear to be more evenly distributed across the image.
+The scatter plots show the mean location of each landmark point in the image. Based on the scatter plots, it appears
+that the landmark points for infants and adults are distributed differently. For example, some of the landmark points
+for infants appear to be closer together, while others are more spread out. In contrast, the landmark points for adults
+appear to be more evenly distributed across the image.
 
-The box plots provide a summary of the distribution of x and y coordinates for each landmark point. Based on the box plots, it appears that the distribution of landmark points for infants and adults is also different. For example, some of the landmark points for infants have a larger range of x and y coordinates than others, indicating greater variability in their location across images. In contrast, the landmark points for adults have a more consistent range of x and y coordinates across images.
+The box plots provide a summary of the distribution of x and y coordinates for each landmark point. Based on the box
+plots, it appears that the distribution of landmark points for infants and adults is also different. For example, some
+of the landmark points for infants have a larger range of x and y coordinates than others, indicating greater
+variability in their location across images. In contrast, the landmark points for adults have a more consistent range of
+x and y coordinates across images.
 
 After that, we take 2 approaches we take for detecting outliers involves the use of Mahalanobis distance, and Isolation
 Forest. After adding some noises to the dataset, we could get such a result:
@@ -139,32 +146,6 @@ x-coordinates of eyebrows. While for Euclidean Distances, most "good" results pu
 mouth-jaw, and eyebrows distances. Among all 68 landmarks of one face, we can see the most important features are mouth,
 eye, nose, jaw, and distances between them. And distances can get a good performance with fewer feature numbers than
 coordinates. Nearly no landmarks of cheeks are chosen among all methods.
-
-## Stakeholder Feedback (03/28/2023)
-
-- feedback regarding scaling methods
-
-The end goal of choosing a better scaling method should be more clear.
-
-- feedback regarding outlier detection
-
-We should know what an outlier looks like, e.g. landmark dots cannot make up a face. And how they can be detected.
-
-Current generic algorithms for detecting outliers may not correctly mean there is no outlier. The applied metrics may
-not detect the bias, or the metrics may not correspond to the outlier that we tended to look for.
-
-The current landmark results should be reasonable as they have checked them. However, We can put in an outlier on
-purpose to test whether the detector can detect the outlier.
-
-Instead of using euclidean distances as outlier detection features, try only using normalized coordinates (
-68-dimensional vector).
-
-Apply PCA to coordinates, and see what the left face shape and the left data look like. Then think about whether the
-data after PCA is outliers.
-
-- other feedback
-
-Don't focus too much on implementing classification algorithms but on understanding the nature of data.
 
 ## Challenges
 
