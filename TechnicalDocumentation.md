@@ -191,9 +191,9 @@ distribution of landmarks for both infants and adults.
 
 4. Plot a boxplot of the x and y coordinates of each landmark to visualize the distribution of landmarks.
 
-##### outlier_new.py
+##### outlier.py
 
-The `outlier_new.py` file is used for performing outlier detection on face landmarks data using two methods: Mahalanobis
+The `outlier.py` file is used for performing outlier detection on face landmarks data using two methods: Mahalanobis
 distance and isolation forest.
 
 1. Read the merged_landmarks.csv file using the pandas library to separate the data into infants and adults.
@@ -216,9 +216,9 @@ distance and isolation forest.
    data. It then applies the ma() and isolation() functions to the original and modified data to detect outliers.
    Finally, it prints the indices of the outliers detected for each data set and method.
 
-##### outlier_new_scale.py
+##### outlier_scale.py
 
-The `outlier_new_scale.py` file is used for evaluating efficiency of three scaling techniques by using our two outlier
+The `outlier_scale.py` file is used for evaluating efficiency of three scaling techniques by using our two outlier
 detection model on datasets obtained from these methods.
 
 1. We first read in the dataset and separate it into three different scaling methods: standard, normalized, and MDS. We
