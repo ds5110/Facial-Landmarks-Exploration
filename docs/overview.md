@@ -79,7 +79,12 @@ and being aligned center and rotated. By them, there is an image that plot by th
 After that, we take 2 approaches we take for detecting outliers involves the use of Mahalanobis distance, and Isolation
 Forest. After adding some noises to the dataset, we could get such a result:
 
-***There should be a table that showing all of results.***
+| dataset=infant/adult（ACC /P/R/F1 ） | Mahalanobis distance | Isolation Forest |
+|------------------------------------|----------------------|------------------|
+| Standard                           | 1                    | 1                |
+| Normalized                         | 1                    | 1                |
+| MDS                                | 0                    | 0                |
+| Previous Project                   | 1                    | 1                |
 
 You could find more details of these scale methods in [outlier.md](./outlier.md).
 
@@ -89,6 +94,49 @@ findings suggest that our outlier detection method using landmarks data is viabl
 in complex datasets, even in the presence of noise.
 
 ## Feature Selection
+
+During the previous project, three different models were applied to make the adult-infant classification. They adopted
+various `feature selection` or `dimension reduction` methods before fitting features to each model.
+
+In this project, we decided to apply several different feature selection methods to both **landmark coordinates** and **
+Euclidean Distances** between them. Our purpose is to compare differences between the various feature selection methods,
+and their effects on the final model performance. `Logistic Regression` was selected as our classification model, which
+has been approved to have a good performance in the last project using a few distances.
+
+A total number of 6 methods were applied, including `Fisher's Score`, `Information Gain`, `Forward Feature Selection`
+, `Recursive Feature Elimination`, `Lasso Regularization`, and `Random Forests`. In addition, we
+applied `Variance Threshold` and `Correlation Threshold` to filter features before implementing selection methods.
+
+![](../outcome/feature_selection/method_scores_landmarks.png)
+![](../outcome/feature_selection/method_scores_euclidean.png)
+
+The plots show the train and test scores of all methods. For landmark coordinate features, `Forward Feature Selection`
+performs best and can get a better test score than classification without feature selection, which means the reduction
+of overfitting extent. For Euclidean Distance selection, the performance of all methods is better than landmark
+selection. All features can get a test score of 0.9 with fewer features (less than 10 features). `FFS` still performs
+best, and it reaches higher test scores than ones without feature selection, which means a reduction of overfitting.
+Filter Methods generally perform worse than wrapper and regularization methods.
+
+![](../outcome/feature_selection/selection_time_landmarks.png)
+![](../outcome/feature_selection/selection_time_euclidean.png)
+
+The plots of running time show that wrapper methods are much slower than others, especially when the number of features
+in the dataset is big. `FFS` for Euclidean Distances can take up to hundreds of seconds. Combined with the performance
+above, we would say that although `FFS` has the best test score of classification, it is really computationally
+expensive. Both `RFE` and `Lasso` would be better choices that are relatively fast and performs well.
+
+![](../outcome/feature_selection/best_landmarks.png)
+![](../outcome/feature_selection/best_euclidean.png)
+
+At last, we put all "good" feature selection results together that have relatively good performance (test score higher
+than or around 0.9) and have the least number of features using that method, to see if some features are treated as
+important ones commonly among all methods.
+
+For landmark coordinates features, most "good" results put importance on y-coordinates of mouth, jaw, and eyes, and
+x-coordinates of eyebrows. While for Euclidean Distances, most "good" results put importance on eye-nose, eye-jaw,
+mouth-jaw, and eyebrows distances. Among all 68 landmarks of one face, we can see the most important features are mouth,
+eye, nose, jaw, and distances between them. And distances can get a good performance with fewer feature numbers than
+coordinates. Nearly no landmarks of cheeks are chosen among all methods.
 
 ## Stakeholder Feedback (03/28/2023)
 
@@ -134,3 +182,10 @@ we met our goals and delivered a high-quality output.
 
 ## Conclusion
 
+In cnoclusion, our project aimed to improve facial landmark scale, representation, and feature selection in computer
+vision and facial recognition. We explored scaling and rotation methods, outlier detection techniques, and feature
+selection strategies. The optimal scaling technique should align landmarks to the center, enable rotation, and maintain
+normalization. Mahalanobis distance and Isolation Forest were effective in detecting outliers, and using Euclidean
+distances led to better performance with fewer features. Forward Feature Selection, Recursive Feature Elimination, and
+Lasso Regularization were suitable for feature selection. Our work contributes to enhancing facial recognition and
+computer vision tasks by providing a more accurate and efficient framework.
