@@ -6,6 +6,7 @@ import sys
 from utils import get_data, get_data_scale, get_cols, get_cols_scale
 
 
+# Generate dot plots to show variance distribution of features
 def variance_dotplot(df, address, title):
     fig = plt.figure(figsize=(15, 4))
     var = df.var()
@@ -17,6 +18,7 @@ def variance_dotplot(df, address, title):
     plt.close(fig)
 
 
+# Generate heatmaps to show the correlation between features
 def correlation_matrix(df, address, title):
     fig = plt.figure(figsize=(15, 8))
     cor = df.corr(numeric_only=True).abs()
@@ -28,6 +30,7 @@ def correlation_matrix(df, address, title):
     plt.close(fig)
 
 
+# Calculate the mean x and y coordinates of landmarks and their value range
 def get_mean_landmark(df, x_cols, y_cols):
     x_mean = df[x_cols].mean(axis=0)
     y_mean = df[y_cols].mean(axis=0)
@@ -36,6 +39,7 @@ def get_mean_landmark(df, x_cols, y_cols):
     return x_mean, y_mean, x_abs_max, y_abs_max
 
 
+# Generate scatter plots to show all landmarks with mean coordinates
 def mean_landmark_plot(ax, x_mean, y_mean, x_abs_max, y_abs_max):
     ax.set(xlim=[x_abs_max, -x_abs_max], ylim=[y_abs_max, -y_abs_max])
     ax.scatter(x_mean, y_mean, alpha=0.5)
@@ -43,32 +47,45 @@ def mean_landmark_plot(ax, x_mean, y_mean, x_abs_max, y_abs_max):
     ax.axvline(0, color='black', linewidth=0.5)
 
 
+# Generate scatter plots to show landmarks selected as features
+# Generate lines to show x and y coordinates directions
 def landmark_feature_plot(i, ax, x_cols, y_cols, method_df, x_mean, y_mean):
     feature_names = method_df.columns[method_df.iloc[i, :] == True]
     for feature_name in feature_names:
         landmark_label = feature_name.split("-")[-1]
+
+        # x-coordinates as features
         if feature_name in x_cols:
             landmark_x = x_mean[feature_name]
             landmark_y = y_mean[x_cols.index(feature_name)]
             ax.scatter(landmark_x, landmark_y, c="green")
             ax.annotate(landmark_label, (landmark_x, landmark_y), textcoords="offset points", xytext=(-20, -10))
+            
+            # Lines to show coordinate directions
             if landmark_x > 0:
                 ax.axhline(y=landmark_y, xmin=0.5, xmax=0.5 + landmark_x / ax.get_xlim()[1] / 2, color="green", linewidth=0.5)
             else:
                 ax.axhline(y=landmark_y, xmax=0.5, xmin=0.5 + landmark_x / ax.get_xlim()[1] / 2, color="green", linewidth=0.5)
-
+        
+        # y-coordinates as features
         if feature_name in y_cols:
             landmark_x = x_mean[y_cols.index(feature_name)]
             landmark_y = y_mean[feature_name]
             ax.scatter(landmark_x, landmark_y, c="green")
             ax.annotate(landmark_label, (landmark_x, landmark_y), textcoords="offset points", xytext=(5, 5))
+            
+            # Lines to show coordinate directions
             if landmark_y > 0:
                 ax.axvline(x=landmark_x, ymin=0.5, ymax=(0.5 + landmark_y / ax.get_ylim()[1] / 2), color="green", linewidth=0.5)
             else:
                 ax.axvline(x=landmark_x, ymax=0.5, ymin=(0.5 + landmark_y / ax.get_ylim()[1] / 2), color="green", linewidth=0.5)
+    
+    # Show selector name and test scores in subtitles
     ax.set_title("{}\n CV Test Score = {:.3f} +/- {:.3f}".format(method_df.iloc[i, 0], method_df.iloc[i, 5], method_df.iloc[i, 6]), pad=20)
 
 
+# Call `mean_landmark_plot` and `landmark_feature_plot` to generate plots for each feature selection method
+# Each method plot would contain 8 subplots, with each representing one selector
 def landmark_plots(df, x_cols, y_cols, feature_selection_result, methods, address):
     x_mean, y_mean, x_abs_max, y_abs_max = get_mean_landmark(df, x_cols, y_cols)
     
@@ -87,6 +104,7 @@ def landmark_plots(df, x_cols, y_cols, feature_selection_result, methods, addres
         plt.close(fig)
 
 
+# Set a criterion to select "good" selection results
 def get_best_selectors(feature_selection_result):
     best_selector_names = []
     method_names = []
@@ -101,6 +119,8 @@ def get_best_selectors(feature_selection_result):
     return best_selector_names
 
 
+# Call `get_best_selectors` to get "good" selection results of landmarks
+# Call `mean_landmark_plot` and `landmark_feature_plot` to generate plots for them
 def best_landmark_plots(df, x_cols, y_cols, feature_selection_result, address):
     x_mean, y_mean, x_abs_max, y_abs_max = get_mean_landmark(df, x_cols, y_cols)
     best_selector_names = get_best_selectors(feature_selection_result)
@@ -120,6 +140,8 @@ def best_landmark_plots(df, x_cols, y_cols, feature_selection_result, address):
     plt.close(fig)
 
 
+# Generate scatter plots to show landmarks that were selected to make up distance features
+# Generate lines to show distances between pairs of landmarks
 def euclidean_feature_plot(i, ax, method_df, x_mean, y_mean):
     feature_names = method_df.columns[method_df.iloc[i, :] == True]
     for feature_name in feature_names:
@@ -135,9 +157,13 @@ def euclidean_feature_plot(i, ax, method_df, x_mean, y_mean):
         ax.annotate(landmark_label_1, (landmark_1_x, landmark_1_y), textcoords="offset points", xytext=(5, 5))
         ax.annotate(landmark_label_2, (landmark_2_x, landmark_2_y), textcoords="offset points", xytext=(5, 5))
         ax.plot([landmark_1_x, landmark_2_x], [landmark_1_y, landmark_2_y], c="green")
+    
+    # Show selector name and test scores in subtitles
     ax.set_title("{}\n CV Test Score = {:.3f} +/- {:.3f}".format(method_df.iloc[i, 0], method_df.iloc[i, 5], method_df.iloc[i, 6]), pad=20)
 
 
+# Call `mean_landmark_plot` and `euclidean_feature_plot` to generate plots for each feature selection method
+# Each method plot would contain 8 subplots, with each representing one selector
 def euclidean_plots(df, feature_cols, x_cols, y_cols, feature_selection_result, methods, address):
     x_mean, y_mean, x_abs_max, y_abs_max = get_mean_landmark(df, x_cols, y_cols)
     
@@ -155,6 +181,9 @@ def euclidean_plots(df, feature_cols, x_cols, y_cols, feature_selection_result, 
         plt.close(fig)
 
 
+
+# Call `get_best_selectors` to get "good" selection results of Euclidean Distances
+# Call `mean_landmark_plot` and `euclidean_feature_plot` to generate plots for them
 def best_euclidean_plots(df, x_cols, y_cols, feature_selection_result, address):
     x_mean, y_mean, x_abs_max, y_abs_max = get_mean_landmark(df, x_cols, y_cols)
     best_selector_names = get_best_selectors(feature_selection_result)
@@ -174,6 +203,8 @@ def best_euclidean_plots(df, x_cols, y_cols, feature_selection_result, address):
     plt.close(fig)
     
 
+# Generate heatmaps to show confusion matrices of feature selection results
+# Can be used for both landmark and Euclidean Distance results, determined by the boolean parameter
 def confusion_matrix(feature_selection_result, methods, euclidean, address):
     for method in methods:
         method_df = feature_selection_result.loc[feature_selection_result["selector_name"].str.contains(method)]
@@ -183,6 +214,7 @@ def confusion_matrix(feature_selection_result, methods, euclidean, address):
             cm = cm.apply(pd.to_numeric)
             ax = sns.heatmap(cm, cmap="flare", annot=True, cbar=False, fmt="d", ax=ax)
             ax.set(xlabel="Predicted Target", ylabel="True Target")
+            # Show selector name and test scores in subtitles
             ax.set_title("{}\n CV Test Score = {:.3f} +/- {:.3f}".format(method_df.iloc[i, 0], method_df.iloc[i, 5], method_df.iloc[i, 6]))
         fig.subplots_adjust(hspace=0.4)
         fig.savefig("{}/confusion_matrix_{}_{}.png".format(address, "landmarks" if euclidean==False else "euclidean", method), dpi=300)
@@ -191,6 +223,8 @@ def confusion_matrix(feature_selection_result, methods, euclidean, address):
         plt.close(fig)
 
 
+# Generate line plots to show all cross-validation train and test scores
+# for all feature selection results
 def method_score_plot(feature_selection_result, methods, n_features, address, title):
     fig= plt.figure(figsize=(10, 5))
     ax1 = plt.subplot(1, 2, 1)
@@ -215,6 +249,8 @@ def method_score_plot(feature_selection_result, methods, n_features, address, ti
     print("Saved: {}".format(address))
     plt.close(fig)
 
+
+# Generate heatmaps to show the running time for each feature selection selector
 def selection_time_plot(feature_selection_result, address, title):
     df = feature_selection_result.iloc[1:,:].pivot(index="method_name", columns="feature_num", values="selection_time")
 
@@ -268,6 +304,7 @@ def main():
     selection_time_plot(feature_selection_result, "outcome/feature_selection/selection_time_euclidean.png", "Running Time of All Euclidean Distance Selection Methods")
 
 
+# Change data source to scale method results
 def main_scale():
 
     # Landmark plots
@@ -307,6 +344,7 @@ def main_scale():
     confusion_matrix(feature_selection_result, methods, True, "outcome/feature_selection_scale")
     best_euclidean_plots(df, x_cols, y_cols, feature_selection_result,"outcome/feature_selection_scale/best_euclidean.png")
     selection_time_plot(feature_selection_result, "outcome/feature_selection_scale/selection_time_euclidean.png", "Running Time of All Euclidean Distance Selection Methods Using Scale Method")
+
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "scale":

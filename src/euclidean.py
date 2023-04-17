@@ -4,6 +4,8 @@ from sklearn.metrics.pairwise import euclidean_distances
 from utils import get_data, get_data_scale, get_cols, get_cols_scale, reshape_to_2d
 
 
+# Calculate Eucidean Distances based on the reshaped 3d DataFrame
+# Result would be stored as a (row, 68, 68) DataFrame
 def distance_by_coordinates(df, x_cols, y_cols):
     df_reshaped = reshape_to_2d(df, x_cols, y_cols)
     num_rows = df.shape[0]
@@ -13,6 +15,8 @@ def distance_by_coordinates(df, x_cols, y_cols):
     return distances
 
 
+# Extract the Euclidean Distance data from the result of `distance_by_coordinates`
+# Store as a 2d DataFrame
 def get_distance_cols(distances):
     new_cols = []
     for i in range(68):
@@ -24,6 +28,7 @@ def get_distance_cols(distances):
     return new_cols_df
 
 
+# Combine results of `get_distance_cols` and the original DataFrame together
 def create_euclidean_df(df, x_cols, y_cols):
     distances = distance_by_coordinates(df, x_cols, y_cols)
     new_cols_df = get_distance_cols(distances)
@@ -55,5 +60,7 @@ def main_scale():
 
 
 if __name__ == "__main__":
-    main()
-    # main_scale()
+    if len(sys.argv) > 1 and sys.argv[1] == "scale":
+        main_scale()
+    else:
+        main()
