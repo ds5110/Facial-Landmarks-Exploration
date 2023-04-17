@@ -9,7 +9,7 @@ import sys
 from utils import get_data, get_data_scale
 
 
-# Remove features with low variance    
+# Set a threshold to remove features with low variance
 def variance_threshold(df, feature_cols, threshold):
     df_X = df.loc[:, feature_cols]
     X = df_X.values
@@ -29,8 +29,8 @@ def variance_threshold(df, feature_cols, threshold):
     return df_X_after_vt, df_y, y
 
 
-# Remove features with high correlation with others
-# Drop the feature in the pair with lower correlation with target
+# Find features with high correlation with others
+# Drop the feature in each pair with lower correlation with target variable
 def correlation_threshold(df_X, df_y, threshold):
     corr = df_X.corr().abs()
     high_corr_features = [column for column in corr.columns if any(corr[column] > 0.5)]
@@ -48,7 +48,10 @@ def correlation_threshold(df_X, df_y, threshold):
     
     return df_X_after_ct, X_after_ct
 
-# Six different feature selection methods as well as all features
+
+
+# Main process of feature selection
+# Seleted feature names and running time would be stored
 def feature_selection(df, feature_cols):
     methods = ["all_features",
                "f_classif", 
@@ -159,9 +162,11 @@ def feature_selection(df, feature_cols):
     return feature_names, selection_time
         
 
-# Test selected features using logistic regression
+# Main process of feature selection performance analytics
 def feature_seletion_performance(feature_names, selection_time, df, feature_cols):
     y = df.loc[:, "baby"].values
+
+    # Initialize DataFrame to store all results
     column_names = ["selector_name",
                     "method_name",
                     "feature_num",
@@ -189,6 +194,8 @@ def feature_seletion_performance(feature_names, selection_time, df, feature_cols
         feature_selection_result.iloc[i, 0] = selector_name
         feature_selection_result.iloc[i, 1] = method_name
         feature_selection_result.iloc[i, 2] = feature_num
+
+        # Apply logistic regression to fit and report performance
         logistic = LogisticRegression(random_state=7, max_iter=10000)
         logistic.fit(X_selected, y)
         scores = cross_validate(logistic, X_selected, y, cv=5, return_train_score=True)
@@ -198,6 +205,7 @@ def feature_seletion_performance(feature_names, selection_time, df, feature_cols
         feature_selection_result.iloc[i, 5] = scores["test_score"].mean()
         feature_selection_result.iloc[i, 6] = scores["test_score"].std()
 
+        # Generate confusion matrix results for each feature selection result
         y_pred = cross_val_predict(logistic, X_selected, y, cv=5)
         cm = confusion_matrix(y, y_pred, labels=[0, 1])
         feature_selection_result.iloc[i, 7:11] = cm.flatten().tolist()
