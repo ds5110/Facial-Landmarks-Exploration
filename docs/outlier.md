@@ -282,7 +282,7 @@ Another challenge I faced was how to prove the data selected were true outliers.
 
 According to our stakeholders and professor, generic algorithms for outlier detection may not be accurate in detecting outliers, and we need to find a suitable metric to prove their accuracy. Therefore, we intentionally added noise data to test the model's ability to detect outliers. Additionally, we changed the data by using landmarks instead of euclidean distances for outlier detection.
 
-In response to this feedback, we shifted the focus to these two areas and made improvements. We changed the input data from distance data (136! columns) to landmark data (136 columns), and test whether the models can find the incorporated noise data as outliers to evaluate the effectiveness of outlier detection model. By doing so, we were able to ensure that our model is reliable in identifying outliers.
+In response to this feedback, we shifted the focus to these two areas and made improvements. We changed the input data from distance data (136! columns) to landmark data (136 columns), and test whether the models can find the incorporated noise data as outliers to evaluate the effectiveness of outlier detection model. By doing so, we were able to ensure that our model is reliable in identifying outliers.  
 
 Overall, these changes demonstrate our commitment to providing accurate and reliable outlier detection results. We really appreciate the feedback from the stakeholder and professor which helps us a lot.
 
