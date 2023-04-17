@@ -271,6 +271,21 @@ ACC/P/R/F1
 </div>
 We can conclude that standard scaling and normalization scaling are very effective, but MDS scaling is too bad. 
 
+## Challenges
+
+One of the main challenges we faced at the beginning of the project was the lack of a clear direction. We struggled to find the meaningful direction, and it wasn't until we engaged in discussions with our teacher and team members that we gained a better understanding of the project's goals and objectives.
+
+Another challenge I faced was how to prove the data selected were true outliers. At first, I tried to show the outliers according images and try to find the difference but find nothing. Later, we added noise points to the dataset and use the previous models to test whether the models can find the noise data as outliers. And it works. Overall, the process of overcoming these challenges help me improve the ability to solve the problem.
+
+
+## Feedback
+
+According to our stakeholders and professor, generic algorithms for outlier detection may not be accurate in detecting outliers, and we need to find a suitable metric to prove their accuracy. Therefore, we intentionally added noise data to test the model's ability to detect outliers. Additionally, we changed the data by using landmarks instead of euclidean distances for outlier detection.
+
+In response to this feedback, we shifted the focus to these two areas and made improvements. We changed the input data from distance data (136! columns) to landmark data (136 columns), and test whether the models can find the incorporated noise data as outliers to evaluate the effectiveness of outlier detection model. By doing so, we were able to ensure that our model is reliable in identifying outliers.
+
+Overall, these changes demonstrate our commitment to providing accurate and reliable outlier detection results. We really appreciate the feedback from the stakeholder and professor which helps us a lot.
+
 ## Conclusion
 
 Based on the results, we found that both the Mahalanobis distance and Isolation Forest techniques were effective in identifying the added noise points accurately, without falsely flagging any of the true data points as outliers. These findings suggest that our outlier detection method using landmarks data is viable and can accurately identify outliers in complex datasets, even in the presence of noise. 
