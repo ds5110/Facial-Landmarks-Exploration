@@ -184,7 +184,7 @@ we met our goals and delivered a high-quality output.
 
 ## Conclusion
 
-In cnoclusion, our project aimed to improve facial landmark scale, representation, and feature selection in computer
+In conclusion, our project aimed to improve facial landmark scale, representation, and feature selection in computer
 vision and facial recognition. We explored scaling and rotation methods, outlier detection techniques, and feature
 selection strategies. The optimal scaling technique should align landmarks to the center, enable rotation, and maintain
 normalization. Mahalanobis distance and Isolation Forest were effective in detecting outliers, and using Euclidean
