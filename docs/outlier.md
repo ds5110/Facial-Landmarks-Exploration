@@ -66,6 +66,14 @@ Additionally, we created boxplot and scatterplot for each variable to visualize 
 ![boxplot_adult_y](../outcome/outlier_selection/boxplot_adult_y.png)
 </div>
 
+The scatter plots and box plots provide a visual representation of the distribution of landmark points for infants and adults separately.
+
+The scatter plots show the mean location of each landmark point in the image. Based on the scatter plots, it appears that the landmark points for infants and adults are distributed differently. For example, some of the landmark points for infants appear to be closer together, while others are more spread out. In contrast, the landmark points for adults appear to be more evenly distributed across the image.
+
+The box plots provide a summary of the distribution of x and y coordinates for each landmark point. Based on the box plots, it appears that the distribution of landmark points for infants and adults is also different. For example, some of the landmark points for infants have a larger range of x and y coordinates than others, indicating greater variability in their location across images. In contrast, the landmark points for adults have a more consistent range of x and y coordinates across images.
+
+Overall, these results suggest that there are significant differences in the distribution of landmark points between infants and adults. These differences could be due to a variety of factors, such as differences in head size, facial features, or imaging quality. Understanding these differences can be important for subsequent analyses, such as outlier detection and classification. For example, outlier detection algorithms may need to be tailored to the specific characteristics of the landmark points in each group to improve their accuracy.
+
 ### Using two models to detect outliers
 The approach we take for detecting outliers involves the use of Mahalanobis distance, and Isolation Forest.Mahalanobis distance to determine the similarity or dissimilarity between data points by scaling the difference by the inverse of the covariance matrix, and then taking the square root of the result to produces a single value that represents the distance between the two points in the multi-dimensional space. During the process,  we compute the Mahalanobis distance for each data point, which measures the distance between a point and a distribution, taking into account the covariance structure of the dataset.Isolation Forest is an anomaly detection algorithm based on tree structures that can detect anomalous data points in a short time. It achieves this by building decision trees with random splits in the dataset, where each tree is a recursive process of dividing the dataset into subsets. During the process, it partitions the dataset into smaller and smaller subspaces until the anomalous points are isolated.  
 
