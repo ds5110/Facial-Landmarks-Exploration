@@ -74,7 +74,9 @@ and being aligned center and rotated. By them, there is an image that plot by th
 
 ![scatter_adult](../outcome/outlier_selection/scatter_adult.png)
 
-***In this place I would like to place a small conclusion.***
+The scatter plots show the mean location of each landmark point in the image. Based on the scatter plots, it appears that the landmark points for infants and adults are distributed differently. For example, some of the landmark points for infants appear to be closer together, while others are more spread out. In contrast, the landmark points for adults appear to be more evenly distributed across the image.
+
+The box plots provide a summary of the distribution of x and y coordinates for each landmark point. Based on the box plots, it appears that the distribution of landmark points for infants and adults is also different. For example, some of the landmark points for infants have a larger range of x and y coordinates than others, indicating greater variability in their location across images. In contrast, the landmark points for adults have a more consistent range of x and y coordinates across images.
 
 After that, we take 2 approaches we take for detecting outliers involves the use of Mahalanobis distance, and Isolation
 Forest. After adding some noises to the dataset, we could get such a result:

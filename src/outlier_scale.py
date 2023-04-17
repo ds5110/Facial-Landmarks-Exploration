@@ -1,9 +1,9 @@
 import pandas as pd
 from pandas.errors import PerformanceWarning
 
-from outlier_new import make_noise
-from outlier_new import ma
-from outlier_new import isolation
+from outlier import make_noise
+from outlier import ma
+from outlier import isolation
 import warnings
 
 warnings.filterwarnings('ignore', category=PerformanceWarning)

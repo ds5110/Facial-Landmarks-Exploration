@@ -22,30 +22,14 @@ scale: scale_data scale_plt
 euclidean:
 	python -B ./src/euclidean.py
 
-ma_outlier_infant:
-	python -B ./src/ma_infant.py
-
-ma_outlier_adult:
-	python -B ./src/ma_adult.py
-
-
-if_outlier_adult:
-	python -B ./src/isolation_forest_adult.py
-
-if_outlier_infant:
-	python -B ./src/isolation_forest_infant.py
-
-pic:
-	python -B ./src/pic.py
-
-prelim_plots:
-	python src/jh_prelim_plots.py
-
 scatter:
 	python src/scatter.py
 
-outlier_new:
-	python src/outlier_new.py
+outlier:
+	python src/outlier.py
+
+outlier_scale:
+	python src/outlier_scale.py
 
 # The following two commands reproduce feature selection results
 # Can be very time-consuming up to tens of minitues
