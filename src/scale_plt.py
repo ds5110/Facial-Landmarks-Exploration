@@ -52,7 +52,7 @@ prev_df = pd.read_csv('./outcome/prev/merged_landmarks.csv')
 
 # plot the center data. Merged the data from previous project and the original data for comparison.
 def plot_center(names, title, path):
-    center_raw_plt = center_raw[center_raw['image_name'].isin(names)]
+    center_raw_plt = center_raw[center_raw['image_name'].isin(names)].copy()
     center_raw_plt['scale_type'] = 'original'
     center_scale_plt = center_scale[center_scale['image_name'].isin(names)]
     prev_df_plt = prev_df[prev_df['image_name'].isin(names)]
@@ -81,7 +81,7 @@ rotated_scale = pd.read_csv('./outcome/scale/rotated_scale.csv')
 
 # plot the rotation data. Merged the data from previous project and the original data for comparison.
 def plot_rotated(names, title, path):
-    rotated_raw_plt = rotated_raw[rotated_raw['image_name'].isin(names)]
+    rotated_raw_plt = rotated_raw[rotated_raw['image_name'].isin(names)].copy()
     rotated_raw_plt['scale_type'] = 'original'
     rotated_scale_plt = rotated_scale[rotated_scale['image_name'].isin(names)]
     prev_df_plt = prev_df[prev_df['image_name'].isin(names)]

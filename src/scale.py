@@ -103,11 +103,11 @@ def scale_mds(df, x_cols, y_cols):
 # Scale the dataframe by 3 functions above.
 # And return the result that contains all scale results.
 def scale_all(df, x_cols, y_cols):
-    standardize_df = standardize_original(df, x_cols + y_cols)
+    standardize_df = standardize_original(df, x_cols + y_cols).copy()
     standardize_df['scale_type'] = 'standard'
-    normalized_df = normalize_by_face_bounding_box(df, x_cols, y_cols)
+    normalized_df = normalize_by_face_bounding_box(df, x_cols, y_cols).copy()
     normalized_df['scale_type'] = 'normalized'
-    mds_df = scale_mds(df, x_cols, y_cols)
+    mds_df = scale_mds(df, x_cols, y_cols).copy()
     mds_df['scale_type'] = 'mds'
     merged = pd.concat([standardize_df, normalized_df, mds_df])
     return merged
