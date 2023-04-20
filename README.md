@@ -156,10 +156,7 @@ professor, [Philip Bodgen](https://www.khoury.northeastern.edu/people/philip-bog
 encouragement
 throughout the course of this project, and to our
 Stakeholder, [Michael Wan](https://roux.northeastern.edu/people/michael-wan/), Ph.D., Senior Computational Scientist in
-Northeastern's Augmented Cognition Lab, for his valuable guidance and support. We also want to extend our appreciation
-to [ChatGPT](https://chat.openai.com/), an AI language model, for its assistance in various stages of the project,
-including research, analysis, and
-documentation.
+Northeastern's Augmented Cognition Lab, for his valuable guidance and support.
 
 Our appreciation goes to the study of the [InfAnFace paper, Wan et al, (2022)](https://arxiv.org/abs/2110.08935),
 co-authored by Michael Wan and his

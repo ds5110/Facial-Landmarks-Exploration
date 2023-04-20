@@ -149,12 +149,8 @@ coordinates. Nearly no landmarks of cheeks are chosen among all methods.
 
 ## Challenges
 
-Throughout the course of this project, we faced several challenges. One challenge was the initial uncertainty about how
-the DS project should be approached. We were unsure about the specific direction and scope of the project. In this
-regard, we would like to thank ChatGPT and the OpenAI company behind it for providing guidance on how to carry out a
-project effectively.
-
-Another challenge was determining the direction to take in our research. We initially chose to enrich the methods of
+Throughout the course of this project, we faced several challenges. One challenge was determining the direction to take
+in our research. We initially chose to enrich the methods of
 Scale and other aspects. During a check-in with our Stakeholder, we received suggestions to compare our work with the
 original project. This feedback helped us refine our direction, focusing on extending a few aspects that were not
 thoroughly explored in the original project.
