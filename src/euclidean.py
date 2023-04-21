@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import sys
 from sklearn.metrics.pairwise import euclidean_distances
 from utils import get_data, get_data_scale, get_cols, get_cols_scale, reshape_to_2d
 
