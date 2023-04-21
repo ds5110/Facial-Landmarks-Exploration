@@ -9,6 +9,7 @@ from utils import get_data, get_data_scale, get_cols, get_cols_scale
 # Generate dot plots to show variance distribution of features
 def variance_dotplot(df, address, title):
     fig = plt.figure(figsize=(15, 4))
+    np.random.seed(7)
     var = df.var()
     ax = sns.stripplot(data=var, orient="h", size=3)
     ax.set(xlabel="Variances", ylabel="Features", title=title)
