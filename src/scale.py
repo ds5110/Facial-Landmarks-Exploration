@@ -84,7 +84,7 @@ def mds_by_coordinates(df, x_cols, y_cols):
     num_rows, num_landmarks, num_dimensions = infant_reshaped.shape
     mds_results = np.zeros((num_rows, num_landmarks, num_dimensions))
     for i in range(num_rows):
-        mds = MDS(n_components=num_dimensions, normalized_stress=False)
+        mds = MDS(n_components=num_dimensions, normalized_stress=False, random_state=42)
         mds_transformed = mds.fit_transform(infant_reshaped[i])
         mds_results[i] = mds_transformed
     return mds_results
