@@ -65,6 +65,17 @@ point. The other two methods (excluding Original) showed similar results, making
 is superior. These visualizations aid in understanding the effectiveness of each scaling and rotation method on the
 alignment and representation of facial landmarks, providing valuable insights for future work and applications.
 
+### Comparison
+
+In comparison to the previous project, our project retained the initial two preprocessing steps, aligning the center and
+rotation, to ensure minimal influence on the outcome. We experimented with alternative scaling methods, including MDS,
+standardization, and a different normalization approach. We discovered that MDS resulted in varying face directions,
+which increased complexity and rendered outlier detection ineffective. Standardization maintained the face direction but
+shifted the center slightly, yielding similar results. Normalization by bounding box provided more reasonable landmarks,
+and despite the minor differences, it proved to be the best method for keeping the landmarks in an organized range.
+Thus, scaling indeed impacts the outcome significantly, and the normalization method is the most effective choice for
+maintaining an organized landmarks after aligning and rotation.
+
 ### Conclusion and Future Work
 
 In this section, we analyzed various scaling and rotation methods for facial landmarks, comparing the original method
