@@ -159,6 +159,31 @@ Time management was also a challenge. By the time we fully confirmed our researc
 remaining to complete the project. This constraint required us to work overtime and put in extra effort to ensure that
 we met our goals and delivered a high-quality output.
 
+## Comparison with Previous Project
+
+In this section, we briefly compare our project with the previous project, focusing on three aspects: scaling, outlier
+detection, and feature selection.
+
+#### Scaling Comparison
+
+Our project explores alternative scaling methods, with normalization by bounding box proving to be the most effective
+for maintaining an organized representation of landmarks after aligning and rotation.
+
+#### Outlier Detection Comparison
+
+We employ advanced outlier detection techniques, which are Mahalanobis distance and Isolation Forest, to effectively
+identify and filter out outliers, improving data analysis quality and reliability compared to the original project's
+limited approach.
+
+#### Feature Selection Comparison
+
+We extend the methods of feature selection and apply them to both Euclidean Distances and Landmark Coordinates. Although
+we obtained the same top features as the previous project using Forward Feature Selection (FFS), our approach offers
+additional methods like RFE and Lasso for faster processing.
+
+In summary, our project expands upon the previous project by examining alternative scaling methods, utilizing advanced
+outlier detection techniques, and broadening feature selection methods for a more comprehensive analysis.
+
 ## Conclusion
 
 In conclusion, our project aimed to improve facial landmark scale, representation, and feature selection in computer

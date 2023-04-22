@@ -65,7 +65,7 @@ point. The other two methods (excluding Original) showed similar results, making
 is superior. These visualizations aid in understanding the effectiveness of each scaling and rotation method on the
 alignment and representation of facial landmarks, providing valuable insights for future work and applications.
 
-### Comparison
+### Comparison with Previous Project
 
 In comparison to the previous project, our project retained the initial two preprocessing steps, aligning the center and
 rotation, to ensure minimal influence on the outcome. We experimented with alternative scaling methods, including MDS,
