@@ -36,7 +36,8 @@ def data(df_previous):
         y_col = 'norm_cenrot-y{}'.format(i)
         df['x{}'.format(i)] = df_previous[x_col]
         df['y{}'.format(i)] = df_previous[y_col]
-    df = pd.concat([df.filter(regex='^x'), df.filter(regex='^y')], axis=1)
+    # if needed, you can get the csv file
+    # df = pd.concat([df.filter(regex='^x'), df.filter(regex='^y')], axis=1)
     # df.to_csv("dd.csv", index=False)
     return df
 
@@ -65,10 +66,11 @@ def make_noise(dfi, dfa):
     print("After:")
     dfi_after = pd.concat([dfi, random_data_i], axis=0)
     print(dfi_after.shape)
-    dfi_after.to_csv("dfi_after.csv", index=False)
+    # if needed, you can get the csv file
+    # dfi_after.to_csv("dfi_after.csv", index=False)
     dfa_after = pd.concat([dfa, random_data_a], axis=0)
     print(dfa_after.shape)
-    dfa_after.to_csv("dfa_after.csv", index=False)
+    # dfa_after.to_csv("dfa_after.csv", index=False)
     return dfi_after, dfa_after
 
 
@@ -82,7 +84,8 @@ def ma(df):
     threshold = np.quantile(mahal_dist, 41 / 43)
     outliers_index = np.where(np.array(mahal_dist) > threshold)[0]
     # Filter out outliers
-    outliers = df[mahal_dist > threshold]
+    # if you need outliers, print it
+    # outliers = df[mahal_dist > threshold]
     print(outliers_index)
 
 
