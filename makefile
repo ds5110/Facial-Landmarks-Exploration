@@ -19,11 +19,13 @@ scale_plt:
 
 scale: scale_data scale_plt
 
-euclidean:
+euclidean_data:
 	python -B ./src/euclidean.py
 
-euclidean_scale:
+euclidean_data_scale:
 	python -B ./src/euclidean.py scale
+
+euclidean: euclidean_data euclidean_data_scale
 
 scatter:
 	python src/scatter.py
@@ -36,10 +38,10 @@ outlier_scale:
 
 # The following two commands reproduce feature selection results
 # Can be very time-consuming up to tens of minitues
-feature:
+feature_data:
 	python -u -B src/feature_selection.py
 
-feature_scale:
+feature_data_scale:
 	python -u -B src/feature_selection.py scale
 
 feature_plots:
@@ -47,3 +49,5 @@ feature_plots:
 
 feature_plots_scale:
 	python -u -B src/feature_selection_plots.py scale
+
+feature: feature_data feature_data_scale feature_plots feature_plots_scale

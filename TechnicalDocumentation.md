@@ -25,17 +25,13 @@ in `outcome/prev/merged_landmarks.csv`.
 #### Makefile
 
 The `Makefile` serves as the entry point for the entire project, and all of the completed functions are located there.
-It contains four parts:
+It contains five parts:
 
 - `data`: Used for downloading the original data from Michael Wan's study.
+- `euclidean`: Used for generating Euclidean Distances between landmarks.
 - `scale`: Used for applying different scaling functions to the original data and comparing it with the `merged_landmarks` from the previous project.
 - `outlier`: Used for detecting different functions that can be used for detecting outliers in the landmarks.
-- `euclidean`: The command is used for generating euclidean distances between landmarks.
-- `euclidean_scale`: Euclidean Distances generation with data source changed to `rotated_scale.csv` for comparison.
-- `feature`: The command is used for feature selection method implementation. This step can be very time-consuming up to tens of minutes. Results are saved as CSV files.
-- `feature_plots`: The command is used for generating feature selection related figures.
-- `feature_scale`: Feature selection implementation with data source changed to `rotated_scale.csv` for comparison.
-- `feature_plots_scale`: Feature selection figures with data source changed to `rotated_scale.csv` for comparison.
+- `feature`: Used for feature selection method implementation and related figures generation. This step can be very time-consuming up to tens of minutes.
 
 
 ### Code Files
