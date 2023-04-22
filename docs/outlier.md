@@ -300,3 +300,11 @@ In contrast, the original project did not employ any specific method for outlier
 ## Conclusion
 
 Based on the results, we found that both the Mahalanobis distance and Isolation Forest techniques were effective in identifying the added noise points accurately, without falsely flagging any of the true data points as outliers. These findings suggest that our outlier detection method using landmarks data is viable and can accurately identify outliers in complex datasets, even in the presence of noise. 
+
+# References
+
+1. Mahalanobis Distance. (2023, April 20). Wikipedia. Retrieved from https://en.wikipedia.org/wiki/Mahalanobis_distance
+
+2. Isolation Forest. (2023, April 20). Wikipedia. Retrieved from https://en.wikipedia.org/wiki/Isolation_forest
+
+
