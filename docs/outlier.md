@@ -293,7 +293,7 @@ In comparison with the previous project, our project employs advanced outlier de
 
 By leveraging Mahalanobis distance and Isolation Forest, we are able to identify outliers that may not be easily detected by traditional methods, as these techniques take into account the covariance structure of the data and the non-linearity of relationships among variables. This enables us to effectively identify data that are likely to be outliers, and thereby improve the quality and reliability of our data analysis.
 
-In contrast, the original project did not employ any specific method for outlier filtering, and only a subset of outliers that appeared to be caused by inconsistent labels were plotted. However, no further handling or processing of outliers was observed. Our approach of  allows us to address the issue of outliers in our data set and ensure the integrity of our analysis.
+In contrast, the original project did not employ any specific method for outlier filtering, and only a subset of outliers that appeared to be caused by inconsistent labels were plotted. However, no further handling or processing of outliers was observed. Our approach allows us to address the issue of outliers in our data set and ensure the integrity of our analysis.
 
 
 
