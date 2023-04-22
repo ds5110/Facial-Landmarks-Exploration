@@ -36,6 +36,8 @@ outlier:
 outlier_scale:
 	python src/outlier_scale.py
 
+outlier_detection: scatter outlier outlier_scale
+
 # The following two commands reproduce feature selection results
 # Can be very time-consuming up to tens of minitues
 feature_data:
