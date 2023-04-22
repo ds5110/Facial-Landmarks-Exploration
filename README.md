@@ -69,9 +69,11 @@ future research.
 
 Outliers are exceptional records that are significantly different from the rest of the data. Commonly, they can lead to
 incorrect conclusions or predictions and will have an impact on further research. Therefore, outliers selection is an
-important part of data analysis and a step we must go through before using model to train or test. In the original project, there seems to be no method used to filter out outliers. Only a portion of outliers that appear to be caused by inconsistent labels are plotted, but no subsequent outlier handling is observed.
-In our project, Considering the
-multidimensional data, Mahalanobis distance and Isolation Forest are two commonly used techniques for identifying
+important part of data analysis and a step we must go through before using model to train or test. 
+
+In the original project, there seems to be no method used to filter out outliers. Only a portion of outliers that appear to be caused by inconsistent labels are plotted, but no subsequent outlier handling is observed.
+
+In our project, considering the multidimensional data, Mahalanobis distance and Isolation Forest are two commonly used techniques for identifying
 outliers in landmarks data. In this approach, we utilize these two techniques to detect outliers and validate the
 model's accuracy using noise data.
 
