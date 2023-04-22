@@ -286,6 +286,17 @@ In response to this feedback, we shifted the focus to these two areas and made i
 
 Overall, these changes demonstrate our commitment to providing accurate and reliable outlier detection results. We really appreciate the feedback from the stakeholder and professor which helps us a lot.
 
+
+## Comparison with the previous project
+
+In comparison with the previous project, our project employs advanced outlier detection techniques, which are Mahalanobis distance and Isolation Forest, to identify and filter out outliers from our landmarks dataset.
+
+By leveraging Mahalanobis distance and Isolation Forest, we are able to identify outliers that may not be easily detected by traditional methods, as these techniques take into account the covariance structure of the data and the non-linearity of relationships among variables. This enables us to effectively identify data that are likely to be outliers, and thereby improve the quality and reliability of our data analysis.
+
+In contrast, the original project did not employ any specific method for outlier filtering, and only a subset of outliers that appeared to be caused by inconsistent labels were plotted. However, no further handling or processing of outliers was observed. Our approach of  allows us to address the issue of outliers in our data set and ensure the integrity of our analysis.
+
+
+
 ## Conclusion
 
 Based on the results, we found that both the Mahalanobis distance and Isolation Forest techniques were effective in identifying the added noise points accurately, without falsely flagging any of the true data points as outliers. These findings suggest that our outlier detection method using landmarks data is viable and can accurately identify outliers in complex datasets, even in the presence of noise. 
