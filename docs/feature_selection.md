@@ -17,7 +17,7 @@ Although there are many feature selection methods to choose from, the previous p
 - [Wrapper methods of Feature selection](#wrapper-methods)
     - [Forward Feature Selection](#forward-feature-selection)
     - [Recursive Feature Elimination](#recursive-feature-elimination)
-- [regularization methods of feature selection](#regularization-methods)
+- [Regularization methods of feature selection](#regularization-methods)
     - [Lasso Regularization](#lasso-regularization)
 - [Tree-based method of feature selection](#tree-based-methods)
     - [Random Forests](#random-forests)
