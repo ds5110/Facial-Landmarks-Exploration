@@ -24,6 +24,7 @@ Although there are many feature selection methods to choose from, the previous p
 - [Conclusion](#conclusion)
     - [Method Comparison](#method-comparison)
     - [Integrated Result](#integrated-result)
+- [Comparison with the previous project](#comparison-with-the-previous-project)
 
 ### Data Source and Preprocessing
 
@@ -237,6 +238,16 @@ For landmark coordinates features, most "good" results put importance on y-coord
 
 Among all 68 landmarks of one face, we can see the most important features are mouth, eye, nose, jaw, and distances between them. And distances can get a good performance with fewer feature numbers than coordinates. Nearly no landmarks of cheeks are chosen among all methods.
 
+### Comparison with the previous project
+
+Compare with the previous project in which only Forward Feature Selection (FFS) was applied to Euclidean Distances, we extended the methods of feature selection to 6 methods and applied all these methods to both Euclidean Distances and Landmark Coordinates.
+
+Although FFS could be a method to get a really good performance result, its speed could become very slow when a big number of features are correlated. On the other hand, both `RFE` and `Lasso` could also perform relatively well and have a fast speed under such conditions.
+
+Regarding the selected features, the previous project got `dist_7_48`, `dist_33_42`, and `dist_21_22` as the three features that can have an accuracy score above 0.9. This is exactly the same as what we got using `FFS`.
+
+In addition, the previous project tested `boxratio` and `boxsize` as features, which were not involved in our project. The previous project also applied dimension reduction methods such as `PCA`. As our project time is limited, we focused on feature selection methods and chose not to include dimension reduction ones.
+
 # Issues may be resolved in future
 
 - If we set a higher correlation threshold, and features with high correlations would be dropped to a larger extent, will filter methods get a better performance?
@@ -244,3 +255,9 @@ Among all 68 landmarks of one face, we can see the most important features are m
 - Following the last step, will `FFS` become faster than `RFE`?
 
 - The dataset is relatively small compared with the feature number, will our result keep the same for larger datasets?
+
+# References
+
+1. Bex, T. "How to Use Variance Thresholding For Robust Feature Selection". Towards Data Science, Apr 10, 2021, https://towardsdatascience.com/how-to-use-variance-thresholding-for-robust-feature-selection-a4503f2b5c3f.
+2. Boyle, T. "Feature Selection and Dimensionality Reduction". Towards Data Science, Mar 25, 2019, https://towardsdatascience.com/feature-selection-and-dimensionality-reduction-f488d1a035de#:~:text=Feature%20Selection%20vs%20Dimensionality%20Reduction&text=While%20both%20methods%20are%20used,features%20into%20a%20lower%20dimension.
+3. Gupta, A. "Feature Selection Techniques in Machine Learning". Analytics Vidhya, Mar 30, 2023, https://www.analyticsvidhya.com/blog/2020/10/feature-selection-techniques-in-machine-learning/.
