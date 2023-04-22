@@ -6,9 +6,7 @@ from outlier import ma
 from outlier import isolation
 import warnings
 
-warnings.filterwarnings('ignore', category=PerformanceWarning)
-warnings.filterwarnings("ignore", category=UserWarning)
-# warnings.filterwarnings("ignore", category=UserWarning)
+warnings.filterwarnings("ignore")
 
 # Data was classified using three different scaling methods, and then further categorized into adult and infant
 data = pd.read_csv('outcome/scale/rotated_scale.csv')
