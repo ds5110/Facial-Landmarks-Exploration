@@ -14,8 +14,9 @@ landmark (nose) as the center and scaled the landmarks based on the range of the
 
 To explore alternative scaling methods, we applied three new approaches:
 
-1. **Multidimensional Scaling (MDS)**: Applied using `sklearn.manifold.MDS`.
-2. **Standardization**: Implemented using `sklearn.preprocessing.StandardScaler`.
+1. **Multidimensional Scaling (MDS)**: Applied using `sklearn.manifold.MDS`(“sklearn.manifold.MDS”).
+2. **Standardization**: Implemented using `sklearn.preprocessing.StandardScaler`(“Sklearn.Preprocessing.StandardScaler”)
+   .
 3. **Normalization by Bounding Box**: Landmarks were scaled based on the bounding box of the face, using separate x and
    y ranges.
 
@@ -82,3 +83,9 @@ In this section, we analyzed various scaling and rotation methods for facial lan
 with three alternatives: MDS, Standardization, and Normalization by Bounding Box. The MDS method was found to be
 unsuitable, as was Standardization due to its use of the mean as the zero point. The other methods yielded similar
 results, making it challenging to determine the most effective approach.
+
+### References
+
+1. “sklearn.manifold.MDS.” *Scikit-learn*, scikit-learn.org/stable/modules/generated/sklearn.manifold.MDS.html.
+2. “Sklearn.Preprocessing.StandardScaler.” *Scikit-learn*,
+   scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html.

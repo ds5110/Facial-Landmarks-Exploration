@@ -193,3 +193,18 @@ normalization. Mahalanobis distance and Isolation Forest were effective in detec
 distances led to better performance with fewer features. Forward Feature Selection, Recursive Feature Elimination, and
 Lasso Regularization were suitable for feature selection. Our work contributes to enhancing facial recognition and
 computer vision tasks by providing a more accurate and efficient framework.
+
+## References
+
+1. “sklearn.manifold.MDS.” *Scikit-learn*, scikit-learn.org/stable/modules/generated/sklearn.manifold.MDS.html.
+2. “Sklearn.Preprocessing.StandardScaler.” *Scikit-learn*,
+   scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html.
+1. Mahalanobis Distance. (2023, April 20). Wikipedia. Retrieved from https://en.wikipedia.org/wiki/Mahalanobis_distance
+2. Isolation Forest. (2023, April 20). Wikipedia. Retrieved from https://en.wikipedia.org/wiki/Isolation_forest
+1. Bex, T. "How to Use Variance Thresholding For Robust Feature Selection". Towards Data Science, Apr 10,
+   2021, https://towardsdatascience.com/how-to-use-variance-thresholding-for-robust-feature-selection-a4503f2b5c3f.
+2. Boyle, T. "Feature Selection and Dimensionality Reduction". Towards Data Science, Mar 25,
+   2019, https://towardsdatascience.com/feature-selection-and-dimensionality-reduction-f488d1a035de#:~:text=Feature%20Selection%20vs%20Dimensionality%20Reduction&text=While%20both%20methods%20are%20used,features%20into%20a%20lower%20dimension
+   .
+3. Gupta, A. "Feature Selection Techniques in Machine Learning". Analytics Vidhya, Mar 30,
+   2023, https://www.analyticsvidhya.com/blog/2020/10/feature-selection-techniques-in-machine-learning/.
