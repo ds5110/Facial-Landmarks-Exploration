@@ -151,7 +151,7 @@ Team members and their contributions:
 ## Acknowledgments
 
 We would like to express our gratitude to our
-professor, [Philip Bodgen](https://www.khoury.northeastern.edu/people/philip-bogden/), for his guidance, support, and
+professor, [Philip Bogden](https://www.khoury.northeastern.edu/people/philip-bogden/), for his guidance, support, and
 encouragement
 throughout the course of this project, and to our
 Stakeholder, [Michael Wan](https://roux.northeastern.edu/people/michael-wan/), Ph.D., Senior Computational Scientist in
